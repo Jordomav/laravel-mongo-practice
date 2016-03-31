@@ -11,32 +11,26 @@
                 <h1 class="title">Angular, Laravel and Mongo</h1>
                 <div class="container">
                     <div class="question">
-                        <h3>Here is a question</h3>
+                        <h4>Wheel chair door and hall clearance at lease 32 inches?</h4>
                         <form role="form" class="choices">
                             <label class="radio-inline">
-                                <input type="radio" name="optradio" data-ng-toggle="">True
+                                <input type="radio" name="optradio" data-ng-toggle="trueFalse">Yes
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="optradio" data-ng-toggle="">False
+                                <input type="radio" name="optradio" data-ng-toggle="trueFalse">No
                             </label>
                         </form>
                     </div>
                     <div class="question">
-                        <h3>Here is a second question</h3>
+                        <h3>If the threshold is vertical is it no more than ¼ inch high?</h3>
                         <form role="form" class="choices">
-                            <label class="radio-inline">
-                                <input type="radio" name="optradio" data-ng-click="">Option 1
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="optradio" data-ng-click="">Option 2
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="optradio" data-ng-click="">Option 3
-                            </label>
+                            <select class="form-control">
+                                <option data-ng-repeat="">@{{Answers}}</option>
+                            </select>
                         </form>
                     </div>
                     <div class="question">
-                        <h3>Here is a third question</h3>
+                        <h3>Toilet height range?</h3>
                         <form role="form" class="choices">
                             <input type="number" style="width:50px;" data-ng-model="range.q as response"><span> inches</span>
                             <div data-ng-if="response.length == 0">Correct</div>
