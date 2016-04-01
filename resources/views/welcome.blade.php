@@ -14,11 +14,12 @@
                         <h4>Wheel chair door and hall clearance at lease 32 inches?</h4>
                         <form role="form" class="choices">
                             <label class="radio-inline">
-                                <input type="radio" name="optradio" data-ng-toggle="trueFalse">Yes
+                                <input type="radio" name="optradio" data-ng-model="trueFalse.name" value="yes">Yes
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="optradio" data-ng-toggle="trueFalse">No
+                                <input type="radio" name="optradio" data-ng-model="trueFalse.name" value="no">No
                             </label>
+                            <tt>@{{trueFalse.name}}</tt>
                         </form>
                     </div>
                     <div class="question">
