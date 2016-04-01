@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="/build/css/css-deps.css">
         <link rel="stylesheet" href="/build/css/app.css">
     </head>
-    <body data-ng-app="adaApp" data-ng-controller="adaController">
+    <body data-ng-app="adaApp" data-ng-controller="adaController as questionaire">
         <div class="container">
             <div class="content">
                 <h1 class="title">Angular, Laravel and Mongo</h1>
