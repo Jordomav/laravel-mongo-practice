@@ -1,6 +1,6 @@
 /vendor
 /node_modules
-/public/storage
+/public/build
 .env
 bower_components
 .idea
