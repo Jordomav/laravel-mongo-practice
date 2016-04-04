@@ -25,7 +25,7 @@
                     <div class="question">
                         <h3>If the threshold is vertical is it no more than ¼ inch high?</h3>
                         <form role="form" class="choices">
-                            <select class="form-control">
+                            <select  class="form-control">
                                 <option data-ng-repeat="">@{{Answers}}</option>
                             </select>
                         </form>
@@ -41,6 +41,6 @@
             </div>
         </div>
     </body>
-    <script src="/build/js/js-deps.js"></script>
+    <script src="/build/js/deps.js"></script>
     <script src="/build/js/app.js"></script>
 </html>
