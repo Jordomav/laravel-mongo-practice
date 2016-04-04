@@ -6,8 +6,8 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Question extends Eloquent
 {
-
-    public function answers(){
+    public function answers()
+    {
         return $this->embedsMany(Answer::class);
     }
 }
