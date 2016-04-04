@@ -41,6 +41,6 @@
             </div>
         </div>
     </body>
-    <script src="/build/js/js-deps.js"></script>
+    <script src="/build/js/deps.js"></script>
     <script src="/build/js/app.js"></script>
 </html>
