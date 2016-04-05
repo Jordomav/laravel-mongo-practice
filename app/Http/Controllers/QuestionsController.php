@@ -10,9 +10,9 @@ use DB;
 use App\Answer;
 use App\Question;
 
-class DatabaseController extends Controller
+class QuestionsController extends Controller
 {
-    public function show(){
-        $questions = Question::all();
+    public function index(){
+        return Question::all();
     }
 }
