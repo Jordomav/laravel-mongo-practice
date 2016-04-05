@@ -6,13 +6,13 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use DB;
-use App\Answer;
 use App\Question;
+use DB;
 
-class QuestionsController extends Controller
+class QuestionnaireController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return Question::all();
     }
 }
