@@ -6,7 +6,7 @@
 
  'use strict';
  angular.module('adaApp')
-     .controller('adaController', function($http) {
+     .controller('QuestionnaireController', function($http) {
          var vm = this;
 
          vm.questions = [];
@@ -17,13 +17,12 @@
              $http.get('get-questions')
                  .then( function successCallback(res) {
 
-                     console.log(res);
                      vm.questions = res.data;
+                     console.log(vm.questions);
 
                  },
                     function errorCallback(err) {
                         alert('There was a problem retrieving questions from the database.');
-                        console.log(err);
                     });
          }
 
