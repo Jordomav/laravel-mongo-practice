@@ -6,13 +6,14 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use MongoDB;
 use DB;
 use App\Answer;
 use App\Question;
 
-class DatabaseController extends Controller
+class QuestionnaireController extends Controller
 {
-    public function show(){
-        $questions = Question::all();
+    public function index(){
+        return Question::all();
     }
 }

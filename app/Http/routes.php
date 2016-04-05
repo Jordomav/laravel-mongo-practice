@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('questionnaire');
 });
 
 
-Route::get('show', 'DatabaseController@show');
+Route::get('get-questions', 'QuestionnaireController@index');
