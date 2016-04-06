@@ -13,17 +13,19 @@
 
          init();
 
-             function init(){
-                 $http.get('get-questions')
-                     .then(function successCallback(res){
-                         console.log(res);
-                         vm.questions = res.data;
-                     },
-                     function errorCallback(err){
-                         alert('There was a error finding the questions');
-                         console.log(err);
-                     });
-             }
+         function init() {
+             $http.get('get-questions')
+                 .then( function successCallback(res) {
+
+                     vm.questions = res.data;
+                     console.log(vm.questions);
+
+                 },
+                    function errorCallback(err) {
+                        alert('There was a problem retrieving questions from the database.');
+                    });
+         }
+
 
      });
 
