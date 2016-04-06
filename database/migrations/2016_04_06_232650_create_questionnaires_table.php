@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
+use Jenssegers\Mongodb\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateQuestionnairesTable extends Migration
@@ -12,9 +12,11 @@ class CreateQuestionnairesTable extends Migration
      */
     public function up()
     {
-        Schema::create('questionnaires', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::create('questionnaires', function (Blueprint $collection) {
+            $collection->increments('id');
+            $collection->timestamps();
+            $collection->string('user_id');
+            $collection->boolean('compliant');
         });
     }
 
