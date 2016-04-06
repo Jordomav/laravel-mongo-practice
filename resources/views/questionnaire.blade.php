@@ -11,8 +11,8 @@
             @{{ question.text }}
 
             <form data-ng-if="question.data_type === 'multiple_choice'">
-                <select name="" id="">
-                    <option value="" data-ng-repeat="answer in question.answers">@{{ answer.text }}</option>
+                <select data-ng-model="question.selectedAnswer" name="" id="">
+                    <option value="@{{ question.selectedAnswer }}" data-ng-repeat="answer in question.answers">@{{ answer.text }}</option>
                 </select>
             </form>
 
@@ -26,6 +26,8 @@
             <form data-ng-if="question.data_type === 'number'">
                 <input type="number">
             </form>
+
+            <span>@{{ question.selectedAnswer }}</span>
 
         </div>
     </body>
