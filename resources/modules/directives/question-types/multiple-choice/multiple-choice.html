@@ -1,7 +1,19 @@
 
 <form class="">
-    <select name="" id="" class="form-control">
+
+    <select data-ng-model="question.selectedAnswer"
+            name="" id=""
+            class="form-control">
+
+        <!-- Default option so user must make a selection -->
         <option value="" disabled selected>Please select one of the following...</option>
-        <option value="" data-ng-repeat="answer in question.answers">{{ answer.text }}</option>
+
+        <option data-ng-repeat="answer in question.answers">
+
+            {{ answer.text }}
+
+        </option>
+
     </select>
+
 </form>
