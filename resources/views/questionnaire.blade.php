@@ -19,12 +19,7 @@
                         </select>
                     </form>
 
-                    <form data-ng-if="question.data_type === 'true_false'">
-                        <span data-ng-repeat="answer in question.answers" class="radio-inline">
-                            <input title="true-false" name="toggle" type="radio">
-                            @{{ answer.text }}<br>
-                        </span>
-                    </form>
+                    <true-false-question data-ng-if="question.data_type === 'true_false'"></true-false-question>
 
                     <form data-ng-if="question.data_type === 'number'" class="col-xs-2">
                         <input type="number" class="form-control">

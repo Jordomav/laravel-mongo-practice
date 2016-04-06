@@ -89,6 +89,10 @@ gulp.task('watch', function () {
         gulp.start('js');
     });
 
+    watch('./resources/modules/directives/**/*.html', function () {
+       gulp.start('templates');
+    });
+
     watch('./resources/styles/*.less', function () {
         gulp.start('less');
     });

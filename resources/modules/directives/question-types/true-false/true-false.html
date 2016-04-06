@@ -1,1 +1,6 @@
-<h1>HEY DUUUDE</h1>
+<form>
+    <span data-ng-repeat="answer in question.answers" class="radio-inline">
+        <input title="true-false" name="toggle" type="radio">
+        {{ answer.text }}<br>
+    </span>
+</form>
