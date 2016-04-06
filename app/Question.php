@@ -13,5 +13,6 @@ class Question extends Eloquent
     public function answers()
     {
         return $this->embedsMany(Answer::class);
+//        Embeds Many Answers (Many Answers contained in one Question)
     }
 }

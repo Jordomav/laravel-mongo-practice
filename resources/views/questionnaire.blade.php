@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="/build/css/css-deps.css">
         <link rel="stylesheet" href="/build/css/app.css">
     </head>
+    {{--Angular Controller and App Connected--}}
     <body data-ng-app="adaApp" data-ng-controller="QuestionnaireController as questionnaire">
     <div class="container">
 
@@ -22,8 +23,23 @@
                 <range-input data-ng-if="question.data_type === 'number'"></range-input>
 
             </div>
+            {{--Save Status Icons--}}
+            <div class="notifyBox">
+                <i class="fa fa-times-circle fa-2x notify"></i>
+            </div>
+            {{--<i class="fa fa-check fa-2x notify"></i>--}}
+
 
             <br>
+            {{--Compliance Pop-outs--}}
+            {{--Compliant Pop-out--}}
+            {{--<div class="compliance">--}}
+            {{--<div class="compliant"><h4><i class="fa fa-check icon-size"></i> You are ADA compliant.</h4></div>--}}
+            {{--</div>--}}
+            {{--Non-Compliant Pop-Out--}}
+            {{--<div class="compliance">--}}
+            {{--<div class="non-compliant"><h4><i class="fa fa-times-circle icon-size"></i> You are NOT ADA compliant.</h4></div>--}}
+            {{--</div>--}}
         </div>
 
 

@@ -11,5 +11,6 @@ class Answer extends Eloquent
     public function question()
     {
         return $this->belongsTo(Question::class);
+//        Belongs to many Questions (Is Embeded into a Question)
     }
 }
