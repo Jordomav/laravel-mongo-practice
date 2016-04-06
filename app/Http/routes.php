@@ -11,8 +11,14 @@
 |
 */
 
+
+//Initial Screen Load
 Route::get('/', function () {
     return view('questionnaire');
 });
 
+//Retrieves all 'Questions' and their subsequent 'Answers'- QuestionnaireController.php(index)
 Route::get('get-questions', 'QuestionnaireController@index');
+
+//Posts 'Answer' Responses to the Database- AnswersController.php(post)
+Route::get('post-answers', 'AnswersController@post');

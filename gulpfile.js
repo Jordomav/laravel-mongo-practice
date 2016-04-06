@@ -44,7 +44,7 @@ gulp.task('css-deps', function () {
 });
 
 gulp.task('js', function () {
-    var baseDir = __dirname + '/resources/js',
+    var baseDir = __dirname + '/resources/modules',
         outputDir = __dirname + '/public/build/js',
         outputFilename = 'app.js';
 
@@ -64,6 +64,12 @@ gulp.task('js', function () {
         .pipe(livereload());
 });
 
+gulp.task('templates', function () {
+    gulp.src('./resources/modules/directives/**/*.html')
+        .pipe(gulp.dest('./public/build/templates'))
+        .pipe(livereload());
+});
+
 gulp.task('less', function () {
     gulp.src([
             './resources/styles/app.less'
@@ -79,8 +85,12 @@ gulp.task('serve', serve('.'));
 
 gulp.task('watch', function () {
     livereload.listen({port: 35730});
-    watch(['./resources/js/*.js', './resources/js/**/*.js'], function () {
+    watch(['./resources/modules/*.js', './resources/modules/**/*.js'], function () {
         gulp.start('js');
+    });
+
+    watch('./resources/modules/directives/**/*.html', function () {
+       gulp.start('templates');
     });
 
     watch('./resources/styles/*.less', function () {
@@ -88,4 +98,4 @@ gulp.task('watch', function () {
     });
 });
 
-gulp.task('default', ['js-deps', 'css-deps', 'js', 'less', 'watch', 'serve']);
+gulp.task('default', ['js-deps', 'css-deps', 'js', 'templates', 'less', 'watch', 'serve']);
