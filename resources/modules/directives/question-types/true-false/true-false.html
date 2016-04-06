@@ -2,7 +2,8 @@
 <form>
     <span data-ng-repeat="answer in question.answers" class="radio-inline">
 
-        <input data-ng-model="questionnaire.selectedAnswer"
+        <!-- TODO: question.selectedAnswer should probably point to an id of selected answer, not a string of text -->
+        <input data-ng-model="question.selectedAnswer"
                title="true-false"
                name="toggle"
                type="radio"

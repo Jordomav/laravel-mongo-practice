@@ -25,6 +25,7 @@
                 <range-input data-ng-if="question.data_type === 'number'"></range-input>
 
             </div>
+
             {{--Save Status Icons--}}
             <div class="notifyBox">
                 <i class="fa fa-times-circle fa-2x notify"></i>
@@ -32,7 +33,7 @@
             {{--<i class="fa fa-check fa-2x notify"></i>--}}
 
 
-            <br>
+            <br/>
 
             {{-- TODO: implement compliance popouts --}}
             {{--Compliance Pop-outs--}}
@@ -47,7 +48,8 @@
             
         </div>
 
-        <div>@{{ questionnaire.selectedAnswer }}</div>
+        <div>@{{ questionnaire.selectedTrueFalseAnswer }}</div>
+        <div>@{{ questionnaire.selectedMultipleChoiceAnswer }}</div>
 
 
     </div>
