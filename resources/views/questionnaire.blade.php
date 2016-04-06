@@ -16,7 +16,7 @@
                 {{-- Display the question --}}
                 <h3>@{{ question.text }}</h3>
 
-                {{-- Display appropriate input type for each question --}}
+                {{-- Display appropriate input type to allow user to answer question --}}
                 <multiple-choice-input data-ng-if="question.data_type === 'multiple_choice'"></multiple-choice-input>
                 <true-false-input data-ng-if="question.data_type === 'true_false'"></true-false-input>
                 <range-input data-ng-if="question.data_type === 'number'"></range-input>
