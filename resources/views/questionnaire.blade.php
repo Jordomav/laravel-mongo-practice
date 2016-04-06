@@ -31,6 +31,14 @@
                     </form>
                 </div>
                 <br>
+                {{--Compliant Pop-out--}}
+                <div class="compliance">
+                    <div class="compliant"><h4><i class="fa fa-check icon-size"></i> You are ADA compliant.</h4></div>
+                </div>
+                {{--Non-Compliant Pop-Out--}}
+                <div class="compliance">
+                    <div class="non-compliant"><h4><i class="fa fa-times-circle icon-size"></i> You are NOT ADA compliant.</h4></div>
+                </div>
             </div>
         </div>
     </div>
