@@ -1,7 +1,7 @@
 
 <form class="">
 
-    <select data-ng-model="questionnaire.selectedMultipleChoiceAnswer"
+    <select data-ng-model="question.selectedAnswer"
             name="" id=""
             class="form-control">
 
@@ -10,7 +10,7 @@
 
         <option data-ng-repeat="answer in question.answers">
 
-                    {{ answer.text }}
+            {{ answer.text }}
 
         </option>
 
