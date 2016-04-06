@@ -6,5 +6,14 @@
 
     'use strict';
 
+    angular.module('templates')
+        .directive('multipleChoiceInput', function () {
+            return {
+                restrict: 'E',
+                scope: '=',
+                templateUrl: '/build/templates/question-types/multiple-choice/multiple-choice.html'
+            };
+        });
+
 
 }());

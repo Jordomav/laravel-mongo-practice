@@ -10,21 +10,19 @@
         <div class="row">
             <h1>ADA Compliance Survey</h1>
             <div data-ng-repeat="question in questionnaire.questions">
+
                 <div class="question container">
+
+                    {{-- Display the question --}}
                     <h3>@{{ question.text }}</h3>
-                    <form data-ng-if="question.data_type === 'multiple_choice'" class="">
-                        <select name="" id="" class="form-control">
-                            <option value="" disabled selected>Please select one of the following...</option>
-                            <option value="" data-ng-repeat="answer in question.answers">@{{ answer.text }}</option>
-                        </select>
-                    </form>
 
-                    <true-false-question data-ng-if="question.data_type === 'true_false'"></true-false-question>
+                    {{-- Display appropriate input type for each question --}}
+                    <multiple-choice-input data-ng-if="question.data_type === 'multiple_choice'"></multiple-choice-input>
+                    <true-false-input data-ng-if="question.data_type === 'true_false'"></true-false-input>
+                    <range-input data-ng-if="question.data_type === 'number'"></range-input>
 
-                    <form data-ng-if="question.data_type === 'number'" class="col-xs-2">
-                        <input type="number" class="form-control">
-                    </form>
                 </div>
+
                 <br>
             </div>
         </div>

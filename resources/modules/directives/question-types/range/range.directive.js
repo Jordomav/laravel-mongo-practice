@@ -7,11 +7,13 @@
     'use strict';
 
     angular.module('templates')
-        .directive('trueFalseInput', function () {
+        .directive('rangeInput', function () {
             return {
                 restrict: 'E',
                 scope: '=',
-                templateUrl: '/build/templates/question-types/true-false/true-false.html'
+                templateUrl: '/build/templates/question-types/range/range.html'
             };
         });
+
+
 }());
