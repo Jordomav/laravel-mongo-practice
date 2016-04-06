@@ -1,32 +1,32 @@
 /**
- * Created by JordanMavrogeorge  on 3/31/16.
+ * Created by JordanMavrogeorge on 3/31/16.
  */
  
 (function () {
 
-    'use strict';
-    angular.module('adaApp')
-        .controller('QuestionnaireController', function($http) {
-            var vm = this;
-            vm.questions=[];
+ 'use strict';
+ angular.module('adaApp')
+     .controller('QuestionnaireController', function($http) {
+         var vm = this;
 
-            init();
-            function init(){
-                $http.get('get-questions')
-                    .then(function successCallback(res){
-                        vm.questions=res.data;
-                        console.log(vm.questions);
-                        
-                    },
-                    function errorCallback(err){
-                        alert('There was an error retrieving our in our database');
+         vm.questions = [];
+
+         init();
+
+         function init() {
+             $http.get('get-questions')
+                 .then( function successCallback(res) {
+
+                     vm.questions = res.data;
+                     console.log(vm.questions);
+
+                 },
+                    function errorCallback(err) {
+                        alert('There was a problem retrieving questions from the database.');
                     });
+         }
 
 
-            }
-
-         
-     
      });
 
  }());
