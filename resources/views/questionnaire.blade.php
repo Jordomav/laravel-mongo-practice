@@ -31,6 +31,8 @@
 
 
             <br>
+
+            {{-- TODO: implement compliance popouts --}}
             {{--Compliance Pop-outs--}}
             {{--Compliant Pop-out--}}
             {{--<div class="compliance">--}}
@@ -40,6 +42,7 @@
             {{--<div class="compliance">--}}
             {{--<div class="non-compliant"><h4><i class="fa fa-times-circle icon-size"></i> You are NOT ADA compliant.</h4></div>--}}
             {{--</div>--}}
+            
         </div>
 
 
