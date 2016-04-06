@@ -7,21 +7,23 @@
     'use strict';
 
     angular.module('adaApp')
-        .service('Questions', function () {
+        .service('Questions', function ($http) {
 
             var vm = this;
 
             vm.questions = [];
 
+            vm.getQuestions = function () {
+                return $http.get('get-questions');
+            };
+
             init();
 
             function init() {
-                $http.get('get-questions')
+                vm.getQuestions()
                     .then( function successCallback(res) {
 
                             vm.questions = res.data;
-                            console.log(vm.questions);
-
                         },
                         function errorCallback(err) {
                             alert('There was a problem retrieving questions from the database.');

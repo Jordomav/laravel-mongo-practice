@@ -7,10 +7,16 @@
  'use strict';
  angular.module('adaApp')
      .controller('QuestionnaireController', function($http, Questions) {
-         
+
          var vm = this;
 
          vm.questions = Questions.questions;
+
+         Questions.getQuestions()
+             .then( function (data) {
+                 vm.questions = Questions.questions;
+             });
+
 
      });
 
