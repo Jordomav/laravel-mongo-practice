@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <title>Laravel/Angular/Mongo</title>
         <link rel="stylesheet" href="/build/css/css-deps.css">
         <link rel="stylesheet" href="/build/css/app.css">
     </head>
+
     {{--Angular Controller and App Connected--}}
     <body data-ng-app="adaApp" data-ng-controller="QuestionnaireController as questionnaire">
     <div class="container">
@@ -44,6 +46,8 @@
             {{--</div>--}}
             
         </div>
+
+        <div>@{{ questionnaire.selectedAnswer }}</div>
 
 
     </div>

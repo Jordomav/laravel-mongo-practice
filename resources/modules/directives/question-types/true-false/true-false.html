@@ -1,7 +1,14 @@
 
 <form>
     <span data-ng-repeat="answer in question.answers" class="radio-inline">
-        <input title="true-false" name="toggle" type="radio">
+
+        <input data-ng-model="questionnaire.selectedAnswer"
+               title="true-false"
+               name="toggle"
+               type="radio"
+               value="{{ answer.text }}">
+
         {{ answer.text }}<br>
+
     </span>
 </form>
