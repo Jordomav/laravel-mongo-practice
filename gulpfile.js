@@ -64,6 +64,12 @@ gulp.task('js', function () {
         .pipe(livereload());
 });
 
+gulp.task('templates', function () {
+    gulp.src('./resources/modules/directives/**/*.html')
+        .pipe(gulp.dest('./public/build/templates'))
+        .pipe(livereload());
+});
+
 gulp.task('less', function () {
     gulp.src([
             './resources/styles/app.less'
@@ -88,4 +94,4 @@ gulp.task('watch', function () {
     });
 });
 
-gulp.task('default', ['js-deps', 'css-deps', 'js', 'less', 'watch', 'serve']);
+gulp.task('default', ['js-deps', 'css-deps', 'js', 'templates', 'less', 'watch', 'serve']);

@@ -6,5 +6,5 @@
 {
     'use strict';
 
-    angular.module('adaApp', []);
+    angular.module('adaApp', ['templates']);
 }());

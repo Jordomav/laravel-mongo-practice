@@ -20,10 +20,10 @@
                     </form>
 
                     <form data-ng-if="question.data_type === 'true_false'">
-                <span data-ng-repeat="answer in question.answers" class="radio-inline">
-                    <input title="true-false" name="toggle" type="radio">
-                    @{{ answer.text }}<br>
-                </span>
+                        <span data-ng-repeat="answer in question.answers" class="radio-inline">
+                            <input title="true-false" name="toggle" type="radio">
+                            @{{ answer.text }}<br>
+                        </span>
                     </form>
 
                     <form data-ng-if="question.data_type === 'number'" class="col-xs-2">
@@ -33,6 +33,10 @@
                 <br>
             </div>
         </div>
+
+        <true-false-question></true-false-question>
+
+
     </div>
 
     </body>
