@@ -6,11 +6,11 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Answer extends Eloquent
 {
-    protected $fillable = ['text', 'compliant'];
+    protected $fillable = ['text', 'compliant', 'selected_answer'];
 
     public function question()
     {
-        return $this->belongsTo(Question::class);
+        return $this->hasOne(Question::class);
 //        Belongs to many Questions (Is Embeded into a Question)
     }
 }

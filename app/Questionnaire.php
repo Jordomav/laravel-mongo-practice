@@ -7,7 +7,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 class Questionnaire extends Eloquent
 {
     protected $collection = 'questionnaires';
-    protected $fillable = ['user_id', 'compliant'];
+    protected $fillable = ['user_id', 'compliant', 'selected_answer'];
     protected $attributes = ['compliant' => false];
 
 
