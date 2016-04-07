@@ -22,6 +22,7 @@
             function init() {
                 vm.getQuestions()
                     .then( function successCallback(res) {
+                            console.log(res);
 
                             vm.questions = res.data;
                         },
