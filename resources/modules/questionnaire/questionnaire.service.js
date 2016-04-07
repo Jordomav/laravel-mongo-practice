@@ -32,11 +32,18 @@
             }
 
             vm.saveAnswer = function (question) {
+                console.log(question);
                 $http.post('post-answer', {
-                    id: question._id,
-                    selected_answer: question.selectedAnswer
-                });
-                console.log(question.selectedAnswer);
+                        _id: question._id,
+                        selected_answer: question.selected_answer
+                    })
+                    .then(function successCallback(res) {
+                        console.log('hi');
+                    },
+                        function errorCallback(err) {
+                            alert('There was a problem saving your answer.');
+                            console.log(err);
+                        });
             };
 
         });

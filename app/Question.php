@@ -8,7 +8,7 @@ class Question extends Eloquent
 {
     protected $collection = 'questions';
 
-    protected $fillable = ['text', 'help_url', 'data_type', 'default_question', 'selected_answer'];
+    protected $fillable = ['text', 'help_url', 'data_type', 'default_question', 'selected_answer', 'answers'];
 
     public function answers()
     {
