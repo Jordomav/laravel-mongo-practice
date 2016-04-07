@@ -21,6 +21,7 @@ class QuestionnaireController extends Controller
             $questionnaire = Questionnaire::first();
 
         } else {
+            
             $questionnaire = new Questionnaire;
 
             // We actually don't really need this, but hardcode user id for now.
