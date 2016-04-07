@@ -3,7 +3,7 @@
     <span data-ng-repeat="answer in question.answers" class="radio-inline">
 
         <!-- TODO: question.selectedAnswer should probably point to an id of selected answer, not a string of text -->
-        <input data-ng-model="question.selectedAnswer"
+        <input data-ng-model="question.selected_answer"
                data-ng-click="questionnaire.saveAnswer(question)"
                title="true-false"
                name="toggle"
