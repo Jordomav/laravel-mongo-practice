@@ -8,7 +8,7 @@ class Question extends Eloquent
 {
     protected $collection = 'questions';
 
-    protected $fillable = ['text', 'help_url', 'data_type', 'default_question'];
+    protected $fillable = ['text', 'help_url', 'data_type', 'default_question', 'selected_answer', 'answers'];
 
     public function answers()
     {
@@ -17,6 +17,6 @@ class Question extends Eloquent
 
     public function questionnaire()
     {
-        return $this->belongsTo(Questionnaire::class);
+        return $this->hasOne(Questionnaire::class);
     }
 }

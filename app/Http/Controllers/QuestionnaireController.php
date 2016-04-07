@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Question;
 use App\Questionnaire;
 use DB;
+use App\Http\Requests\Request;
 
 class QuestionnaireController extends Controller
 {
@@ -35,5 +36,13 @@ class QuestionnaireController extends Controller
         }
 
         return $questionnaire->questions;
+    }
+
+    public function saveAnswer(Request $request)
+    {
+        $questionnaire = Questionnaire::first();
+        $question = $questionnaire->questions->find($request->_id);
+        $question->selected_answer = $request->selected_answer;
+        $questionnaire->save();
     }
 }

@@ -22,8 +22,7 @@
 
          vm.saveAnswer = function (question) {
              Questions.saveAnswer(question);
-         }
-
+         };
 
      });
 
