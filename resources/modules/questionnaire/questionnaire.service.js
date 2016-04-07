@@ -30,5 +30,10 @@
                         });
             }
 
+            vm.saveAnswer = function (question) {
+                $http.post('post-answer');
+                console.log(question);
+            };
+
         });
 }());

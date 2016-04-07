@@ -20,6 +20,11 @@
                  vm.questions = Questions.questions;
              });
 
+         vm.saveAnswer = function (question) {
+             Questions.saveAnswer(question);
+         }
+
+
      });
 
  }());

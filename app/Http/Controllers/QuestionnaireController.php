@@ -15,4 +15,7 @@ class QuestionnaireController extends Controller
     {
         return Question::all();
     }
+    public function saveAnswer(){
+
+    }
 }
