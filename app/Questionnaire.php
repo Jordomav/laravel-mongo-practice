@@ -10,7 +10,9 @@ class Questionnaire extends Eloquent
     protected $fillable = ['user_id', 'compliant'];
     protected $attributes = ['compliant' => false];
 
-    public function question(){
+
+    public function questions()
+    {
         return $this->embedsMany(Question::class);
     }
 }

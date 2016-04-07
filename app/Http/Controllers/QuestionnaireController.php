@@ -7,30 +7,33 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Question;
-use DB;
-use Illuminate\Http\Request;
 use App\Questionnaire;
+use DB;
 
 class QuestionnaireController extends Controller
 {
     public function index()
     {
-        $questions = Question::all();
-        if (Questionnaire::first()){
-            $questionnaire = Questionnaire::first();
-            $questions = $questionnaire->questions;
-        } else {
-            $questionnaire = new Questionnaire;
-            $questionnaire->user_id = 1;
-            $questionnaire->save();
+        // This will work differently when we have users set up. For now we check if we've already copied master list of
+        // questions to a questionnaire object.
+        if (Questionnaire::first()) {
 
-            foreach (Question::all() as $q){
+            $questionnaire = Questionnaire::first();
+
+        } else {
+            
+            $questionnaire = new Questionnaire;
+
+            // We actually don't really need this, but hardcode user id for now.
+            $questionnaire->user_id = 1;
+
+            foreach (Question::all() as $q) {
                 $questionnaire->questions()->associate($q);
             }
-        }
-        return $questionnaire->questions;
-    }
-    public function saveAnswer(Request $request){
 
+            $questionnaire->save();
+        }
+
+        return $questionnaire->questions;
     }
 }
