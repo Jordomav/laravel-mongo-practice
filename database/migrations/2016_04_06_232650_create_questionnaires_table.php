@@ -15,7 +15,7 @@ class CreateQuestionnairesTable extends Migration
         Schema::create('questionnaires', function (Blueprint $collection) {
             $collection->increments('id');
             $collection->timestamps();
-            $collection->string('user_id');
+            $collection->string('user_id')->required();
             $collection->boolean('compliant');
         });
     }
