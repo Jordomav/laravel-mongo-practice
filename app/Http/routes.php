@@ -21,4 +21,5 @@ Route::get('/', function () {
 Route::get('get-questions', 'QuestionnaireController@index');
 
 //Posts 'Answer' Responses to the Database- AnswersController.php(post)
-Route::get('post-answers', 'QuestionnaireController@saveAnswer');
+Route::post('post-answer', 'QuestionnaireController@saveAnswer');
+

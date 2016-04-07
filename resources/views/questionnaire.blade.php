@@ -26,6 +26,7 @@
 
             </div>
 
+            {{--TODO: show compliance state--}}
             {{--Save Status Icons--}}
             {{--<div class="notifyBox">--}}
                 {{--<i class="fa fa-times-circle fa-2x notify"></i>--}}

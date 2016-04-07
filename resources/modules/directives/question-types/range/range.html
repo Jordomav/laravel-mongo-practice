@@ -2,6 +2,7 @@
 <form class="col-xs-2">
 
     <input data-ng-model="question.selectedAnswer"
+           data-ng-click="questionnaire.saveAnswer(question)"
            type="number"
            min=0
            class="form-control">

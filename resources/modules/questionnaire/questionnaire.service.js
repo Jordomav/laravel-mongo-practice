@@ -31,8 +31,11 @@
             }
 
             vm.saveAnswer = function (question) {
-                $http.post('post-answer');
-                console.log(question);
+                $http.post('post-answer', {
+                    id: question._id,
+                    selected_answer: question.selectedAnswer
+                });
+                console.log(question.selectedAnswer);
             };
 
         });
