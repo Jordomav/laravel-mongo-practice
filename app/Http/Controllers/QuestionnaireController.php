@@ -40,9 +40,16 @@ class QuestionnaireController extends Controller
 
     public function saveAnswer(Request $request)
     {
-        $questionnaire = Questionnaire::first();
-        $question = $questionnaire->questions->find($request->_id);
-        $question->selected_answer = $request->selected_answer;
-        $questionnaire->save();
+//        if($questionnaire = $request){
+//            $question = Questionnaire::first()->question;
+//        $question = $questionnaire->questions->where($request->_id);
+//        $question->selected_answer = $request->selected_answer;
+//        $question()->update($question);
+//        }else{
+//            $question = Questionnaire::first()->question;
+//        $question = $questionnaire->questions->where($request->_id);
+//        $question->selected_answer = $request->selected_answer;
+//        $question()->save($question);
+//        }
     }
 }

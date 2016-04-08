@@ -13,6 +13,7 @@
 
             vm.questions = [];
 
+
             vm.getQuestions = function () {
                 return $http.get('get-questions');
             };
@@ -39,11 +40,8 @@
                     })
                     .then(function successCallback(res) {
                         console.log('hi');
-                    },
-                        function errorCallback(err) {
-                            alert('There was a problem saving your answer.');
-                            console.log(err);
-                        });
+                    }
+                        );
             };
 
         });

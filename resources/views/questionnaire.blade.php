@@ -13,44 +13,50 @@
 
         <h1>ADA Compliance Survey</h1>
         <div data-ng-repeat="question in questionnaire.questions">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 question">
+                        {{-- Display the question --}}
+                        <h3>@{{ question.text }}</h3>
 
-            <div class="question row">
+                        {{-- Display appropriate input type to allow user to answer question --}}
+                        <multiple-choice-input data-ng-if="question.data_type === 'multiple_choice'"></multiple-choice-input>
+                        <true-false-input data-ng-if="question.data_type === 'true_false'"></true-false-input>
+                        <range-input data-ng-if="question.data_type === 'number'"></range-input>
+                    </div>
+                    {{--Compliance Pop-outs--}}
+                    {{--Compliant Pop-out--}}
 
-                {{-- Display the question --}}
-                <h3>@{{ question.text }}</h3>
-
-                {{-- Display appropriate input type to allow user to answer question --}}
-                <multiple-choice-input data-ng-if="question.data_type === 'multiple_choice'"></multiple-choice-input>
-                <true-false-input data-ng-if="question.data_type === 'true_false'"></true-false-input>
-                <range-input data-ng-if="question.data_type === 'number'"></range-input>
-
+                    <div class="compliance col-lg-4" data-ng-if="question.default_question === true" data-ng-class="{someClass: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+                        <div class="compliant"><h4><i class="fa fa-check icon-size"></i> You are ADA compliant.</h4></div>
+                    </div>
+                    {{--Non-Compliant Pop-Out--}}
+                    <div class="compliance" data-ng-if="question.default_question === false" >
+                        <div class="non-compliant"><h4><i class="fa fa-times-circle icon-size"></i> You are NOT ADA compliant.</h4></div>
+                    </div>
+                </div>
+                <div class="row notifier">
+                    <div class="col-lg-7">
+                        {{--Save Status Icons--}}
+                        <div class="notifyBox" >
+                            <i class="fa fa-times-circle fa-2x notify"  data-ng-if="question.default_question === false"></i>
+                        </div>
+                        <div class="notifyBox">
+                            <i class="fa fa-check fa-2x notify" id="flip" data-ng-if="question.default_question === true"
+                               ></i>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            {{--TODO: show compliance state--}}
-            {{--Save Status Icons--}}
-            {{--<div class="notifyBox">--}}
-                {{--<i class="fa fa-times-circle fa-2x notify"></i>--}}
-            {{--</div>--}}
-            {{--<i class="fa fa-check fa-2x notify"></i>--}}
 
 
-            <br/>
 
-            {{-- TODO: implement compliance popouts --}}
-            {{--Compliance Pop-outs--}}
-            {{--Compliant Pop-out--}}
-            {{--<div class="compliance">--}}
-            {{--<div class="compliant"><h4><i class="fa fa-check icon-size"></i> You are ADA compliant.</h4></div>--}}
-            {{--</div>--}}
-            {{--Non-Compliant Pop-Out--}}
-            {{--<div class="compliance">--}}
-            {{--<div class="non-compliant"><h4><i class="fa fa-times-circle icon-size"></i> You are NOT ADA compliant.</h4></div>--}}
-            {{--</div>--}}
-            
         </div>
 
         <div>@{{ questionnaire.selectedTrueFalseAnswer }}</div>
         <div>@{{ questionnaire.selectedMultipleChoiceAnswer }}</div>
+
 
 
     </div>
