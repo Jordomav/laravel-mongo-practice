@@ -6,11 +6,11 @@
         <input data-ng-model="question.selected_answer"
                data-ng-click="questionnaire.saveAnswer(question)"
                title="true-false"
-               name="toggle"
+               name="selected_answer"
                type="radio"
-               value="{{ answer.text }}">
+               value="{{ answer.selected_answer }}">
 
         {{ answer.text }}<br>
-
     </span>
+
 </form>
