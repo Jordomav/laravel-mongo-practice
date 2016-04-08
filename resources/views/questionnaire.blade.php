@@ -31,7 +31,7 @@
                         <div class="compliant"><h4><i class="fa fa-check icon-size"></i> You are ADA compliant.</h4></div>
                     </div>
                     {{--Non-Compliant Pop-Out--}}
-                    <div class="compliance" data-ng-if="question.default_question === false" >
+                    <div class="compliance col-lg-4" data-ng-if="question.default_question === false" data-ng-class="{someClass: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
                         <div class="non-compliant"><h4><i class="fa fa-times-circle icon-size"></i> You are NOT ADA compliant.</h4></div>
                     </div>
                 </div>
@@ -42,16 +42,27 @@
                             <i class="fa fa-times-circle fa-2x notify"  data-ng-if="question.default_question === false"></i>
                         </div>
                         <div class="notifyBox">
-                            <i class="fa fa-check fa-2x notify" id="flip" data-ng-if="question.default_question === true"
+                            <i style="color:#00AA00;" class="fa fa-check fa-2x notify" id="flip" data-ng-if="question.default_question === true"
                                ></i>
                         </div>
                     </div>
                 </div>
+
             </div>
 
 
 
 
+        </div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">View Compliance Results</button>
+
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">Compliance Overview</div>
+                    Here will be an overview of the compliance status.
+                </div>
+            </div>
         </div>
 
         <div>@{{ questionnaire.selectedTrueFalseAnswer }}</div>
