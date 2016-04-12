@@ -32,12 +32,13 @@
                         });
             }
 
-            vm.saveAnswer = function (question) {
+            vm.saveAnswer = function (question, answer) {
                 console.log(question);
                 $http.post('post-answer', {
-                        _id: question._id,
+                        text: question.answers[1].text,
+                        answers: question.answers,
                         selected_answer: question.selected_answer
-                    })
+                    },console.log(question.answers[1].text))
                     .then(function successCallback(res) {
                         console.log('hi');
                     }

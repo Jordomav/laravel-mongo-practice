@@ -49,7 +49,10 @@ class QuestionnaireController extends Controller
 //            $question = Questionnaire::first()->question;
 //        $question = $questionnaire->questions->where($request->_id);
 //        $question->selected_answer = $request->selected_answer;
-//        $question()->save($question);
+//        $question()->save($questionnaire);
 //        }
+        $question = Question::first();
+        $question->selected_answer = $request->selected_answer;
+        $question->save();
     }
 }
