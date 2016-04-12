@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
     <head>
         <title>Laravel/Angular/Mongo</title>
         <link rel="stylesheet" href="/build/css/css-deps.css">
@@ -26,12 +25,11 @@
                     </div>
                     {{--Compliance Pop-outs--}}
                     {{--Compliant Pop-out--}}
-
-                    <div class="compliance col-lg-4" data-ng-if="question.default_question === true" data-ng-class="{someClass: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+                    <div class="compliance col-lg-4" data-ng-if="question.default_question === question.selected_answer" data-ng-class="{someClass: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
                         <div class="compliant"><h4><i class="fa fa-check icon-size"></i> You are ADA compliant.</h4></div>
                     </div>
                     {{--Non-Compliant Pop-Out--}}
-                    <div class="compliance col-lg-4" data-ng-if="question.default_question === false" data-ng-class="{someClass: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+                    <div class="compliance col-lg-4" data-ng-if="question.default_question !== question.selected_answer" data-ng-class="{someClass: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
                         <div class="non-compliant"><h4><i class="fa fa-times-circle icon-size"></i> You are NOT ADA compliant.</h4></div>
                     </div>
                 </div>
@@ -39,10 +37,10 @@
                     <div class="col-lg-7">
                         {{--Save Status Icons--}}
                         <div class="notifyBox" >
-                            <i class="fa fa-times-circle fa-2x notify"  data-ng-if="question.default_question === false"></i>
+                            <i class="fa fa-times-circle fa-2x notify"  data-ng-if="question.selected_answer === ''"></i>
                         </div>
                         <div class="notifyBox">
-                            <i style="color:#00AA00;" class="fa fa-check fa-2x notify" id="flip" data-ng-if="question.default_question === true"
+                            <i style="color:#00AA00;" class="fa fa-check fa-2x notify" id="flip" data-ng-if="question.selected_answer !== ''"
                                ></i>
                         </div>
                     </div>
@@ -60,18 +58,23 @@
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">Compliance Overview</div>
-                    Here will be an overview of the compliance status.
+                    <div data-ng-repeat="question in questionnaire.questions">
+                            <div data-ng-if="question.selected_answer !== question.default_question">
+                                <h4>You are not in Compliance with regards to "@{{ question.text }}"</h4>
+                                <p>To learn how to become compliant with this area go to <a href="">@{{ question.help_url }}</a></p>
+                            </div>
+                            <div data-ng-if="question.selected_answer === question.default_question">
+                                You are in compliance with regards to "@{{ question.text }}"
+                            </div>
+                        <hr>
+                    </div>
+                    <h3 data-ng-if="questionnaire.compliant === false">You're compliant in all areas.</h3>
                 </div>
             </div>
         </div>
-
         <div>@{{ questionnaire.selectedTrueFalseAnswer }}</div>
         <div>@{{ questionnaire.selectedMultipleChoiceAnswer }}</div>
-
-
-
     </div>
-
     </body>
     <script src="/build/js/deps.js"></script>
     <script src="/build/js/app.js"></script>
