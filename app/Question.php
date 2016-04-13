@@ -18,6 +18,6 @@ class Question extends Eloquent
 
     public function questionnaire()
     {
-        return $this->hasOne(Questionnaire::class);
+        return $this->belongsTo(Questionnaire::class);
     }
 }
