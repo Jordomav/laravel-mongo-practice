@@ -24,6 +24,10 @@
              Questions.saveAnswer(question);
          };
 
+         vm.answerIsCompliant = function (question) {
+             return Questions.answerIsCompliant(question);
+         };
+
      });
 
  }());

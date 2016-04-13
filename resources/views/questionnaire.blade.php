@@ -23,16 +23,19 @@
                         <true-false-input data-ng-if="question.data_type === 'true_false'"></true-false-input>
                         <range-input data-ng-if="question.data_type === 'number'"></range-input>
                     </div>
+
                     {{--Compliance Pop-outs--}}
                     {{--Compliant Pop-out--}}
-                    <div class="compliance col-lg-4" data-ng-if="question.default_question === question.selected_answer" data-ng-class="{someClass: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+                    <div class="compliance col-lg-4" data-ng-if="questionnaire.answerIsCompliant(question)" data-ng-class="{someClass: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
                         <div class="compliant"><h4><i class="fa fa-check icon-size"></i> You are ADA compliant.</h4></div>
                     </div>
                     {{--Non-Compliant Pop-Out--}}
                     <div class="compliance col-lg-4" data-ng-if="question.default_question !== question.selected_answer" data-ng-class="{someClass: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
                         <div class="non-compliant"><h4><i class="fa fa-times-circle icon-size"></i> You are NOT ADA compliant.</h4></div>
                     </div>
+
                 </div>
+
                 <div class="row notifier">
                     <div class="col-lg-7">
                         {{--Save Status Icons--}}
@@ -72,8 +75,7 @@
                 </div>
             </div>
         </div>
-        <div>@{{ questionnaire.selectedTrueFalseAnswer }}</div>
-        <div>@{{ questionnaire.selectedMultipleChoiceAnswer }}</div>
+
     </div>
     </body>
     <script src="/build/js/deps.js"></script>
