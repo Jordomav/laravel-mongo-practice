@@ -35,6 +35,7 @@
             vm.saveAnswer = function (question) {
                 console.log(question);
                 $http.post('post-answer', {
+                        id: question._id,
                         answers: question.answers,
                         selected_answer: question.selected_answer
                     })
@@ -43,6 +44,7 @@
                     },
 
                     function errorCallback(err) {
+                        console.log(question._id);
                         console.log(question.selected_answer);
                         console.log(err);
                     });

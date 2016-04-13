@@ -19,6 +19,7 @@ class CreateQuestionsCollection extends Migration
             $collection->string('help_url'); // The URL to go to for more information
             $collection->string('data_type'); //The type of Answers this Question will have(multiple_choice, true_false, number)
             $collection->boolean('default_question'); //The correct Answer for the Question
+            $collection->string('selected_answer');
             //Answers Document tagged onto Questions Document in Mongo under 'answers' Method - (Question->associate(Answers)).
         });
     }
