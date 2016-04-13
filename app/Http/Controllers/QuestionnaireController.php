@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Question;
 use App\Questionnaire;
 use DB;
-use App\Http\Requests\Request;
+use Illuminate\Http\Request;
 
 class QuestionnaireController extends Controller
 {
@@ -25,7 +25,7 @@ class QuestionnaireController extends Controller
             
             $questionnaire = new Questionnaire;
 
-            // We actually don't really need this, but hardcode user id for now.
+            // We actually don't really need this, but hard-code user id for now.
             $questionnaire->user_id = 1;
 
             foreach (Question::all() as $q) {
@@ -38,21 +38,10 @@ class QuestionnaireController extends Controller
         return $questionnaire->questions;
     }
 
-    public function saveAnswer(Request $request)
+    public function save(Request $request)
     {
-//        if($questionnaire = $request){
-//            $question = Questionnaire::first()->question;
-//        $question = $questionnaire->questions->where($request->_id);
-//        $question->selected_answer = $request->selected_answer;
-//        $question()->update($question);
-//        }else{
-//            $question = Questionnaire::first()->question;
-//        $question = $questionnaire->questions->where($request->_id);
-//        $question->selected_answer = $request->selected_answer;
-//        $question()->save($questionnaire);
-//        }
-        $question = Question::first();
-        $question->selected_answer = $request->selected_answer;
-        $question->save();
+        $questionnaire = Questionnaire::first();
+        $question = $questionnaire->questions()->where('_id', $request->id)->first();
+        $question->update(['selected_answer' => $request->selected_answer]);
     }
 }

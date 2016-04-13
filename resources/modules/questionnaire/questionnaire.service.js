@@ -32,17 +32,16 @@
                         });
             }
 
-            vm.saveAnswer = function (question, answer) {
-                console.log(question);
+            vm.saveAnswer = function (question) {
                 $http.post('post-answer', {
-                        text: question.answers[1].text,
-                        answers: question.answers,
+                        id: question._id,
                         selected_answer: question.selected_answer
-                    },console.log(question.answers[1].text))
+                    })
                     .then(function successCallback(res) {
-                        console.log('hi');
-                    }
-                        );
+                    }, function errorCallback(err) {
+                        alert('There was a problem saving your answer.');
+                        console.log(err);
+                    });
             };
 
         });
