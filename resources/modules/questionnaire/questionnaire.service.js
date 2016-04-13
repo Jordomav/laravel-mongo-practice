@@ -23,8 +23,6 @@
             function init() {
                 vm.getQuestions()
                     .then( function successCallback(res) {
-                            console.log(res);
-
                             vm.questions = res.data;
                         },
                         function errorCallback(err) {
@@ -42,6 +40,16 @@
                         alert('There was a problem saving your answer.');
                         console.log(err);
                     });
+            };
+
+            vm.answerIsCompliant = function (question) {
+                var compliantAnswer = _.some(question.answers, function (answer) {
+                    answer.compliant === true;
+                });
+
+                console.log(compliantAnswer);
+
+                
             };
 
         });
