@@ -36,6 +36,7 @@
                         selected_answer: question.selected_answer
                     })
                     .then(function successCallback(res) {
+                        console.log(question.selected_answer);
                     }, function errorCallback(err) {
                         alert('There was a problem saving your answer.');
                         console.log(err);
@@ -49,7 +50,7 @@
 
                 console.log(compliantAnswer);
 
-                
+
             };
 
         });
