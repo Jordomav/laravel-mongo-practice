@@ -32,17 +32,20 @@
                         });
             }
 
-            vm.saveAnswer = function (question, answer) {
+            vm.saveAnswer = function (question) {
                 console.log(question);
                 $http.post('post-answer', {
-                        text: question.answers[1].text,
                         answers: question.answers,
                         selected_answer: question.selected_answer
-                    },console.log(question.answers[1].text))
+                    })
                     .then(function successCallback(res) {
                         console.log('hi');
-                    }
-                        );
+                    },
+
+                    function errorCallback(err) {
+                        console.log(question.selected_answer);
+                        console.log(err);
+                    });
             };
 
         });

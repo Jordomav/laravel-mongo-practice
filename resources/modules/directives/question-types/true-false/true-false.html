@@ -1,13 +1,13 @@
-<form method="POST">
+<form>
     <span data-ng-repeat="answer in question.answers" class="radio-inline">
 
         <!-- TODO: question.selectedAnswer should probably point to an id of selected answer, not a string of text -->
-        <input data-ng-model="selected_answer"
+        <input data-ng-model="question.selected_answer"
                data-ng-click="questionnaire.saveAnswer(question)"
                title="true-false"
-               name="selected_answer"
+               name="true-false"
                type="radio"
-               value="{{question.answers[0].text}}">
+               value="{{ answer.text }}">
 
         {{ answer.text }}<br>
     </span>
