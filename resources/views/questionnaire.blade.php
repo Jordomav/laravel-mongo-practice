@@ -55,26 +55,42 @@
             </div>
 
 
-
-
         </div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">View Compliance Results</button>
 
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        {{-- Button to open Compliance Report --}}
+        <button type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target=".compliance-report">
+            View Compliance Results
+        </button>
+
+        {{-- Compliance Report Modal --}}
+        <div class="modal fade compliance-report" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
+
                     <div class="modal-header">Compliance Overview</div>
+
                     <div data-ng-repeat="question in questionnaire.questions">
-                            <div data-ng-if="question.selected_answer !== question.default_question">
-                                <h4>You are not in Compliance with regards to "@{{ question.text }}"</h4>
-                                <p>To learn how to become compliant with this area go to <a href="">@{{ question.help_url }}</a></p>
-                            </div>
-                            <div data-ng-if="question.selected_answer === question.default_question">
-                                You are in compliance with regards to "@{{ question.text }}"
-                            </div>
+
+                        {{-- Display when question answer in noncompliant --}}
+                        <div data-ng-show="question.compliant">
+                            You are in compliance with regards to "@{{ question.text }}"
+                        </div>
+
+                        {{-- Display when question answer is compliant --}}
+                        <div data-ng-hide="question.compliant">
+                            <h4>You are not in Compliance with regards to "@{{ question.text }}"</h4>
+                            <p>To learn how to become compliant with this area go to
+                                <a href="">@{{ question.help_url }}</a>
+                            </p>
+                        </div>
+
                         <hr>
                     </div>
-                    <h3 data-ng-if="questionnaire.compliant === false">You're compliant in all areas.</h3>
+
+                    <h3 data-ng-if="questionnaire.compliant === true">You're compliant in all areas.</h3>
                 </div>
             </div>
         </div>
