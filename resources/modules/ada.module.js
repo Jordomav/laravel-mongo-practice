@@ -1,6 +1,3 @@
-/**
- * Created by JordanMavrogeorge on 3/31/16.
- */
 
 (function()
 {
