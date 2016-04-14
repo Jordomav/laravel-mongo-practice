@@ -28,6 +28,10 @@
              return Questions.answerIsCompliant(question);
          };
 
+         vm.getWasAnswered = function (question) {
+             return Questions.wasAnswered(question);
+         };
+
      });
 
  }());

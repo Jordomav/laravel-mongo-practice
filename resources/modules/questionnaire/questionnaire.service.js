@@ -27,6 +27,7 @@
                     .then( function successCallback(res) {
 
                         vm.questions = res.data;
+                        console.log(vm.questions);
 
                         },
                         function errorCallback(err) {
@@ -78,6 +79,14 @@
                     }
                 }
 
+            };
+
+            vm.wasAnswered = function (question) {
+                if (question.user_input && !question.selected_answer_id) {
+                    return question.user_input !== null;
+                } else if (question.selected_answer_id && !question.user_input) {
+                    return question.selected_answer_id !== null;
+                }
             };
 
         });

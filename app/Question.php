@@ -11,7 +11,7 @@ class Question extends Eloquent
     protected $fillable = [ 'text', 'help_url', 'data_type', 'default_question',
                             'selected_answer_id', 'answers', 'compliant', 'user_input'];
 
-    protected $attributes = ['selected_answer' => ''];
+    protected $attributes = ['selected_answer' => null];
 
     public function answers()
     {

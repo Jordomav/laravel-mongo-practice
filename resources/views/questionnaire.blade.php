@@ -40,11 +40,14 @@
                     <div class="col-lg-7">
                         {{--Save Status Icons--}}
                         <div class="notifyBox" >
-                            <i class="fa fa-times-circle fa-2x notify"  data-ng-if="question.selected_answer === ''"></i>
+                            <i data-ng-hide="questionnaire.getWasAnswered(question)"
+                               class="fa fa-times-circle fa-2x notify"></i>
                         </div>
                         <div class="notifyBox">
-                            <i style="color:#00AA00;" class="fa fa-check fa-2x notify" id="flip" data-ng-if="question.selected_answer !== ''"
-                               ></i>
+                            <i data-ng-show="questionnaire.getWasAnswered(question)"
+                               style="color:#00AA00;"
+                               class="fa fa-check fa-2x notify"
+                               id="flip"></i>
                         </div>
                     </div>
                 </div>
