@@ -5,5 +5,4 @@
 
     angular.module('templates', []);
 
-
 }());
