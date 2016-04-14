@@ -90,7 +90,7 @@
                         <hr>
                     </div>
 
-                    <h3 data-ng-if="questionnaire.compliant === true">You're compliant in all areas.</h3>
+                    <h3 data-ng-if="questionnaire.getOverallCompliance()">You're compliant in all areas.</h3>
                 </div>
             </div>
         </div>

@@ -20,12 +20,13 @@
                  vm.questions = Questions.questions;
              });
 
-         vm.saveAnswer = function (question) {
-             Questions.saveAnswer(question);
+         // Overall compliance of questionnaire, taking all questions into consideration.
+         vm.getOverallCompliance = function () {
+             return Questions.overallCompliance();
          };
 
-         vm.getAnswerCompliance = function (question) {
-             return Questions.answerIsCompliant(question);
+         vm.saveAnswer = function (question) {
+             Questions.saveAnswer(question);
          };
 
          vm.getWasAnswered = function (question) {

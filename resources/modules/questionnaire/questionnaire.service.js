@@ -27,7 +27,6 @@
                     .then( function successCallback(res) {
 
                         vm.questions = res.data;
-                        console.log(vm.questions);
 
                         },
                         function errorCallback(err) {
@@ -35,6 +34,11 @@
                             console.log(err);
                         });
             }
+
+
+            vm.overallCompliance = function () {
+                return _.every(vm.questions, ['compliant', true]);
+            };
 
 
             vm.saveAnswer = function (question) {
@@ -68,7 +72,7 @@
 
                     var compliantRange = question.answers[0].compliant_range;
 
-                    question.compliant =    compliantRange[0] <= question.user_input &&
+                    question.compliant = compliantRange[0] <= question.user_input &&
                                             question.user_input <= compliantRange[1];
 
                 } else {
@@ -78,12 +82,13 @@
                         question.compliant = selectedAnswer.compliant;
                     }
                 }
-
             };
+
 
             vm.wasAnswered = function (question) {
                 if (question.user_input && !question.selected_answer_id) {
                     return question.user_input !== null;
+
                 } else if (question.selected_answer_id && !question.user_input) {
                     return question.selected_answer_id !== null;
                 }
