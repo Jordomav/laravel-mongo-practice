@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 class QuestionnaireController extends Controller
 {
+
     public function index()
     {
         // This will work differently when we have users set up. For now we check if we've already copied master list of
@@ -42,6 +43,11 @@ class QuestionnaireController extends Controller
     {
         $questionnaire = Questionnaire::first();
         $question = $questionnaire->questions()->where('_id', $request->id)->first();
-        $question->update(['selected_answer' => $request->selected_answer]);
+
+        $question->update([
+            'selected_answer_id' => $request->selected_answer_id,
+            'compliant' => $request->compliant,
+            'user_input' => $request->user_input
+        ]);
     }
 }

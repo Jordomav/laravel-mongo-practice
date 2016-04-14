@@ -24,16 +24,10 @@
              Questions.saveAnswer(question);
          };
 
-         vm.answerIsCompliant = function (question) {
+         vm.getAnswerCompliance = function (question) {
              return Questions.answerIsCompliant(question);
          };
 
      });
 
  }());
-
-
-//function errorCallback(err) {
-//    alert('There was a problem saving your answer.');
-//    console.log(err);
-//}

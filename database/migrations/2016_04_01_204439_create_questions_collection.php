@@ -15,12 +15,22 @@ class CreateQuestionsCollection extends Migration
         Schema::create('questions', function (Blueprint $collection) {
             $collection->increments('id');
             $collection->timestamps();
-            $collection->string('text'); // The text for the Question
-            $collection->string('help_url'); // The URL to go to for more information
-            $collection->string('data_type'); //The type of Answers this Question will have(multiple_choice, true_false, number)
-            $collection->boolean('default_question'); //The correct Answer for the Question
-            $collection->string('selected_answer');
-            //Answers Document tagged onto Questions Document in Mongo under 'answers' Method - (Question->associate(Answers)).
+
+            // The text for the Question.
+            $collection->string('text');
+
+            // The URL to go to for more information.
+            $collection->string('help_url');
+
+            // The type of answer input for the question (multiple_choice, true_false, range).
+            $collection->string('data_type');
+
+            // Whether or not the question should be displayed by default, or displayed based on the answer to
+            // another question.
+            $collection->boolean('default_question');
+
+            // Answers array is embedded in Question Document in Mongo under 'answers' method -
+            // (Question->associate(Answers)).
         });
     }
 
