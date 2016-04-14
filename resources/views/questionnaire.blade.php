@@ -24,14 +24,24 @@
                         <range-input data-ng-if="question.data_type === 'range'"></range-input>
                     </div>
 
-                    {{--Compliance Pop-outs--}}
-                    {{--Compliant Pop-out--}}
-                    <div class="compliance col-lg-4" data-ng-show="question.compliant === true" data-ng-class="{someClass: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
-                        <div class="compliant"><h4><i class="fa fa-check icon-size"></i> You are ADA compliant.</h4></div>
-                    </div>
-                    {{--Non-Compliant Pop-Out--}}
-                    <div class="compliance col-lg-4" data-ng-hide="question.compliant === true" data-ng-class="{someClass: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
-                        <div class="non-compliant"><h4><i class="fa fa-times-circle icon-size"></i> You are NOT ADA compliant.</h4></div>
+                    {{-- Compliance Pop-out for each question --}}
+                    <div data-ng-show="questionnaire.getWasAnswered(question)"
+                         data-ng-class="{someClass: hover}"
+                         data-ng-mouseenter="hover = true"
+                         data-ng-mouseleave="hover = false"
+                         class="compliance col-lg-4">
+
+                        {{-- Display when question answer is compliant --}}
+                        <div data-ng-show="question.compliant === true"
+                             class="compliant">
+                            <h4><i class="fa fa-check icon-size"></i> You are ADA compliant.</h4>
+                        </div>
+
+                        {{-- Display when question answer is noncompliant --}}
+                        <div data-ng-hide="question.compliant === true"
+                             class="non-compliant">
+                            <h4><i class="fa fa-times-circle icon-size"></i> You are NOT ADA compliant.</h4>
+                        </div>
                     </div>
 
                 </div>
