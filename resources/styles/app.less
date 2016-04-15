@@ -1,17 +1,50 @@
 @main-font: 'Noto Sans', sans-serif;
+@main-font-color: #42a5f5;
 
 body {
   font-family: @main-font;
+
+  h1 {
+    color: @main-font-color;
+  }
+
+  .compliance-report-btn {
+    margin-top: 40px;
+  }
 }
 
 .question {
+
+  padding-top: 40px;
+
+  div,
+  form {
+    padding: 0;
+  }
 
   p {
     font-size: 18px;
   }
 
+  .answer-input {
+    margin-top: 8px;
+  }
+
   .save-message {
     font-size: 14px;
+  }
+
+  .compliant {
+    color: #00c853;
+  }
+
+  .non-compliant {
+    color: #d50000;
+  }
+
+  hr {
+    background-color: #bbdefb;
+    height: 1px;
   }
 }
 

@@ -20,7 +20,7 @@
                 <p>@{{ question.text }}</p>
 
                 {{-- Display appropriate input type to allow user to answer question --}}
-                <div class="col-xs-10">
+                <div class="answer-input col-xs-10">
                     <multiple-choice-input data-ng-if="question.data_type === 'multiple_choice'"></multiple-choice-input>
                     <true-false-input data-ng-if="question.data_type === 'true_false'"></true-false-input>
                     <range-input data-ng-if="question.data_type === 'range'"></range-input>
@@ -37,21 +37,27 @@
                 {{-- Display when question answer is compliant --}}
                 <div data-ng-show="question.compliant === true"
                      class="compliant">
-                    <h4><i class="fa fa-check icon-size"></i> You are ADA compliant.</h4>
+                    <h4><i class="fa fa-check icon-size"></i> compliant.</h4>
                 </div>
 
                 {{-- Display when question answer is noncompliant --}}
                 <div data-ng-hide="question.compliant === true"
                      class="non-compliant">
-                    <h4><i class="fa fa-times-circle icon-size"></i> You are NOT ADA compliant.</h4>
+                    <h4><i class="fa fa-times-circle icon-size"></i> noncompliant.</h4>
                 </div>
             </div>
+
+            <div class="col-xs-12">
+                <hr />
+            </div>
+
+
 
         </div>
 
         {{-- Button to open Compliance Report --}}
         <button type="button"
-                class="btn btn-primary"
+                class="compliance-report-btn btn btn-primary row"
                 data-toggle="modal"
                 data-target=".compliance-report">
             View Compliance Results
