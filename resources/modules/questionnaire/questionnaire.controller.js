@@ -28,8 +28,9 @@
          vm.saveMessage = '';
          var timeout;
 
-         // TODO: $timeout.cancel doesn't seem to be working when another answer is selected while timer is already in
-         // process.
+
+         // TODO: $timeout.cancel() doesn't seem to be working when another answer is selected while timer is already
+         // (todo cont...) in process.
          vm.saveAnswer = function (question) {
              if (timeout) {
                  $timeout.cancel(timeout);
