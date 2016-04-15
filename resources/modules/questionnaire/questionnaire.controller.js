@@ -1,7 +1,4 @@
-/**
- * Created by JordanMavrogeorge on 3/31/16.
- */
- 
+
 (function () {
 
  'use strict';
@@ -20,20 +17,19 @@
                  vm.questions = Questions.questions;
              });
 
+         // Overall compliance of questionnaire, taking all questions into consideration.
+         vm.getOverallCompliance = function () {
+             return Questions.overallCompliance();
+         };
+
          vm.saveAnswer = function (question) {
              Questions.saveAnswer(question);
          };
 
-         vm.answerIsCompliant = function (question) {
-             return Questions.answerIsCompliant(question);
+         vm.getWasAnswered = function (question) {
+             return Questions.wasAnswered(question);
          };
 
      });
 
  }());
-
-
-//function errorCallback(err) {
-//    alert('There was a problem saving your answer.');
-//    console.log(err);
-//}
