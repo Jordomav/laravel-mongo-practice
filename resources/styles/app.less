@@ -1,108 +1,15 @@
-//Question Styling Start
+@main-font: 'Noto Sans', sans-serif;
+
+body {
+  font-family: @main-font;
+}
+
 .question {
-  background-color: #BBDEFB;
-  height: 200px;
-  border-radius:7px;
-  border:solid black 1px;
-}
-//Question Styling End
 
-//Answers Start
-.choices {
-  text-align: center;
-  padding-top: 20px
-}
-//Answers End
-
-//Compliance Notification Box Start
-.icon-size {
-  font-size:20px;
-}
-
-.compliant {
-  color: green;
-}
-
-.non-compliant {
-  color: red;
-}
-
-.compliance {
-  background-color: #fbfb9d;
-  width: 280px;
-  height: 80px;
-  border-radius: 0px 10px 10px 0px;
-  border: 2px solid black;
-  margin-right:0 !important;
-  margin-top: 50px;
-  margin-left: -250px;
-}
-.someClass {
-  background-color: #fbfb9d;
-  width: 280px;
-  height: 80px;
-  border-radius: 0px 10px 10px 0px;
-  border: 2px solid black;
-  margin-right:0 !important;
-  margin-top: 50px;
-  margin-left: -4px;
-  transition: slide 20s;
+  p {
+    font-size: 18px;
+  }
 }
 
 
-.compliant, .non-compliant {
-  text-align: center;
-  margin-top: 25px;
 
-
-}
-//Compliance Notification Box end
-
-//Database State Notifier Start
-.notifyBox {
-  position: relative;
-}
-
-.notify {
-  position: absolute;
-  bottom:0 !important;
-  right: 0 !important;
-  background-color: grey;
-  text-align: center;
-  border-bottom-right-radius: 7px;
-  border:1px solid black;
-  width:40px;
-  height: 40px;
-  color: red;
-}
-
-
-.bob {
-  position: absolute;
-  bottom:0 !important;
-  right: 0 !important;
-  background-color: grey;
-  text-align: center;
-  border-bottom-right-radius: 7px;
-  border:1px solid black;
-  width:40px;
-  height: 40px;
-  color: green;
-}
-.container {
-padding-bottom: 25px;
-}
-
-.col-lg-7 {
-  padding-right: 0;
-  z-index: 1;
-}
-.col-lg-6 {
-  height:1000px;
-
-}
-//Database State Notifier End
-
-.modal-dialog {
-  width: 500px;
-}
