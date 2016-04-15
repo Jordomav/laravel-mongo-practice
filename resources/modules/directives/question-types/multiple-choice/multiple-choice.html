@@ -3,7 +3,11 @@
 
     <select data-ng-model="question.selected_answer_id"
             data-ng-change="questionnaire.saveAnswer(question)"
-            title="multiple-choice">
+            title="multiple-choice"
+            class="col-xs-10">
+
+        <!-- Default option so user must make a selection -->
+        <option value="" disabled selected>Please select one of the following...</option>
 
         <option data-ng-repeat="answer in question.answers"
                 value="{{ question.answers.indexOf(answer) }}">
