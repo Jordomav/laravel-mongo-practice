@@ -25,6 +25,6 @@
     "font-awesome": "^4.5.0",
     "angular-ui": "^0.4.0",
     "nya-bootstrap-select": "^2.1.5",
-    "angular-xeditable": "^0.1.10"
+    "angular-flash-alert": "^2.2.7"
   }
 }
