@@ -20,14 +20,16 @@
                 <p>@{{ question.text }}</p>
 
                 {{-- Display appropriate input type to allow user to answer question --}}
-                <multiple-choice-input data-ng-if="question.data_type === 'multiple_choice'"></multiple-choice-input>
-                <true-false-input data-ng-if="question.data_type === 'true_false'"></true-false-input>
-                <range-input data-ng-if="question.data_type === 'range'"></range-input>
+                <div class="col-xs-10">
+                    <multiple-choice-input data-ng-if="question.data_type === 'multiple_choice'"></multiple-choice-input>
+                    <true-false-input data-ng-if="question.data_type === 'true_false'"></true-false-input>
+                    <range-input data-ng-if="question.data_type === 'range'"></range-input>
+                </div>
 
                 {{-- Save message --}}
-                <flash-message duration="2000" show-close="true" class="save-message row text-right">
-                    saved
-                </flash-message>
+                <span data-ng-if="question.active" class="save-message col-xs-2 text-right">
+                    @{{ questionnaire.saveMessage }}
+                </span>
 
             </div>
 
@@ -57,7 +59,7 @@
 
         {{-- Compliance Report Modal --}}
         <div class="modal fade compliance-report" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
 
                     <div class="modal-header">Compliance Overview</div>

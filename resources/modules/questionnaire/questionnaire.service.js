@@ -39,7 +39,7 @@
 
 
             vm.saveAnswer = function (question) {
-                
+
                 vm.setCompliance(question);
 
                 $http.post('post-answer', {
