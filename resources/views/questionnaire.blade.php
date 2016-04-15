@@ -25,7 +25,10 @@
                 <range-input data-ng-if="question.data_type === 'range'"></range-input>
 
                 {{-- Save message --}}
-                <p class="save-message row text-right">saved</p>
+                <flash-message duration="2000" show-close="true" class="save-message row text-right">
+                    saved
+                </flash-message>
+
             </div>
 
             <div class="col-xs-4">
