@@ -3,7 +3,7 @@
 
     <input data-ng-model="question.user_input"
            data-ng-keyup="questionnaire.saveAnswer(question)"
-           data-ng-click="questionnaire.saveAnswer(question)"
+           data-ng-change="questionnaire.saveAnswer(question)"
            type="number"
            min="0"
            name="range"
