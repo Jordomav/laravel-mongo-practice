@@ -33,7 +33,7 @@
 
             </div>
 
-            <div class="col-xs-4">
+            <div data-ng-if="questionnaire.getWasAnswered(question)" class="col-xs-4">
                 {{-- Display when question answer is compliant --}}
                 <div data-ng-show="question.compliant === true"
                      class="compliant">
@@ -63,6 +63,7 @@
             View Compliance Results
         </button>
 
+        {{-- TODO: move the Compliance Report Modal to a separate template file. --}}
         {{-- Compliance Report Modal --}}
         <div class="modal fade compliance-report" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg">
