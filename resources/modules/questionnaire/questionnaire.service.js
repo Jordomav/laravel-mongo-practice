@@ -4,7 +4,7 @@
     'use strict';
 
     angular.module('adaApp')
-        .service('Questions', function ($http) {
+        .service('Questions', function ($http, $timeout) {
 
             var vm = this;
 
@@ -38,6 +38,7 @@
             };
 
 
+            var timeout = null;
             vm.saveAnswer = function (question) {
                 
                 vm.setCompliance(question);
@@ -60,6 +61,31 @@
                         alert('There was a problem saving your answer.');
                         console.log(err);
                     });
+
+                // Our initial thought was to display the 'saving' message only if POST request is successful, but the
+                // problem with this is the delay between inputting an answer and seeing the 'saving' message seems too
+                // long. For now we are leaving this outside of the `post.then()` block.
+                if (timeout !== null) {
+
+                    $timeout.cancel(timeout);
+                }
+                question.active = true;
+                displaySaveMessage(question);
+
+                function displaySaveMessage(question) {
+                    timeout = $timeout(function () {
+                        question.active = false;
+                        timeout = null;
+
+                        // Ensure that 'saving' message gets cleared out from previous question if new question is
+                        // answered prior to its $timeout completing. With more questions, we will probably only want to
+                        // iterate over only the questions currently being displayed on the page.
+                        _.forEach(vm.questions, function (question) {
+                            question.active = false;
+                        });
+
+                    }, 1820);
+                }
             };
 
 

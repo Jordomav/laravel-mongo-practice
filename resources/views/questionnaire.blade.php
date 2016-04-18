@@ -28,7 +28,7 @@
 
                 {{-- Save message --}}
                 <span data-ng-show="question.active" class="save-message col-xs-2 text-right">
-                    saved
+                    saving
                 </span>
 
             </div>

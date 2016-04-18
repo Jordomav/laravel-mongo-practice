@@ -13,7 +13,7 @@
 
          // Invoke call to get questions array from questions service.
          Questions.getQuestions()
-             .then( function (data) {
+             .then( function () {
                  vm.questions = Questions.questions;
              });
 
@@ -25,22 +25,9 @@
 
 
          // Saving Answers for Individual Questions
-         var timeout = null;
          vm.saveAnswer = function (question) {
-             if (timeout !== null) {
-                 $timeout.cancel(timeout);
-             }
              Questions.saveAnswer(question);
-             question.active = true;
-             displaySaveMessage(question);
          };
-
-         function displaySaveMessage(question) {
-             timeout = $timeout(function () {
-                 question.active = false;
-                 timeout = null;
-             }, 1820)
-         }
 
      });
 
