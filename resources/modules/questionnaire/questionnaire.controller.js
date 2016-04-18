@@ -13,7 +13,7 @@
 
          // Invoke call to get questions array from questions service.
          Questions.getQuestions()
-             .then( function (data) {
+             .then( function () {
                  vm.questions = Questions.questions;
              });
 
@@ -25,33 +25,9 @@
 
 
          // Saving Answers for Individual Questions
-         vm.saveMessage = '';
-         var timeout;
-
-
-         // TODO: $timeout.cancel() doesn't seem to be working when another answer is selected while timer is already
-         // (todo cont...) in process.
          vm.saveAnswer = function (question) {
-             if (timeout) {
-                 $timeout.cancel(timeout);
-             }
              Questions.saveAnswer(question);
-             question.active = true;
-             displaySaveMessage(question);
          };
-
-         function displaySaveMessage(question) {
-
-             vm.saveMessage = 'saved';
-
-             timeout = $timeout(function () {
-                 vm.saveMessage = '';
-             }, 1820)
-
-             .then(function () {
-                 question.active = false;
-             });
-         }
 
      });
 

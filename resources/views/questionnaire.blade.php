@@ -27,8 +27,8 @@
                 </div>
 
                 {{-- Save message --}}
-                <span data-ng-if="question.active" class="save-message col-xs-2 text-right">
-                    @{{ questionnaire.saveMessage }}
+                <span data-ng-show="question.active" class="save-message col-xs-2 text-right">
+                    saving
                 </span>
 
             </div>
