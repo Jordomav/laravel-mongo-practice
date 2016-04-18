@@ -25,14 +25,9 @@
 
 
          // Saving Answers for Individual Questions
-         vm.saveMessage = '';
-         var timeout;
-
-
-         // TODO: $timeout.cancel() doesn't seem to be working when another answer is selected while timer is already
-         // (todo cont...) in process.
+         var timeout = null;
          vm.saveAnswer = function (question) {
-             if (timeout) {
+             if (timeout !== null) {
                  $timeout.cancel(timeout);
              }
              Questions.saveAnswer(question);
@@ -41,16 +36,10 @@
          };
 
          function displaySaveMessage(question) {
-
-             vm.saveMessage = 'saved';
-
              timeout = $timeout(function () {
-                 vm.saveMessage = '';
-             }, 1820)
-
-             .then(function () {
                  question.active = false;
-             });
+                 timeout = null;
+             }, 1820)
          }
 
      });
