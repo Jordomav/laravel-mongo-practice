@@ -114,11 +114,11 @@
 
                             {{-- New Question text input --}}
                             <h3>Question</h3>
-                            <input data-ng-model="questionnaire.newQuestionText"
-                                   type="text"
-                                   name="question"
-                                   placeholder="Question text"
-                                   cols="40" rows="1">
+                            <textarea data-ng-model="questionnaire.newQuestionText"
+                                      type="text"
+                                      name="question"
+                                      placeholder="Question text"
+                                      cols="80" rows="4"></textarea>
 
 
                             <div class="row">
