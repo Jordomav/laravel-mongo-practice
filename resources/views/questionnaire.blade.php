@@ -111,8 +111,14 @@
                     <div class="modal-interior">
                         <h1>Add a question</h1>
                         <form action="">
+
+                            {{-- New Question text input --}}
                             <h3>Question</h3>
-                            <textarea class="input-sm" name="question" placeholder="Question text" cols="40" rows="1"></textarea>
+                            <input data-ng-model="questionnaire.newQuestionText"
+                                   type="text"
+                                   name="question"
+                                   placeholder="Question text">
+
                             <h3>Question type</h3>
                             <div>
                                 <!-- Nav tabs -->
@@ -123,7 +129,7 @@
                                         </a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#multiple" aria-controls="profile" role="tab" data-toggle="tab">
+                                        <a href="#multiple_choice" aria-controls="profile" role="tab" data-toggle="tab">
                                             Multiple Choice
                                         </a>
                                     </li>
@@ -132,7 +138,6 @@
                                 </ul>
                                 <!-- Tab panes -->
                                 <div class="tab-content tab-inner">
-                                    <!--- True/False Inputs--->
                                     <div role="tabpanel" class="tab-pane active" id="true_false">
                                         <div class="row">
                                             <span class="col-lg-2">
@@ -147,11 +152,9 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <!--- Multiple Choice Inputs--->
-                                    <div role="tabpanel" class="tab-pane" id="multiple">
+                                    <div role="tabpanel" class="tab-pane" id="multiple_choice">
 
                                     </div>
-                                    <!--- Range Inputs --->
                                     <div role="tabpanel" class="tab-pane" id="range">
                                         <div class="row">
                                             <span class="col-lg-2">
@@ -169,15 +172,12 @@
 
                                 </div>
                             </div>
-                            <p>Help URL:</p>
-                            <textarea name="" id="" cols="40" rows="1"></textarea>
-                            <br/><br>
                             <button data-ng-click="questionnaire.addQuestion()"
-                                    type="submit"
+                                    type="button"
                                     class="btn btn-success">
                                 Submit
                             </button>
-                            <br/><br>
+                            <br/>
                         </form>
                     </div>
 

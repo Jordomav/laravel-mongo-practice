@@ -33,8 +33,27 @@
 
 
 
+         // Add New Questions
+
+         vm.newQuestionText = '';
+
+         vm.newQuestion = function () {
+             return {
+                 text: vm.newQuestionText,
+
+                 // TODO: We should probably have a default data_type, i.e. 'true-false'.
+                 data_type: '',
+
+                 // Hard-coding all new questions as default questions for now.
+                 default_question: true,
+                 help_url: ''
+             }
+         };
+
          vm.addQuestion = function() {
-             Questions.saveQuestion();
+             console.log('hello');
+             console.log(vm.newQuestion());
+             Questions.saveQuestion(vm.newQuestion());
          };
 
      });
