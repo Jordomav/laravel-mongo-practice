@@ -80,6 +80,15 @@
              }
          };
 
+         vm.inputs = [];
+         vm.addfield=function(){
+             vm.inputs.push({
+
+                 text: '',
+                 data_type: ''
+             })
+         }
+
      });
 
  }());
