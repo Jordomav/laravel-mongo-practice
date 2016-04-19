@@ -31,6 +31,12 @@
              return Questions.wasAnswered(question);
          };
 
+
+
+         vm.addQuestion = function() {
+             Questions.saveQuestion();
+         };
+
      });
 
  }());

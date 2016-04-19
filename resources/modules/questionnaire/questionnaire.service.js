@@ -141,5 +141,15 @@
                 }
             };
 
+
+
+            /**
+             * Add New Questions
+             */
+
+            vm.saveQuestion = function () {
+                
+            };
+
         });
 }());

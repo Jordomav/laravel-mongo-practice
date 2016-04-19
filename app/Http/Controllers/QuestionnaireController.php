@@ -39,9 +39,11 @@ class QuestionnaireController extends Controller
         return $questionnaire->questions;
     }
 
-    public function save(Request $request)
+    public function saveAnswer(Request $request)
     {
+        // For now, we are hard-coding a Questionnaire.
         $questionnaire = Questionnaire::first();
+
         $question = $questionnaire->questions()->where('_id', $request->id)->first();
 
         $question->update([
@@ -49,5 +51,13 @@ class QuestionnaireController extends Controller
             'compliant' => $request->compliant,
             'user_input' => $request->user_input
         ]);
+    }
+
+    public function addQuestion(Request $request)
+    {
+        $questionnaire = Questionnaire::first();
+
+        $questionnaire->questions()->associate($request->all());
+
     }
 }

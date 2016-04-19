@@ -117,9 +117,18 @@
                             <div>
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#true_false" aria-controls="home" role="tab" data-toggle="tab">True-False</a></li>
-                                    <li role="presentation"><a href="#multiple" aria-controls="profile" role="tab" data-toggle="tab">Multiple Choice</a></li>
-                                    <li role="presentation"><a href="#range" aria-controls="messages" role="tab" data-toggle="tab">Range</a></li>
+                                    <li role="presentation" class="active">
+                                        <a href="#true_false" aria-controls="home" role="tab" data-toggle="tab">
+                                            True-False
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#multiple" aria-controls="profile" role="tab" data-toggle="tab">
+                                            Multiple Choice
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#range" aria-controls="messages" role="tab" data-toggle="tab">Range</a></li>
                                 </ul>
                                 <!-- Tab panes -->
                                 <div class="tab-content">
@@ -135,7 +144,7 @@
 
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">Submit your question</button>
+                            <button data-ng-click="questionnaire.addQuestion()" type="submit" class="btn btn-success" >Submit your question</button>
                         </form>
                     </div>
 
