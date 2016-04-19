@@ -154,10 +154,10 @@
 
                             <div data-ng-if="questionnaire.newQuestionAnswerType === 'multiple_choice'" class="row">
                                 <input type="text">
-                                    <div data-ng-repeat="item in questionnaire.inputs">
-                                        <input data-ng-model="item.value">
+                                    <div data-ng-repeat="answer in questionnaire.newQuestionMultipleChoiceInputs">
+                                        <input data-ng-model="answer.text">
                                     </div>
-                                <i data-ng-click="questionnaire.addField()" class="fa fa-plus-circle"></i>
+                                <i data-ng-click="questionnaire.addMultipleChoiceAnswer()" class="fa fa-plus-circle"></i>
                             </div>
 
                             <div data-ng-if="questionnaire.newQuestionAnswerType === 'range'" class="row">

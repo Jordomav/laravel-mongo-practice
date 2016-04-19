@@ -6,30 +6,25 @@
     angular.module('adaApp')
         .service('NewQuestion', function ($http) {
 
-        var vm = this;
+            var vm = this;
 
-        vm.newQuestionText = '';
-        vm.newQuestionDataType = '';
+            vm.newQuestionDataType = '';
+            vm.multipleChoiceInputs = [];
 
-        vm.newQuestion = function () {
-            return {
-                text: vm.newQuestionText,
+            // Display a default answer input type in New Question form.
+            vm.answerType = 'true_false';
 
-                // TODO: We should probably have a default data_type, i.e. 'true-false'.
-                data_type: vm.newQuestionDataType,
-
-                // Hard-coding all new questions as default questions for now.
-                default_question: true,
-                help_url: ''
+            vm.setAnswerType = function (event) {
+                vm.answerType = event.target.value;
             };
-        };
 
-        // Display a default answer input type in New Question form.
-        vm.answerType = 'true_false';
 
-        vm.setAnswerType = function (event) {
-            vm.answerType = event.target.value;
-        };
+            vm.addMultipleChoiceInput = function () {
+                vm.multipleChoiceInputs.push({
+                    text: '',
+                    data_type: ''
+                });
+            };
 
     });
 

@@ -35,31 +35,36 @@
          /**
           *  New Question Methods
           */
-         vm.getNewQuestion = function () {
-             NewQuestion.newQuestion();
+         vm.newQuestionText = '';
+         vm.newQuestionAnswerType =  NewQuestion.answerType;
+         vm.newQuestionMultipleChoiceInputs = NewQuestion.multipleChoiceInputs;
+
+         vm.newQuestion = function () {
+             return {
+                 text: vm.newQuestionText,
+                 data_type: vm.newQuestionAnswerType,
+
+                 // Hard-coding all new questions as default questions for now.
+                 default_question: true,
+                 help_url: ''
+             };
          };
 
 
          vm.addQuestion = function () {
-             console.log(vm.getNewQuestion());
-             Questions.saveQuestion(vm.getNewQuestion());
+             console.log(vm.newQuestion());
+             Questions.saveQuestion(vm.newQuestion());
          };
 
 
-         vm.newQuestionAnswerType =  NewQuestion.answerType;
          vm.displayAnswerForm = function (event) {
              NewQuestion.setAnswerType(event);
              vm.newQuestionAnswerType =  NewQuestion.answerType;
          };
 
 
-         vm.inputs = [];
-         vm.addField = function () {
-             console.log('something');
-             vm.inputs.push({
-                 text: '',
-                 data_type: ''
-             });
+         vm.addMultipleChoiceAnswer = function () {
+             NewQuestion.addMultipleChoiceInput();
          };
 
      });
