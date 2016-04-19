@@ -31,22 +31,22 @@
 
                 {{-- Save message --}}
                 <span data-ng-show="question.active" class="save-message col-xs-2 text-right">
-                    saved
+                    saving
                 </span>
 
             </div>
 
-            <div class="col-xs-4">
+            <div data-ng-if="questionnaire.getWasAnswered(question)" class="col-xs-4">
                 {{-- Display when question answer is compliant --}}
                 <div data-ng-show="question.compliant === true"
                      class="compliant">
-                    <h4><i class="fa fa-check icon-size"></i> compliant.</h4>
+                    <h4><i class="fa fa-check icon-size"></i> compliant</h4>
                 </div>
 
                 {{-- Display when question answer is noncompliant --}}
                 <div data-ng-hide="question.compliant === true"
                      class="non-compliant">
-                    <h4><i class="fa fa-times-circle icon-size"></i> non-compliant.</h4>
+                    <h4><i class="fa fa-times-circle icon-size"></i> non-compliant</h4>
                 </div>
             </div>
 
@@ -66,6 +66,7 @@
             View Compliance Results
         </button>
 
+        {{-- TODO: move the Compliance Report Modal to a separate template file. --}}
         {{-- Compliance Report Modal --}}
         <div class="modal fade compliance-report" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -116,9 +117,18 @@
                             <div>
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#true_false" aria-controls="home" role="tab" data-toggle="tab">True-False</a></li>
-                                    <li role="presentation"><a href="#multiple" aria-controls="profile" role="tab" data-toggle="tab">Multiple Choice</a></li>
-                                    <li role="presentation"><a href="#range" aria-controls="messages" role="tab" data-toggle="tab">Range</a></li>
+                                    <li role="presentation" class="active">
+                                        <a href="#true_false" aria-controls="home" role="tab" data-toggle="tab">
+                                            True-False
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#multiple" aria-controls="profile" role="tab" data-toggle="tab">
+                                            Multiple Choice
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#range" aria-controls="messages" role="tab" data-toggle="tab">Range</a></li>
                                 </ul>
                                 <!-- Tab panes -->
                                 <div class="tab-content tab-inner">
@@ -156,8 +166,12 @@
 
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">Submit your question</button>
-                            <br><br>
+                            <button data-ng-click="questionnaire.addQuestion()"
+                                    type="submit"
+                                    class="btn btn-success">
+                                Submit
+                            </button>
+                            <br/>
                         </form>
                     </div>
 
