@@ -137,7 +137,7 @@
                                 </div>
                             </div>
 
-                            <div data-ng-if="questionnaire.newQuestion_trueFalse" class="row">
+                            <div data-ng-if="questionnaire.newQuestionAnswerType === 'true_false'" class="row">
                                 <div class="row">
                                     <span class="col-lg-2">
                                         <span>True:</span>
@@ -152,11 +152,15 @@
                                 </div>
                             </div>
 
-                            <div data-ng-if="questionnaire.newQuestion_multipleChoice" class="row">
-                                Multiple Choice
+                            <div data-ng-if="questionnaire.newQuestionAnswerType === 'multiple_choice'" class="row">
+                                <input type="text">
+                                    <div data-ng-repeat="item in questionnaire.inputs">
+                                        <input data-ng-model="item.value">
+                                    </div>
+                                <i data-ng-click="questionnaire.addField()" class="fa fa-plus-circle"></i>
                             </div>
 
-                            <div data-ng-if="questionnaire.newQuestion_range" class="row">
+                            <div data-ng-if="questionnaire.newQuestionAnswerType === 'range'" class="row">
                                 <div class="row">
                                     <span class="col-lg-2">
                                         <span>Min:</span>

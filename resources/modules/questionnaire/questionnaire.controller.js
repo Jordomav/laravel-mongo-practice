@@ -3,7 +3,7 @@
 
  'use strict';
  angular.module('adaApp')
-     .controller('QuestionnaireController', function($http, Questions) {
+     .controller('QuestionnaireController', function($http, Questions, NewQuestion) {
 
          var vm = this;
 
@@ -32,63 +32,35 @@
          };
 
 
-
-         // TODO: move Add New Questions code to it's own Service.
-         // Add New Questions
-
-         vm.newQuestionText = '';
-         vm.newQuestionDataType = '';
-
-         vm.newQuestion = function () {
-             return {
-                 text: vm.newQuestionText,
-
-                 // TODO: We should probably have a default data_type, i.e. 'true-false'.
-                 data_type: vm.newQuestionDataType,
-
-                 // Hard-coding all new questions as default questions for now.
-                 default_question: true,
-                 help_url: ''
-             }
+         /**
+          *  New Question Methods
+          */
+         vm.getNewQuestion = function () {
+             NewQuestion.newQuestion();
          };
+
 
          vm.addQuestion = function () {
-             console.log(vm.newQuestion());
-             Questions.saveQuestion(vm.newQuestion());
+             console.log(vm.getNewQuestion());
+             Questions.saveQuestion(vm.getNewQuestion());
          };
 
-         // Display a default answer input type in New Question form.
-         vm.newQuestion_trueFalse = true;
 
+         vm.newQuestionAnswerType =  NewQuestion.answerType;
          vm.displayAnswerForm = function (event) {
-
-             var answerType = event.target.value;
-
-             setNewQuestionAnswerType(answerType);
-
-             switch(answerType) {
-                 case 'true_false':
-                     vm.newQuestion_trueFalse = true;
-                     vm.newQuestion_multipleChoice = false;
-                     vm.newQuestion_range = false;
-                     break;
-                 case 'multiple_choice':
-                     vm.newQuestion_trueFalse = false;
-                     vm.newQuestion_multipleChoice = true;
-                     vm.newQuestion_range = false;
-                     break;
-                 case 'range':
-                     vm.newQuestion_trueFalse = false;
-                     vm.newQuestion_multipleChoice = false;
-                     vm.newQuestion_range = true;
-                     break;
-             }
+             NewQuestion.setAnswerType(event);
+             vm.newQuestionAnswerType =  NewQuestion.answerType;
          };
 
-         function setNewQuestionAnswerType(answerType) {
-             vm.newQuestionDataType = answerType;
-             console.log(vm.newQuestion());
-         }
+
+         vm.inputs = [];
+         vm.addField = function () {
+             console.log('something');
+             vm.inputs.push({
+                 text: '',
+                 data_type: ''
+             });
+         };
 
      });
 
