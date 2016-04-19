@@ -11,7 +11,10 @@
     <body data-ng-app="adaApp" data-ng-controller="QuestionnaireController as questionnaire">
     <div class="container">
 
-        <h1 class="row">ADA Compliance Survey</h1>
+        <div class="row">
+            <h1 class="col-lg-6">ADA Compliance Survey</h1>
+            <i class="fa fa-plus col-lg-offset-5 add" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+        </div>
 
         <div data-ng-repeat="question in questionnaire.questions" class="question row">
 
@@ -100,6 +103,46 @@
                 </div>
             </div>
         </div>
+
+        <!-- Add Question modal -->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content ">
+                    <div class="modal-interior">
+                        <h1>Add a question</h1>
+                        <form action="">
+                            <h3>Question</h3>
+                            <input type="text" name="question" placeholder="Question text">
+                            <h3>Question type</h3>
+                            <div>
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#true_false" aria-controls="home" role="tab" data-toggle="tab">True-False</a></li>
+                                    <li role="presentation"><a href="#multiple" aria-controls="profile" role="tab" data-toggle="tab">Multiple Choice</a></li>
+                                    <li role="presentation"><a href="#range" aria-controls="messages" role="tab" data-toggle="tab">Range</a></li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="true_false">
+                                        
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="multiple">
+
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="range">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">Submit your question</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
 
     </div>
     </body>
