@@ -111,7 +111,7 @@
                         <h1>Add a question</h1>
                         <form action="">
                             <h3>Question</h3>
-                            <input type="text" name="question" placeholder="Question text">
+                            <textarea class="input-sm" name="question" placeholder="Question text" cols="40" rows="1"></textarea>
                             <h3>Question type</h3>
                             <div>
                                 <!-- Nav tabs -->
