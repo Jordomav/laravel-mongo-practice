@@ -111,8 +111,14 @@
                     <div class="modal-interior">
                         <h1>Add a question</h1>
                         <form action="">
+
+                            {{-- New Question text input --}}
                             <h3>Question</h3>
-                            <input type="text" name="question" placeholder="Question text">
+                            <input data-ng-model="questionnaire.newQuestionText"
+                                   type="text"
+                                   name="question"
+                                   placeholder="Question text">
+
                             <h3>Question type</h3>
                             <div>
                                 <!-- Nav tabs -->
@@ -123,7 +129,7 @@
                                         </a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#multiple" aria-controls="profile" role="tab" data-toggle="tab">
+                                        <a href="#multiple_choice" aria-controls="profile" role="tab" data-toggle="tab">
                                             Multiple Choice
                                         </a>
                                     </li>
@@ -146,7 +152,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div role="tabpanel" class="tab-pane" id="multiple">
+                                    <div role="tabpanel" class="tab-pane" id="multiple_choice">
 
                                     </div>
                                     <div role="tabpanel" class="tab-pane" id="range">
@@ -167,7 +173,7 @@
                                 </div>
                             </div>
                             <button data-ng-click="questionnaire.addQuestion()"
-                                    type="submit"
+                                    type="button"
                                     class="btn btn-success">
                                 Submit
                             </button>
