@@ -117,61 +117,42 @@
                             <input data-ng-model="questionnaire.newQuestionText"
                                    type="text"
                                    name="question"
-                                   placeholder="Question text">
+                                   placeholder="Question text"
+                                   cols="40" rows="1">
 
-                            <h3>Question type</h3>
-                            <div>
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active">
-                                        <a href="#true_false" aria-controls="home" role="tab" data-toggle="tab">
-                                            True-False
-                                        </a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a href="#multiple_choice" aria-controls="profile" role="tab" data-toggle="tab">
-                                            Multiple Choice
-                                        </a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a href="#range" aria-controls="messages" role="tab" data-toggle="tab">Range</a></li>
-                                </ul>
-                                <!-- Tab panes -->
-                                <div class="tab-content tab-inner">
-                                    <div role="tabpanel" class="tab-pane active" id="true_false">
-                                        <div class="row">
-                                            <span class="col-lg-2">
-                                                <span>True:</span>
-                                                <input type="text">
-                                            </span>
-                                        </div>
-                                        <div class="row">
-                                            <span class="col-lg-2">
-                                                <span>False:</span>
-                                                <input type="text">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="multiple_choice">
 
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="range">
-                                        <div class="row">
-                                            <span class="col-lg-2">
-                                                <span>Min:</span>
-                                                <input type="number" class="form-control">
-                                            </span>
-                                        </div>
-                                        <div class="row">
-                                        <span class="col-lg-2">
-                                            <span>Max:</span>
-                                            <input type="number" class="form-control">
-                                        </span>
-                                        </div>
-                                    </div>
+                            <div class="row">
+                                <h3 class="col-xs-12">Question type:</h3>
+                                <div class="col-xs-12">
+                                    <button data-ng-click="questionnaire.displayAnswerForm($event)"
+                                            value="true_false"
+                                            type="button">True-False</button>
 
+                                    <button data-ng-click="questionnaire.displayAnswerForm($event)"
+                                            value="multiple_choice"
+                                            type="button">Multiple Choice</button>
+
+                                    <button data-ng-click="questionnaire.displayAnswerForm($event)"
+                                            value="range"
+                                            type="button">Range</button>
                                 </div>
                             </div>
+
+                            <div data-ng-if="questionnaire.newQuestion_trueFalse" class="row">
+                                True-False
+                            </div>
+
+                            <div data-ng-if="questionnaire.newQuestion_multipleChoice" class="row">
+                                Multiple Choice
+                            </div>
+
+                            <div data-ng-if="questionnaire.newQuestion_range" class="row">
+                                Range
+                            </div>
+
+                            <p>Help URL:</p>
+                            <textarea name="" id="" cols="40" rows="1"></textarea>
+                            <br/><br>
                             <button data-ng-click="questionnaire.addQuestion()"
                                     type="button"
                                     class="btn btn-success">

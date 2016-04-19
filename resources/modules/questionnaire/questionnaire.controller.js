@@ -50,10 +50,34 @@
              }
          };
 
-         vm.addQuestion = function() {
-             console.log('hello');
+         vm.addQuestion = function () {
              console.log(vm.newQuestion());
              Questions.saveQuestion(vm.newQuestion());
+         };
+
+         // Display a default answer input type in New Question form.
+         vm.newQuestion_trueFalse = true;
+
+         vm.displayAnswerForm = function (event) {
+             console.log(event.target.value);
+
+             switch(event.target.value) {
+                 case 'true_false':
+                     vm.newQuestion_trueFalse = true;
+                     vm.newQuestion_multipleChoice = false;
+                     vm.newQuestion_range = false;
+                     break;
+                 case 'multiple_choice':
+                     vm.newQuestion_trueFalse = false;
+                     vm.newQuestion_multipleChoice = true;
+                     vm.newQuestion_range = false;
+                     break;
+                 case 'range':
+                     vm.newQuestion_trueFalse = false;
+                     vm.newQuestion_multipleChoice = false;
+                     vm.newQuestion_range = true;
+                     break;
+             }
          };
 
      });
