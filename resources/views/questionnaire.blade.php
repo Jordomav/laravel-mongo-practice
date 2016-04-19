@@ -131,20 +131,47 @@
                                         <a href="#range" aria-controls="messages" role="tab" data-toggle="tab">Range</a></li>
                                 </ul>
                                 <!-- Tab panes -->
-                                <div class="tab-content">
+                                <div class="tab-content tab-inner">
                                     <div role="tabpanel" class="tab-pane active" id="true_false">
-                                        
+                                        <div class="row">
+                                            <span class="col-lg-2">
+                                                <span>True:</span>
+                                                <input type="text">
+                                            </span>
+                                        </div>
+                                        <div class="row">
+                                            <span class="col-lg-2">
+                                                <span>False:</span>
+                                                <input type="text">
+                                            </span>
+                                        </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane" id="multiple">
 
                                     </div>
                                     <div role="tabpanel" class="tab-pane" id="range">
-
+                                        <div class="row">
+                                            <span class="col-lg-2">
+                                                <span>Min:</span>
+                                                <input type="number" class="form-control">
+                                            </span>
+                                        </div>
+                                        <div class="row">
+                                        <span class="col-lg-2">
+                                            <span>Max:</span>
+                                            <input type="number" class="form-control">
+                                        </span>
+                                        </div>
                                     </div>
 
                                 </div>
                             </div>
-                            <button data-ng-click="questionnaire.addQuestion()" type="submit" class="btn btn-success" >Submit your question</button>
+                            <button data-ng-click="questionnaire.addQuestion()"
+                                    type="submit"
+                                    class="btn btn-success">
+                                Submit
+                            </button>
+                            <br/>
                         </form>
                     </div>
 
