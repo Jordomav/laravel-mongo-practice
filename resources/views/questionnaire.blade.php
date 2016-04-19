@@ -33,17 +33,17 @@
 
             </div>
 
-            <div class="col-xs-4">
+            <div data-ng-if="questionnaire.getWasAnswered(question)" class="col-xs-4">
                 {{-- Display when question answer is compliant --}}
                 <div data-ng-show="question.compliant === true"
                      class="compliant">
-                    <h4><i class="fa fa-check icon-size"></i> compliant.</h4>
+                    <h4><i class="fa fa-check icon-size"></i> compliant</h4>
                 </div>
 
                 {{-- Display when question answer is noncompliant --}}
                 <div data-ng-hide="question.compliant === true"
                      class="non-compliant">
-                    <h4><i class="fa fa-times-circle icon-size"></i> non-compliant.</h4>
+                    <h4><i class="fa fa-times-circle icon-size"></i> non-compliant</h4>
                 </div>
             </div>
 
@@ -63,6 +63,7 @@
             View Compliance Results
         </button>
 
+        {{-- TODO: move the Compliance Report Modal to a separate template file. --}}
         {{-- Compliance Report Modal --}}
         <div class="modal fade compliance-report" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg">

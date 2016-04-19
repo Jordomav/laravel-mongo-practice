@@ -3,16 +3,13 @@
 
  'use strict';
  angular.module('adaApp')
-     .controller('QuestionnaireController', function($http, Questions, $timeout) {
+     .controller('QuestionnaireController', function($http, Questions) {
 
          var vm = this;
 
-         // Bind vm.questions (which will appear in the view) with Questions Service questions array.
-         vm.questions = Questions.questions;
-
-
-         // Invoke call to get questions array from questions service.
-         Questions.getQuestions()
+         // Get questions from database, and then bind vm.questions to the underlying questions collection from the
+         // Questions Service.
+         Questions.init()
              .then( function () {
                  vm.questions = Questions.questions;
              });
@@ -24,9 +21,14 @@
          };
 
 
-         // Saving Answers for Individual Questions
+         // Save answers for individual questions.
          vm.saveAnswer = function (question) {
              Questions.saveAnswer(question);
+         };
+
+         // Returns boolean representing whether a question has been answered.
+         vm.getWasAnswered = function (question) {
+             return Questions.wasAnswered(question);
          };
 
      });
