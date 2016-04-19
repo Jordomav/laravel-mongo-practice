@@ -139,7 +139,18 @@
                             </div>
 
                             <div data-ng-if="questionnaire.newQuestion_trueFalse" class="row">
-                                True-False
+                                <div class="row">
+                                    <span class="col-lg-2">
+                                        <span>True:</span>
+                                        <input type="text">
+                                    </span>
+                                </div>
+                                <div class="row">
+                                    <span class="col-lg-2">
+                                        <span>False:</span>
+                                        <input type="text">
+                                    </span>
+                                </div>
                             </div>
 
                             <div data-ng-if="questionnaire.newQuestion_multipleChoice" class="row">
@@ -147,7 +158,18 @@
                             </div>
 
                             <div data-ng-if="questionnaire.newQuestion_range" class="row">
-                                Range
+                                <div class="row">
+                                    <span class="col-lg-2">
+                                        <span>Min:</span>
+                                        <input type="number" class="form-control">
+                                    </span>
+                                </div>
+                                <div class="row">
+                                    <span class="col-lg-2">
+                                        <span>Max:</span>
+                                        <input type="number" class="form-control">
+                                    </span>
+                                </div>
                             </div>
 
                             <p>Help URL:</p>
@@ -172,3 +194,6 @@
     <script src="/build/js/deps.js"></script>
     <script src="/build/js/app.js"></script>
 </html>
+
+
+
