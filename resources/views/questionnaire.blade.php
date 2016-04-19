@@ -120,7 +120,6 @@
                                       placeholder="Question text"
                                       cols="80" rows="4"></textarea>
 
-
                             <div class="row">
                                 <h3 class="col-xs-12">Question type:</h3>
                                 <div class="col-xs-12">

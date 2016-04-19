@@ -57,7 +57,16 @@ class QuestionnaireController extends Controller
     {
         $questionnaire = Questionnaire::first();
 
-        $questionnaire->questions()->associate($request->all());
+        $question = Question::create([
+            'text' => $request->text,
+            'data_type' => $request->data_type,
+            'default_question' => $request->default_question,
+            'help_url' => $request->help_url
+        ]);
+
+
+
+
 
     }
 }

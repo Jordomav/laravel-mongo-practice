@@ -37,13 +37,14 @@
          // Add New Questions
 
          vm.newQuestionText = '';
+         vm.newQuestionDataType = '';
 
          vm.newQuestion = function () {
              return {
                  text: vm.newQuestionText,
 
                  // TODO: We should probably have a default data_type, i.e. 'true-false'.
-                 data_type: '',
+                 data_type: vm.newQuestionDataType,
 
                  // Hard-coding all new questions as default questions for now.
                  default_question: true,
@@ -60,9 +61,12 @@
          vm.newQuestion_trueFalse = true;
 
          vm.displayAnswerForm = function (event) {
-             console.log(event.target.value);
 
-             switch(event.target.value) {
+             var answerType = event.target.value;
+
+             setNewQuestionAnswerType(answerType);
+
+             switch(answerType) {
                  case 'true_false':
                      vm.newQuestion_trueFalse = true;
                      vm.newQuestion_multipleChoice = false;
@@ -80,6 +84,11 @@
                      break;
              }
          };
+
+         function setNewQuestionAnswerType(answerType) {
+             vm.newQuestionDataType = answerType;
+             console.log(vm.newQuestion());
+         }
 
      });
 
