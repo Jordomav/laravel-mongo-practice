@@ -132,6 +132,7 @@
                                 </ul>
                                 <!-- Tab panes -->
                                 <div class="tab-content tab-inner">
+                                    <!--- True/False Inputs--->
                                     <div role="tabpanel" class="tab-pane active" id="true_false">
                                         <div class="row">
                                             <span class="col-lg-2">
@@ -146,9 +147,11 @@
                                             </span>
                                         </div>
                                     </div>
+                                    <!--- Multiple Choice Inputs--->
                                     <div role="tabpanel" class="tab-pane" id="multiple">
 
                                     </div>
+                                    <!--- Range Inputs --->
                                     <div role="tabpanel" class="tab-pane" id="range">
                                         <div class="row">
                                             <span class="col-lg-2">
@@ -166,12 +169,15 @@
 
                                 </div>
                             </div>
+                            <p>Help URL:</p>
+                            <textarea name="" id="" cols="40" rows="1"></textarea>
+                            <br/><br>
                             <button data-ng-click="questionnaire.addQuestion()"
                                     type="submit"
                                     class="btn btn-success">
                                 Submit
                             </button>
-                            <br/>
+                            <br/><br>
                         </form>
                     </div>
 
