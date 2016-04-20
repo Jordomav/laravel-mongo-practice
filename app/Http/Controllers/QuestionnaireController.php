@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Question;
 use App\Questionnaire;
+use App\Answer;
 use DB;
 use Illuminate\Http\Request;
 
@@ -39,9 +40,11 @@ class QuestionnaireController extends Controller
         return $questionnaire->questions;
     }
 
-    public function save(Request $request)
+    public function saveAnswer(Request $request)
     {
+        // For now, we are hard-coding a Questionnaire.
         $questionnaire = Questionnaire::first();
+
         $question = $questionnaire->questions()->where('_id', $request->id)->first();
 
         $question->update([
@@ -49,5 +52,37 @@ class QuestionnaireController extends Controller
             'compliant' => $request->compliant,
             'user_input' => $request->user_input
         ]);
+    }
+
+    public function saveQuestion(Request $request)
+    {
+        $questionnaire = Questionnaire::first();
+
+        $question = Question::create([
+            'text' => $request->text,
+            'data_type' => $request->data_type,
+            'default_question' => $request->default_question,
+            'help_url' => $request->help_url
+        ]);
+
+        if ($question->data_type === 'range') {
+            $answer = Answer::create([
+                'text' => $request->answers['text'],
+                'compliant_range' => $request->answers['compliant_range']
+            ]);
+            $question->answers()->associate($answer);
+
+        } else {
+            foreach($request->answers as $answer) {
+                $answer = Answer::create([
+                    'text' => $answer['text'],
+                    'compliant' => $answer['compliant']
+                ]);
+                $question->answers()->associate($answer);
+            }
+        }
+
+        $questionnaire->questions()->associate($question);
+        $questionnaire->save();
     }
 }
