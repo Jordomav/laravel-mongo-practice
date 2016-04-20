@@ -180,22 +180,31 @@
                             </div>
 
                             <div data-ng-if="questionnaire.newQuestionAnswerType === 'range'" class="row">
-                                <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="row">
                                     <span class="col-xs-6">
                                         <span>Min:</span>
                                         <input data-ng-model="questionnaire.rangeAnswer[0]"
                                                type="number"
                                                class="form-control" title="range-answer-min">
                                     </span>
-                                </div>
-                                <div class="row">
+                                    </div>
+                                    <div class="row">
                                     <span class="col-xs-6">
                                         <span>Max:</span>
                                         <input data-ng-model="questionnaire.rangeAnswer[1]"
                                                type="number"
                                                class="form-control" title="range-answer-max">
                                     </span>
+                                    </div>
                                 </div>
+
+                                <div class="col-xs-6">
+                                    <div>Measurement:</div>
+                                    <input data-ng-model="questionnaire.rangeMeasurement" title="range-measurement">
+                                    @{{ questionnaire.rangeMeasurement }}
+                                </div>
+
                             </div>
 
                             <p>Help URL:</p>
