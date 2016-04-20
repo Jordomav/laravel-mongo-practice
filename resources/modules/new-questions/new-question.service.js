@@ -25,6 +25,8 @@
                 vm.multipleChoiceAnswers.push({text: '', compliant: false});
             };
 
+
+
     });
 
 }());

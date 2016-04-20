@@ -49,7 +49,7 @@
                     <h4><i class="fa fa-times-circle icon-size"></i> non-compliant</h4>
                 </div>
             </div>
-
+            <span><i class="fa fa-times-circle-o" data-ng-click="questionnaire.deleteQuestion()"></i></span>
             <div class="col-xs-12">
                 <hr />
             </div>
@@ -122,9 +122,10 @@
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content ">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: 40px; margin-right:10px;">&times;</span></button>
                     <div class="modal-interior">
                         <h1>Add a question</h1>
-                        <form action="">
+                        <form name="questionnaire.newForm" action="">
 
                             {{-- New Question text input --}}
                             <h3>Question</h3>
@@ -219,6 +220,7 @@
                                         <span class="col-xs-6">
                                             <span>Measurement:</span>
                                             <input data-ng-model="questionnaire.rangeMeasurement"
+                                                   name="questionnaire.messurement"
                                                    type="text"
                                                    class="form-control" title="range-measurement">
                                         </span>
@@ -228,13 +230,14 @@
                             </div>
                             <br>
                             <p>Help URL:</p>
-                            <textarea name="" id="" cols="40" rows="1" class="form-control question-input"></textarea>
+                            <textarea name="" id="" cols="40" rows="1" class="form-control question-input" data-ng-model="questionnaire.resetUrl"></textarea>
                             <br/><br>
                             <button data-ng-click="questionnaire.addQuestion()"
                                     type="button"
                                     class="btn btn-success">
                                 Submit
                             </button>
+                            <button type="button" data-ng-click="questionnaire.resetForm()" class="btn btn-danger">Clear</button>
                             <br/>
                         </form>
                     </div>

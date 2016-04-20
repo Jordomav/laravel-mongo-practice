@@ -86,4 +86,8 @@ class QuestionnaireController extends Controller
         $questionnaire->questions()->associate($question);
         $questionnaire->save();
     }
+
+    public function deleteQuestion(Request $request) {
+        DB::collection('questions')->where('_id', $request->id)->delete();
+    }
 }

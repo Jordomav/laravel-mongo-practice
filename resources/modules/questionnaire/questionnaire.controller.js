@@ -100,6 +100,7 @@
                  .then(function () {
                      displayQuestions();
                  });
+             swal("Success!", "You're question has been submitted", "success");
          };
 
 
@@ -133,6 +134,34 @@
                  console.log(vm.questionsPaginated);
              }
          };
+
+         vm.resetForm = function () {
+             vm.newQuestionText = '';
+             vm.trueFalseAnswers = '';
+             vm.newQuestionMultipleChoiceAnswers = [];
+             vm.rangeMeasurement = '';
+
+         };
+
+         vm.deleteQuestion = function () {
+             swal({ title: "Are you sure?",
+                    text: "You will not be able to recover this question",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    closeOnConfirm: false },
+
+                    function(){
+                        $http.delete('delete-question', {
+                            id: questionnaire._id
+                        })
+                            //Complete http request
+                            .then (
+                                swal("Deleted!", "You have deleted the question.", "success"));
+                         });
+
+         }
 
      });
 
