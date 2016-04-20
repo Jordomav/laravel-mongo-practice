@@ -14,6 +14,7 @@
              Questions.init()
                  .then( function () {
                      vm.questions = Questions.questions;
+                     console.log(vm.questions);
                  });
          }
 

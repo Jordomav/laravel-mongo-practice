@@ -53,6 +53,9 @@
             <div class="col-xs-12">
                 <hr />
             </div>
+
+
+
         </div>
         <pagination total-items="filterQuestions.length" items-per-page="pageSize" ng-model="currentPage" max-size="5" class="pagination-sm"></pagination>
 
