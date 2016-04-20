@@ -8,11 +8,10 @@ class Answer extends Eloquent
 {
     protected $connection = 'mongodb';
 
-    protected $fillable = ['text', 'compliant', 'selected_answer'];
+    protected $fillable = ['text', 'compliant', 'compliant_range'];
 
     public function question()
     {
-        return $this->hasOne(Question::class);
-//        Belongs to many Questions (Is Embeded into a Question)
+        return $this->belongsTo(Question::class);
     }
 }

@@ -142,12 +142,17 @@
             };
 
 
+            vm.saveQuestion = function (question) {
+                console.log(question);
+                return $http.post('save-question', question)
+                    .then(function successCallback () {
 
-            /**
-             * Add New Questions
-             */
+                        vm.init();
 
-            vm.saveQuestion = function () {
+                    }, function errorCallback (err) {
+                        alert('There was a problem saving the question.');
+                        console.log(err);
+                    });
 
             };
 
