@@ -111,6 +111,10 @@
              NewQuestion.addMultipleChoiceInput();
          };
 
+         vm.resetForm = function () {
+             vm.addQuestion.$setPristine()
+         }
+
      });
 
  }());
