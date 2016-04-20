@@ -21,6 +21,7 @@
                     .then( function successCallback(res) {
 
                         vm.questions = res.data;
+                        console.log(vm.questions);
 
                         },
                         function errorCallback(err) {
@@ -142,12 +143,17 @@
             };
 
 
+            vm.saveQuestion = function (question) {
+                console.log(question);
+                $http.post('save-question', question)
+                    .then(function successCallback () {
 
-            /**
-             * Add New Questions
-             */
+                        vm.questions.push(question);
 
-            vm.saveQuestion = function () {
+                    }, function errorCallback (err) {
+                        alert('There was a problem saving the question.');
+                        console.log(err);
+                    });
 
             };
 

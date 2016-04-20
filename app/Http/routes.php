@@ -21,3 +21,5 @@ Route::get('get-questions', 'QuestionnaireController@index');
 
 //Posts 'Answer' Responses to the Database- AnswersController.php(post)
 Route::post('post-answer', 'QuestionnaireController@saveAnswer');
+
+Route::post('save-question', 'QuestionnaireController@saveQuestion');

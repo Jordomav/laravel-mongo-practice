@@ -141,13 +141,15 @@
                                 <div class="row">
                                     <span class="col-lg-2">
                                         <span>True:</span>
-                                        <input type="text">
+                                        <input data-ng-model="questionnaire.trueFalseAnswers.true"
+                                               title='true-answer' type="text">
                                     </span>
                                 </div>
                                 <div class="row">
                                     <span class="col-lg-2">
                                         <span>False:</span>
-                                        <input type="text">
+                                        <input data-ng-model="questionnaire.trueFalseAnswers.false"
+                                               type="text">
                                     </span>
                                 </div>
                             </div>

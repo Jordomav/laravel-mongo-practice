@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Question;
 use App\Questionnaire;
+use App\Answer;
 use DB;
 use Illuminate\Http\Request;
 
@@ -53,7 +54,7 @@ class QuestionnaireController extends Controller
         ]);
     }
 
-    public function addQuestion(Request $request)
+    public function saveQuestion(Request $request)
     {
         $questionnaire = Questionnaire::first();
 
@@ -64,9 +65,19 @@ class QuestionnaireController extends Controller
             'help_url' => $request->help_url
         ]);
 
+        if ($question->data_type === 'range') {
 
+        } else {
+            foreach($request->answers as $answer) {
+                $a = Answer::create([
+                    'text' => $answer['text'],
+                    'compliant' => $answer['compliant']
+                ]);
+                $question->answers()->associate($a);
+            }
+        }
 
-
-
+        $questionnaire->questions()->associate($question);
+        $questionnaire->save();
     }
 }
