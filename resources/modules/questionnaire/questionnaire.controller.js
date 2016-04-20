@@ -11,6 +11,20 @@
          Questions.init()
              .then( function () {
                  vm.questions = Questions.questions;
+                 vm.pageSize = 5;
+                 vm.$watch('search.questions', function () {
+                     vm.filterQuestions = filterFilter(vm.questions);
+                     vm.currentPage();
+                 })
+                 .filter('start', function () {
+                     return function (input, start) {
+                         if (!input || !input.length) {
+                             return;
+                         }
+                         start = +start;
+                         return input.slice(start);
+                     }
+                 })
              });
 
 
@@ -66,10 +80,7 @@
              NewQuestion.addMultipleChoiceInput();
          };
 
-         vm.filteredQuestions = [];
-         vm.currentPage = 1;
-         vm.numPerPage = 1;
-         vm.maxSize = 5;
+
 
      });
 

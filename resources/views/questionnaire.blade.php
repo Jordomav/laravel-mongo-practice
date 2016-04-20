@@ -16,7 +16,7 @@
             <i class="fa fa-plus col-lg-offset-5 add" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
         </div>
 
-        <div data-ng-repeat="question in questionnaire.questions" class="question row">
+        <div data-ng-repeat="question in questionnaire.questions  | start: (currentPage - 1) * pageSize | limitTo: pageSize" class="question row">
 
             <div class="col-xs-8">
                 {{-- Display the question --}}
@@ -54,12 +54,7 @@
                 <hr />
             </div>
         </div>
-        <uib-pagination
-                ng-model="currentPage"
-                total-items="questionnaire.questions.length"
-                max-size="maxSize"
-                boundary-links="true">
-        </uib-pagination>
+        <pagination total-items="filterQuestions.length" items-per-page="pageSize" ng-model="currentPage" max-size="5" class="pagination-sm"></pagination>
 
         {{-- Button to open Compliance Report --}}
         <button type="button"
