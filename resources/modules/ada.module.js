@@ -3,6 +3,6 @@
 {
     'use strict';
 
-    angular.module('adaApp', ['templates']);
+    angular.module('adaApp', ['ui.bootstrap', 'templates']);
 
 }());

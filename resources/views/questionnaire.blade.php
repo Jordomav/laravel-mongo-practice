@@ -53,10 +53,13 @@
             <div class="col-xs-12">
                 <hr />
             </div>
-
-
-
         </div>
+        <uib-pagination
+                ng-model="currentPage"
+                total-items="questionnaire.questions.length"
+                max-size="maxSize"
+                boundary-links="true">
+        </uib-pagination>
 
         {{-- Button to open Compliance Report --}}
         <button type="button"
@@ -190,7 +193,6 @@
                 </div>
             </div>
         </div>
-
 
     </div>
     </body>

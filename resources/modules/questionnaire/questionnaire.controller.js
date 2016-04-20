@@ -1,4 +1,3 @@
-
 (function () {
 
  'use strict';
@@ -66,6 +65,11 @@
          vm.addMultipleChoiceAnswer = function () {
              NewQuestion.addMultipleChoiceInput();
          };
+
+         vm.filteredQuestions = [];
+         vm.currentPage = 1;
+         vm.numPerPage = 1;
+         vm.maxSize = 5;
 
      });
 
