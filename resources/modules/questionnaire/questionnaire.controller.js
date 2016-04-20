@@ -15,6 +15,8 @@
                  .then( function () {
                      vm.questions = Questions.questions;
                      console.log(vm.questions);
+
+                     vm.updatePage();
                  });
          }
 
@@ -110,6 +112,27 @@
 
          vm.addMultipleChoiceAnswer = function () {
              NewQuestion.addMultipleChoiceInput();
+         };
+
+         /**
+          * Pagination
+          */
+         vm.pageSize = 6;
+         vm.currentPage = 1;
+
+         vm.updatePage = function () {
+             console.log(vm.currentPage);
+             vm.questionsPaginated = [];
+
+             var i = (vm.currentPage - 1) * vm.pageSize;
+             var j = vm.currentPage * vm.pageSize;
+
+             for(i, j; i <j && i < vm.questions.length; i++) {
+                 vm.questionsPaginated.push(
+                   vm.questions[i]
+                 );
+                 console.log(vm.questionsPaginated);
+             }
          };
 
          vm.resetForm = function () {
