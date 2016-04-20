@@ -49,7 +49,7 @@
                     <h4><i class="fa fa-times-circle icon-size"></i> non-compliant</h4>
                 </div>
             </div>
-            <span><i class="fa fa-times-circle-o" data-ng-click="questionnaire.deleteQuestion()"></i></span>
+            <span><i class="fa fa-times-circle-o" data-ng-click="questionnaire.deleteQuestion(question)"></i></span>
             <div class="col-xs-12">
                 <hr />
             </div>

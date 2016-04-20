@@ -25,4 +25,4 @@ Route::post('post-answer', 'QuestionnaireController@saveAnswer');
 Route::post('save-question', 'QuestionnaireController@saveQuestion');
 
 
-Route::delete('delete-question', 'QuestionnaireController@deleteQuestion');
+Route::post('delete-question', 'QuestionnaireController@deleteQuestion');

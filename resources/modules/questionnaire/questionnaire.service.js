@@ -153,6 +153,26 @@
                         alert('There was a problem saving the question.');
                         console.log(err);
                     });
+            };
+
+            vm.deleteQuestion = function (question) {
+                console.log('deleting from service');
+
+                swal({ title: "Are you sure?",
+                        text: "You will not be able to recover this question",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Yes, delete it!",
+                        closeOnConfirm: false });
+
+                return $http.post('delete-question', {_id: question._id})
+                    .then(function successCallback () {
+
+                    }, function errorCallback(err) {
+                        alert('There was a problem deleting the question.');
+                        console.log(err);
+                    });
 
             };
 

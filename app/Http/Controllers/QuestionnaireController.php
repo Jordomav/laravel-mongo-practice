@@ -88,6 +88,8 @@ class QuestionnaireController extends Controller
     }
 
     public function deleteQuestion(Request $request) {
-        DB::collection('questions')->where('_id', $request->id)->delete();
+        $questionnaire = Questionnaire::first();
+        $question = $questionnaire->questions()->where('_id', $request->_id)->first();
+        $question->delete();
     }
 }
