@@ -142,11 +142,7 @@
          };
 
          vm.deleteQuestion = function (question) {
-             Questions.deleteQuestion(question)
-                 .then( function () {
-                     swal("Deleted!", "You have deleted the question.", "success");
-                     displayQuestions();
-                 });
+             Questions.deleteQuestion(question, displayQuestions);
          };
 
      });

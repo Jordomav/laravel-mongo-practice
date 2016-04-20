@@ -155,7 +155,7 @@
                     });
             };
 
-            vm.deleteQuestion = function (question) {
+            vm.deleteQuestion = function (question, updateViewCallback) {
                 console.log('deleting from service');
 
                 swal({ title: "Are you sure?",
@@ -164,17 +164,24 @@
                         showCancelButton: true,
                         confirmButtonColor: "#DD6B55",
                         confirmButtonText: "Yes, delete it!",
-                        closeOnConfirm: false });
+                        closeOnConfirm: false },
 
-                return $http.post('delete-question', {_id: question._id})
-                    .then(function successCallback () {
+                    function () {
 
-                    }, function errorCallback(err) {
-                        alert('There was a problem deleting the question.');
-                        console.log(err);
-                    });
+                        $http.post('delete-question', {_id: question._id})
 
+                            .then(function successCallback() {
+                                updateViewCallback();
+                                swal("Deleted!", "You have deleted the question.", "success");
+
+                            }, function errorCallback (err){
+                                alert('There was a problem deleting the question');
+                                console.log(err);
+                            });
+
+                });
             };
+
 
         });
 }());
