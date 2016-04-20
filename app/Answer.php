@@ -8,7 +8,7 @@ class Answer extends Eloquent
 {
     protected $connection = 'mongodb';
 
-    protected $fillable = ['text', 'compliant_range'];
+    protected $fillable = ['text', 'compliant', 'compliant_range'];
 
     public function question()
     {
