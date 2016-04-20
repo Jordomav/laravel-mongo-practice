@@ -48,6 +48,7 @@
          vm.trueFalseAnswers = {};
          vm.newQuestionMultipleChoiceAnswers = NewQuestion.multipleChoiceAnswers;
          vm.rangeAnswer = [];
+         vm.rangeMeasurement = '';
 
          vm.newQuestion = function () {
              var question = {
@@ -82,7 +83,7 @@
 
                  case 'range':
                      question.answers = {};
-                     question.answers.text = 'REPLACE';
+                     question.answers.text = vm.rangeMeasurement;
                      question.answers.compliant_range = vm.rangeAnswer;
                      break;
              }
