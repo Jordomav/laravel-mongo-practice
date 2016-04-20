@@ -1,5 +1,5 @@
 
-<form class="col-xs-2">
+<form class="form-inline">
 
     <input data-ng-model="question.user_input"
            data-ng-keyup="questionnaire.saveAnswer(question)"
@@ -9,5 +9,7 @@
            name="range"
            title="range"
            class="form-control">
+
+    <span>{{ question.answers[0].text }}</span>
 
 </form>
