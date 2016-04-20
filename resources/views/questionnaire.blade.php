@@ -119,54 +119,62 @@
 
                             {{-- New Question text input --}}
                             <h3>Question</h3>
-                            <textarea data-ng-model="questionnaire.newQuestionText"
-                                      type="text"
-                                      name="question"
-                                      placeholder="Question text"
-                                      cols="80" rows="4"></textarea>
+                            <div class="form-group">
+                                <textarea data-ng-model="questionnaire.newQuestionText"
+                                          type="text"
+                                          name="question"
+                                          placeholder="Question text"
+                                          rows="3"
+                                          class="form-control question-input"></textarea>
+                            </div>
+
 
                             <div class="row">
                                 <h3 class="col-xs-12">Question type:</h3>
-                                <div class="col-xs-12">
+                                <div class="col-xs-12 ">
                                     <button data-ng-click="questionnaire.displayAnswerForm($event)"
                                             value="true_false"
-                                            type="button">True-False</button>
+                                            type="button"
+                                            class="btn btn-default answer-type-btn">True-False</button>
 
                                     <button data-ng-click="questionnaire.displayAnswerForm($event)"
                                             value="multiple_choice"
-                                            type="button">Multiple Choice</button>
+                                            type="button"
+                                            class="btn btn-default answer-type-btn">Multiple Choice</button>
 
                                     <button data-ng-click="questionnaire.displayAnswerForm($event)"
                                             value="range"
-                                            type="button">Range</button>
+                                            type="button"
+                                            class="btn btn-default answer-type-btn">Range</button>
                                 </div>
                             </div>
 
-                            <div data-ng-if="questionnaire.newQuestionAnswerType === 'true_false'" class="row">
+                            <div data-ng-if="questionnaire.newQuestionAnswerType === 'true_false'" class="row tab-inner tab-wrap">
                                 <div class="row">
                                     <span class="col-xs-6">
                                         <span>True:</span>
                                         <input data-ng-model="questionnaire.trueFalseAnswers.true"
-                                               title="true-answer" type="text">
+                                               title="true-answer" type="text" class="form-control">
                                     </span>
                                 </div>
                                 <div class="row">
                                     <span class="col-xs-6">
                                         <span>False:</span>
                                         <input data-ng-model="questionnaire.trueFalseAnswers.false"
-                                               title="false-answer" type="text">
+                                               title="false-answer" type="text" class="form-control">
                                     </span>
                                 </div>
                             </div>
 
-                            <div data-ng-if="questionnaire.newQuestionAnswerType === 'multiple_choice'" class="row">
+                            <div data-ng-if="questionnaire.newQuestionAnswerType === 'multiple_choice'" class="row tab-inner tab-wrap">
                                 <div data-ng-repeat="answer in questionnaire.newQuestionMultipleChoiceAnswers">
 
                                     <textarea data-ng-model="answer.text"
-                                              class="col-xs-8"
+                                              class="col-xs-8 form-control question-input multi-input"
+                                              rows="1"
                                               title="multiple-choice-answer"></textarea>
 
-                                    <span class="col-xs-2">Compliant?
+                                    <span class="col-xs-2 multi-input2">Compliant?
                                         <input data-ng-model="answer.compliant"
                                                type="checkbox"
                                                title="multiple-choice-answer-compliance">
@@ -174,10 +182,10 @@
 
                                 </div>
                                 <i data-ng-click="questionnaire.addMultipleChoiceAnswer()"
-                                   class="fa fa-plus-circle col-xs-1"></i>
+                                   class="fa fa-plus-circle col-xs-1 multi-input2"></i>
                             </div>
 
-                            <div data-ng-if="questionnaire.newQuestionAnswerType === 'range'" class="row">
+                            <div data-ng-if="questionnaire.newQuestionAnswerType === 'range'" class="row tab-inner tab-wrap">
                                 <div class="row">
                                     <span class="col-xs-6">
                                         <span>Min:</span>
@@ -195,9 +203,9 @@
                                     </span>
                                 </div>
                             </div>
-
+                            <br>
                             <p>Help URL:</p>
-                            <textarea name="" id="" cols="40" rows="1"></textarea>
+                            <textarea name="" id="" cols="40" rows="1" class="form-control question-input"></textarea>
                             <br/><br>
                             <button data-ng-click="questionnaire.addQuestion()"
                                     type="button"
