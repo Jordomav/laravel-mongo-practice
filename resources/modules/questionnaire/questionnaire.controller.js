@@ -43,10 +43,10 @@
          // New Question Values
          vm.newQuestionText = '';
          vm.newQuestionAnswerType =  NewQuestion.answerType;
-         vm.newQuestionMultipleChoiceInputs = NewQuestion.multipleChoiceInputs;
 
          // Answer Type Values
          vm.trueFalseAnswers = {};
+         vm.newQuestionMultipleChoiceAnswers = NewQuestion.multipleChoiceAnswers;
 
          // TODO: Move more of this logic to the Service.
          vm.newQuestion = function () {
@@ -59,22 +59,30 @@
                  help_url: ''
              };
 
-             if (question.data_type === 'true_false') {
-                 question.answers = [
-                     {
-                         text: vm.trueFalseAnswers.true,
-                         compliant: true
-                     },
-                     {
-                         text: vm.trueFalseAnswers.false,
-                         compliant: false
-                     }
-                 ];
-             } else if (question.data_type === 'multiple_choice') {
-                 
+             switch (question.data_type) {
+                 case 'true_false':
+                     question.answers = [
+                         {
+                             text: vm.trueFalseAnswers.true,
+                             compliant: true
+                         },
+                         {
+                             text: vm.trueFalseAnswers.false,
+                             compliant: false
+                         }
+                     ];
+                     break;
+
+                 case 'multiple_choice':
+                     question.answers = [];
+                     _.forEach(vm.newQuestionMultipleChoiceAnswers, function (answer) {
+                         question.answers.push(answer);
+                     });
+                     break;
+
+                 case 'range':
+                     break;
              }
-
-
 
              return question;
          };

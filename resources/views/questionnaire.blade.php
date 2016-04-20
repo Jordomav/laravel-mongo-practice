@@ -74,6 +74,16 @@
 
                     <h2 class="modal-header text-center">Compliance Overview</h2>
 
+                    {{-- Overall Questionnaire Complaince Headers --}}
+                    <h3 data-ng-if="questionnaire.getOverallCompliance()" class="compliant text-center">
+                        You're compliant in all areas.
+                    </h3>
+
+                    <h3 data-ng-if="!questionnaire.getOverallCompliance()" class="non-compliant text-center">
+                        You are out of compliance.
+                    </h3>
+
+                    {{-- Individual Question Compliance --}}
                     <div data-ng-repeat="question in questionnaire.questions" class="question report">
 
                         {{-- Display when question answer in noncompliant --}}
@@ -96,14 +106,11 @@
                         <hr>
                     </div>
 
-                    <h3 data-ng-if="questionnaire.getOverallCompliance()" class="compliant text-center">
-                        You're compliant in all areas.
-                    </h3>
-
                 </div>
             </div>
         </div>
 
+        {{-- TODO: Move the Add Question Model to separate file --}}
         <!-- Add Question modal -->
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
             <div class="modal-dialog modal-lg">
@@ -139,40 +146,50 @@
 
                             <div data-ng-if="questionnaire.newQuestionAnswerType === 'true_false'" class="row">
                                 <div class="row">
-                                    <span class="col-lg-2">
+                                    <span class="col-xs-6">
                                         <span>True:</span>
                                         <input data-ng-model="questionnaire.trueFalseAnswers.true"
-                                               title='true-answer' type="text">
+                                               title="true-answer" type="text">
                                     </span>
                                 </div>
                                 <div class="row">
-                                    <span class="col-lg-2">
+                                    <span class="col-xs-6">
                                         <span>False:</span>
                                         <input data-ng-model="questionnaire.trueFalseAnswers.false"
-                                               type="text">
+                                               title="false-answer" type="text">
                                     </span>
                                 </div>
                             </div>
 
                             <div data-ng-if="questionnaire.newQuestionAnswerType === 'multiple_choice'" class="row">
-                                <input type="text">
-                                    <div data-ng-repeat="answer in questionnaire.newQuestionMultipleChoiceInputs">
-                                        <input data-ng-model="answer.text">
-                                    </div>
-                                <i data-ng-click="questionnaire.addMultipleChoiceAnswer()" class="fa fa-plus-circle"></i>
+                                <div data-ng-repeat="answer in questionnaire.newQuestionMultipleChoiceAnswers">
+
+                                    <textarea data-ng-model="answer.text"
+                                              class="col-xs-8"
+                                              title="multiple-choice-answer"></textarea>
+
+                                    <span class="col-xs-2">Compliant?
+                                        <input data-ng-model="answer.compliant"
+                                               type="checkbox"
+                                               title="multiple-choice-answer-compliance">
+                                    </span>
+
+                                </div>
+                                <i data-ng-click="questionnaire.addMultipleChoiceAnswer()"
+                                   class="fa fa-plus-circle col-xs-1"></i>
                             </div>
 
                             <div data-ng-if="questionnaire.newQuestionAnswerType === 'range'" class="row">
                                 <div class="row">
-                                    <span class="col-lg-2">
+                                    <span class="col-xs-6">
                                         <span>Min:</span>
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" title="range-answer-min">
                                     </span>
                                 </div>
                                 <div class="row">
-                                    <span class="col-lg-2">
+                                    <span class="col-xs-6">
                                         <span>Max:</span>
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" title="range-answer-max">
                                     </span>
                                 </div>
                             </div>
