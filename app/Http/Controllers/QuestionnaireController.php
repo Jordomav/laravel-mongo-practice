@@ -66,14 +66,19 @@ class QuestionnaireController extends Controller
         ]);
 
         if ($question->data_type === 'range') {
+            $answer = Answer::create([
+                'text' => $request->answers['text'],
+                'compliant_range' => $request->answers['compliant_range']
+            ]);
+            $question->answers()->associate($answer);
 
         } else {
             foreach($request->answers as $answer) {
-                $a = Answer::create([
+                $answer = Answer::create([
                     'text' => $answer['text'],
                     'compliant' => $answer['compliant']
                 ]);
-                $question->answers()->associate($a);
+                $question->answers()->associate($answer);
             }
         }
 

@@ -183,13 +183,17 @@
                                 <div class="row">
                                     <span class="col-xs-6">
                                         <span>Min:</span>
-                                        <input type="number" class="form-control" title="range-answer-min">
+                                        <input data-ng-model="questionnaire.rangeAnswer[0]"
+                                               type="number"
+                                               class="form-control" title="range-answer-min">
                                     </span>
                                 </div>
                                 <div class="row">
                                     <span class="col-xs-6">
                                         <span>Max:</span>
-                                        <input type="number" class="form-control" title="range-answer-max">
+                                        <input data-ng-model="questionnaire.rangeAnswer[1]"
+                                               type="number"
+                                               class="form-control" title="range-answer-max">
                                     </span>
                                 </div>
                             </div>

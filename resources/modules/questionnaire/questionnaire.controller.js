@@ -15,6 +15,7 @@
              Questions.init()
                  .then( function () {
                      vm.questions = Questions.questions;
+                     console.log(vm.questions);
                  });
          }
 
@@ -40,15 +41,16 @@
           *  New Question Methods
           */
 
+         // TODO: Move more of this logic to the Service.
          // New Question Values
          vm.newQuestionText = '';
          vm.newQuestionAnswerType =  NewQuestion.answerType;
 
-         // Answer Type Values
+         // Properties for storing answers for new questions.
          vm.trueFalseAnswers = {};
          vm.newQuestionMultipleChoiceAnswers = NewQuestion.multipleChoiceAnswers;
+         vm.rangeAnswer = [];
 
-         // TODO: Move more of this logic to the Service.
          vm.newQuestion = function () {
              var question = {
                  text: vm.newQuestionText,
@@ -81,6 +83,9 @@
                      break;
 
                  case 'range':
+                     question.answers = {};
+                     question.answers.text = 'REPLACE';
+                     question.answers.compliant_range = vm.rangeAnswer;
                      break;
              }
 
