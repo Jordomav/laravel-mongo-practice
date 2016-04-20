@@ -9,11 +9,14 @@
 
          // Get questions from database, and then bind vm.questions to the underlying questions collection from the
          // Questions Service.
-         Questions.init()
-             .then( function () {
-                 vm.questions = Questions.questions;
-             });
+         displayQuestions();
 
+         function displayQuestions() {
+             Questions.init()
+                 .then( function () {
+                     vm.questions = Questions.questions;
+                 });
+         }
 
          // Overall compliance of questionnaire, taking all questions into consideration.
          vm.getOverallCompliance = function () {
@@ -67,14 +70,21 @@
                          compliant: false
                      }
                  ];
+             } else if (question.data_type === 'multiple_choice') {
+                 
              }
+
+
 
              return question;
          };
 
 
          vm.addQuestion = function () {
-             Questions.saveQuestion(vm.newQuestion());
+             Questions.saveQuestion(vm.newQuestion())
+                 .then(function () {
+                     displayQuestions();
+                 });
          };
 
 
