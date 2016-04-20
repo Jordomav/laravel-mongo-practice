@@ -16,7 +16,7 @@
             <i class="fa fa-plus col-lg-offset-5 add" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
         </div>
 
-        <div data-ng-repeat="question in questionnaire.questions" class="question row">
+        <div data-ng-repeat="question in questionnaire.questionsPaginated" class="question row">
 
             <div class="col-xs-8">
                 {{-- Display the question --}}
@@ -57,7 +57,13 @@
 
 
         </div>
-        <pagination total-items="filterQuestions.length" items-per-page="pageSize" ng-model="currentPage" max-size="5" class="pagination-sm"></pagination>
+
+        {{-- Page Navigation --}}
+        <uib-pagination total-items="questionnaire.questions.length"
+                        items-per-page="questionnaire.pageSize"
+                        data-ng-model="questionnaire.currentPage"
+                        data-ng-change="questionnaire.updatePage()"
+                        class="pagination-sm"></uib-pagination>
 
         {{-- Button to open Compliance Report --}}
         <button type="button"
@@ -180,7 +186,8 @@
                                     <span class="col-xs-2 multi-input2">Compliant?
                                         <input data-ng-model="answer.compliant"
                                                type="checkbox"
-                                               title="multiple-choice-answer-compliance">
+                                               title="multiple-choice-answer-compliance"
+                                               required>
                                     </span>
 
                                 </div>
