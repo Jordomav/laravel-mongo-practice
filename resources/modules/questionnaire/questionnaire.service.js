@@ -141,6 +141,51 @@
                 }
             };
 
+            vm.selectedAnswerText = function (question) {
+                if (question.data_type === 'range') {
+                    return question.user_input;
+                } else {
+                    if (question.selected_answer_id) {
+                        return question.answers[question.selected_answer_id].text;
+                    }
+                }
+            };
+
+            // Used for displaying compliant answer choices for out-of-compliance questions
+            // in Questionnaire Compliance Report
+            vm.compliantAnswers = function (question) {
+
+                var compliantAnswers = [];
+
+                var label = 'The compliant answer is: ';
+
+                if (question.data_type === 'range') {
+
+                    var range = question.answers[0].compliant_range;
+
+                    _.forEach(range, function(bound) {
+                       compliantAnswers.push(bound);
+                    });
+
+                    label = 'The compliant range is: ';
+                } else {
+
+                    _.forEach(question.answers, function (answer) {
+                        if (answer.compliant === true) {
+                            compliantAnswers.push(answer);
+                        }
+                    });
+
+                    if (compliantAnswers.length > 1) {
+                        label = 'The compliant answers are: ';
+                    }
+                }
+                return {
+                    label: label,
+                    compliantAnswers: compliantAnswers
+                }
+
+            };
 
             vm.saveQuestion = function (question) {
                 console.log(question);
