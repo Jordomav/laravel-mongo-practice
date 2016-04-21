@@ -13,7 +13,7 @@
 
         <div class="row">
             <h1 class="col-xs-6 text-left app-title">ADA Compliance Survey</h1>
-            <i class="fa fa-plus col-lg-offset-5 add" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+            <i class="col-xs-6 fa fa-plus add text-right" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
         </div>
 
         <div data-ng-repeat="question in questionnaire.questionsPaginated" class="question row">
