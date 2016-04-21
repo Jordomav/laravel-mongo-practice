@@ -21,6 +21,7 @@
             <div class="col-xs-8">
                 {{-- Display the question --}}
                 <p>@{{ question.text }}</p>
+                <p>@{{ questionnaire.newQuestion.test }}</p>
 
                 {{-- Display appropriate input type to allow user to answer question --}}
                 <div class="answer-input col-xs-10">
@@ -139,12 +140,11 @@
                             <div class="form-group">
 
                                 <textarea data-ng-model="questionnaire.newQuestionText"
-                                          type="text"
                                           name="question"
                                           placeholder="Question text"
                                           rows="3"
                                           class="form-control question-input"
-                                          required></textarea>
+                                          data-ng-required="true"></textarea>
                             </div>
 
                             <div class="row">
@@ -230,22 +230,24 @@
                                 <div class="col-xs-6">
                                     <div class="col-xs-12">
                                         <span class="col-xs-6">
-                                            <span>Measurement:</span>
+                                            <label>Measurement:
                                             <input data-ng-model="questionnaire.rangeMeasurement"
                                                    type="text"
                                                    class="form-control" title="range-measurement">
+                                            </label>
                                         </span>
                                     </div>
 
                                 </div>
                             </div>
-                            <br>
-                            <p>Help URL:</p>
-                            <textarea data-ng-model="questionnaire.resetUrl"
-                                      id="" cols="40" rows="1"
-                                      title="help-url"
-                                      class="form-control question-input"></textarea>
-                            <br/><br/>
+
+
+                            <label>Help URL:
+                                <input data-ng-model="questionnaire.newQuestionHelpUrl"
+                                       type="url"
+                                       class="form-control" title="help-url">
+                            </label>
+
 
                             <button data-ng-click="questionnaire.addQuestion()"
                                     type="button"
@@ -272,7 +274,7 @@
                                     class="btn btn-default">
                                 Exit
                             </button>
-                            <br/>
+
                         </form>
                     </div>
 
