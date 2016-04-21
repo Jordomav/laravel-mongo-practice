@@ -121,8 +121,15 @@
         <!-- Add Question modal -->
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content ">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: 40px; margin-right:10px;">&times;</span></button>
+                <div class="modal-content">
+
+                    <button data-ng-click="questionnaire.resetForm()"
+                            type="button" class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true" style="font-size: 40px; margin-right:10px;">&times;</span>
+                    </button>
+
                     <div class="modal-interior">
                         <h1>Add a question</h1>
                         <form name="questionnaire.newForm" action="">
@@ -130,14 +137,15 @@
                             {{-- New Question text input --}}
                             <h3>Question</h3>
                             <div class="form-group">
+
                                 <textarea data-ng-model="questionnaire.newQuestionText"
                                           type="text"
                                           name="question"
                                           placeholder="Question text"
                                           rows="3"
-                                          class="form-control question-input"></textarea>
+                                          class="form-control question-input"
+                                          required></textarea>
                             </div>
-
 
                             <div class="row">
                                 <h3 class="col-xs-12">Question type:</h3>
@@ -164,14 +172,16 @@
                                     <span class="col-xs-6">
                                         <span>True:</span>
                                         <input data-ng-model="questionnaire.trueFalseAnswers.true"
-                                               title="true-answer" type="text" class="form-control">
+                                               title="true-answer" type="text" class="form-control"
+                                               required>
                                     </span>
                                 </div>
                                 <div class="row">
                                     <span class="col-xs-6">
                                         <span>False:</span>
                                         <input data-ng-model="questionnaire.trueFalseAnswers.false"
-                                               title="false-answer" type="text" class="form-control">
+                                               title="false-answer" type="text" class="form-control"
+                                               required>
                                     </span>
                                 </div>
                             </div>
@@ -182,13 +192,13 @@
                                     <textarea data-ng-model="answer.text"
                                               class="col-xs-8 form-control question-input multi-input"
                                               rows="1"
-                                              title="multiple-choice-answer"></textarea>
+                                              title="multiple-choice-answer"
+                                              required></textarea>
 
                                     <span class="col-xs-2 multi-input2">Compliant?
                                         <input data-ng-model="answer.compliant"
                                                type="checkbox"
-                                               title="multiple-choice-answer-compliance"
-                                               required>
+                                               title="multiple-choice-answer-compliance">
                                     </span>
 
                                 </div>
@@ -203,7 +213,8 @@
                                         <span>Min:</span>
                                         <input data-ng-model="questionnaire.rangeAnswer[0]"
                                                type="number"
-                                               class="form-control" title="range-answer-min">
+                                               class="form-control" title="range-answer-min"
+                                               required>
                                     </span>
                                     </div>
                                     <div class="col-xs-12">
@@ -211,7 +222,8 @@
                                         <span>Max:</span>
                                         <input data-ng-model="questionnaire.rangeAnswer[1]"
                                                type="number"
-                                               class="form-control" title="range-answer-max">
+                                               class="form-control" title="range-answer-max"
+                                               required>
                                     </span>
                                     </div>
                                 </div>
@@ -220,7 +232,6 @@
                                         <span class="col-xs-6">
                                             <span>Measurement:</span>
                                             <input data-ng-model="questionnaire.rangeMeasurement"
-                                                   name="questionnaire.messurement"
                                                    type="text"
                                                    class="form-control" title="range-measurement">
                                         </span>
@@ -230,14 +241,37 @@
                             </div>
                             <br>
                             <p>Help URL:</p>
-                            <textarea name="" id="" cols="40" rows="1" class="form-control question-input" data-ng-model="questionnaire.resetUrl"></textarea>
-                            <br/><br>
+                            <textarea data-ng-model="questionnaire.resetUrl"
+                                      id="" cols="40" rows="1"
+                                      title="help-url"
+                                      class="form-control question-input"></textarea>
+                            <br/><br/>
+
                             <button data-ng-click="questionnaire.addQuestion()"
                                     type="button"
                                     class="btn btn-success">
-                                Submit
+                                Save and Add Another
                             </button>
-                            <button type="button" data-ng-click="questionnaire.resetForm()" class="btn btn-danger">Clear</button>
+
+                            <button data-ng-click="questionnaire.addQuestion()"
+                                    data-dismiss="modal"
+                                    type="button"
+                                    class="btn btn-success">
+                                Save and Exit
+                            </button>
+
+                            <button data-ng-click="questionnaire.resetForm()"
+                                    type="button"
+                                    class="btn btn-danger">
+                                Clear
+                            </button>
+
+                            <button data-ng-click="questionnaire.resetForm()"
+                                    data-dismiss="modal"
+                                    type="button"
+                                    class="btn btn-default">
+                                Exit
+                            </button>
                             <br/>
                         </form>
                     </div>

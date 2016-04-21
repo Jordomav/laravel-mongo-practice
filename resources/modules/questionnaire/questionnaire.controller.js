@@ -115,6 +115,16 @@
              NewQuestion.addMultipleChoiceInput();
          };
 
+         vm.resetForm = function () {
+             vm.newQuestionText = '';
+             vm.trueFalseAnswers = '';
+             vm.newQuestionMultipleChoiceAnswers = [];
+             vm.rangeMeasurement = '';
+             vm.resetUrl = '';
+             vm.rangeAnswer = [];
+             vm.newQuestionMultipleChoiceAnswers = [{text: '', compliant: false}];
+         };
+
          /**
           * Pagination
           */
@@ -134,16 +144,6 @@
              }
          };
 
-         vm.resetForm = function () {
-             vm.newQuestionText = '';
-             vm.trueFalseAnswers = '';
-             vm.newQuestionMultipleChoiceAnswers = [];
-             vm.rangeMeasurement = '';
-             vm.resetUrl = '';
-             vm.rangeAnswer = [];
-             vm.newQuestionMultipleChoiceAnswers = [{text: '', compliant: false}]
-
-         };
 
          vm.deleteQuestion = function (question) {
              Questions.deleteQuestion(question, displayQuestions);
