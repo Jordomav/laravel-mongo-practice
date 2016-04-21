@@ -141,7 +141,7 @@
              vm.rangeMeasurement = '';
              vm.resetUrl = '';
              vm.rangeAnswer = [];
-             vm.newQuestionMultipleChoiceAnswers = [{text: '', compliant: false}]
+             vm.newQuestionMultipleChoiceAnswers = [{text: '', compliant: false}];
 
          };
 

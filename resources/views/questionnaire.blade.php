@@ -122,7 +122,7 @@
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content ">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: 40px; margin-right:10px;">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: 40px; margin-right:10px;" >&times;</span></button>
                     <div class="modal-interior">
                         <h1>Add a question</h1>
                         <form name="questionnaire.newForm" action="">
