@@ -1,6 +1,8 @@
 (function () {
 
+
  'use strict';
+
  angular.module('adaApp')
      .controller('QuestionnaireController', function($http, Questions, NewQuestion) {
 
@@ -148,11 +150,9 @@
              }
          };
 
-
          vm.deleteQuestion = function (question) {
              Questions.deleteQuestion(question, displayQuestions);
          };
-
      });
 
  }());

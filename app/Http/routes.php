@@ -26,3 +26,6 @@ Route::post('save-question', 'QuestionnaireController@saveQuestion');
 
 
 Route::post('delete-question', 'QuestionnaireController@deleteQuestion');
+
+
+Route::get('print', 'QuestionnaireController@pdf');

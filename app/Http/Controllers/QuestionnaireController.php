@@ -6,14 +6,21 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use PDF;
 use App\Question;
 use App\Questionnaire;
 use App\Answer;
 use DB;
 use Illuminate\Http\Request;
 
+
 class QuestionnaireController extends Controller
 {
+
+    public function pdf(Question $question) {
+        $pdf = PDF::loadView('pdf', compact('questions'));
+        return $pdf->stream('invoice.pdf');
+    }
 
     public function index()
     {
