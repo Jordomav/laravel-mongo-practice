@@ -125,7 +125,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: 40px; margin-right:10px;" >&times;</span></button>
                     <div class="modal-interior">
                         <h1>Add a question</h1>
-                        <form name="questionnaire.newForm" action="">
+                        <form name="questionnaire.newForm" action="" class="">
 
                             {{-- New Question text input --}}
                             <h3>Question</h3>
@@ -135,7 +135,8 @@
                                           name="question"
                                           placeholder="Question text"
                                           rows="3"
-                                          class="form-control question-input"></textarea>
+                                          class="form-control question-input"
+                                          required></textarea>
                             </div>
 
 
@@ -164,14 +165,14 @@
                                     <span class="col-xs-6">
                                         <span>True:</span>
                                         <input data-ng-model="questionnaire.trueFalseAnswers.true"
-                                               title="true-answer" type="text" class="form-control">
+                                               title="true-answer" type="text" class="form-control" required>
                                     </span>
                                 </div>
                                 <div class="row">
                                     <span class="col-xs-6">
                                         <span>False:</span>
                                         <input data-ng-model="questionnaire.trueFalseAnswers.false"
-                                               title="false-answer" type="text" class="form-control">
+                                               title="false-answer" type="text" class="form-control" required>
                                     </span>
                                 </div>
                             </div>
@@ -182,13 +183,12 @@
                                     <textarea data-ng-model="answer.text"
                                               class="col-xs-8 form-control question-input multi-input"
                                               rows="1"
-                                              title="multiple-choice-answer"></textarea>
+                                              title="multiple-choice-answer" required ></textarea>
 
                                     <span class="col-xs-2 multi-input2">Compliant?
                                         <input data-ng-model="answer.compliant"
                                                type="checkbox"
-                                               title="multiple-choice-answer-compliance"
-                                               required>
+                                               title="multiple-choice-answer-compliance">
                                     </span>
 
                                 </div>
@@ -203,7 +203,7 @@
                                         <span>Min:</span>
                                         <input data-ng-model="questionnaire.rangeAnswer[0]"
                                                type="number"
-                                               class="form-control" title="range-answer-min">
+                                               class="form-control" title="range-answer-min" required>
                                     </span>
                                     </div>
                                     <div class="col-xs-12">
@@ -211,7 +211,7 @@
                                         <span>Max:</span>
                                         <input data-ng-model="questionnaire.rangeAnswer[1]"
                                                type="number"
-                                               class="form-control" title="range-answer-max">
+                                               class="form-control" title="range-answer-max" required>
                                     </span>
                                     </div>
                                 </div>
@@ -234,10 +234,11 @@
                             <br/><br>
                             <button data-ng-click="questionnaire.addQuestion()"
                                     type="button"
-                                    class="btn btn-success">
+                                    class="btn btn-success"
+                                    data-ng-disabled="questionnaire.newForm.$invalid">
                                 Submit
                             </button>
-                            <button type="button" data-ng-click="questionnaire.resetForm()" class="btn btn-danger">Clear</button>
+                            <button type="button" data-ng-click="questionnaire.resetForm()" class="btn btn-danger" data-ng-disabled="questionnaire.newForm.$invalid">Clear</button>
                             <br/>
                         </form>
                     </div>
