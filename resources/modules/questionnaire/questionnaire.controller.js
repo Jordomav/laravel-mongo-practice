@@ -6,8 +6,6 @@
 
          var vm = this;
 
-         vm.newQuestion = NewQuestion;
-
          // Get questions from database, and then bind vm.questions to the underlying questions collection from the
          // Questions Service.
          displayQuestions();
@@ -37,6 +35,16 @@
          // Returns boolean representing whether a question has been answered.
          vm.getWasAnswered = function (question) {
              return Questions.wasAnswered(question);
+         };
+
+         // Returns an array of compliant answer for a question.
+         vm.getCompliantAnswers = function (question) {
+             return Questions.compliantAnswers(question);
+         };
+
+         // Returns text of current answer
+         vm.getSelectedAnswerText = function (question) {
+             return Questions.selectedAnswerText(question);
          };
 
 

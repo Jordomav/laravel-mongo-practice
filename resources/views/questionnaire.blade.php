@@ -21,7 +21,6 @@
             <div class="col-xs-8">
                 {{-- Display the question --}}
                 <p>@{{ question.text }}</p>
-                <p>@{{ questionnaire.newQuestion.test }}</p>
 
                 {{-- Display appropriate input type to allow user to answer question --}}
                 <div class="answer-input col-xs-10">
@@ -54,8 +53,6 @@
             <div class="col-xs-12">
                 <hr />
             </div>
-
-
 
         </div>
 
@@ -102,11 +99,38 @@
 
                         {{-- Display when question answer is compliant --}}
                         <div data-ng-hide="question.compliant">
-                            <h4>
+                            <div class="report">
                                 <i class="non-compliant fa fa-times-circle icon-size"></i>
                                 You are not in compliance with regards to "@{{ question.text }}"
-                            </h4>
-                            To learn how to become compliant with this area go to: 
+                            </div>
+
+                            <span data-ng-if="!questionnaire.getWasAnswered(question)" class="info small">
+                                You have not selected an answer for this question.
+                            </span>
+
+                            <span data-ng-if="questionnaire.getWasAnswered(question)"
+                                  class="info">
+                                Your current answer is:
+                            </span>
+                            <p class="small">
+                                <span>@{{ questionnaire.getSelectedAnswerText(question) }}</span>
+                            </p>
+
+                            {{-- Display compliant answer Choices when a question is out of compliance --}}
+                            <span class="info">@{{ questionnaire.getCompliantAnswers(question).label }}</span>
+                            <p data-ng-repeat="answer in questionnaire.getCompliantAnswers(question).compliantAnswers"
+                               data-ng-if="!(question.data_type === 'range')">
+                                    <span class="highlight-text small">@{{ ($index + 1) + '. ' + answer.text }}</span>
+                            </p>
+
+                            <p data-ng-if="question.data_type === 'range'">
+                                    <span class="highlight-text small">
+                                        @{{ questionnaire.getCompliantAnswers(question).compliantAnswers[0] + ' to ' +
+                                        questionnaire.getCompliantAnswers(question).compliantAnswers[1] }}
+                                    </span>
+                            </p>
+
+                            <span class="info">For more information on how to become compliant with this area go to:</span>
                             <a href="">@{{ question.help_url }}</a>
 
                         </div>

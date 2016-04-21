@@ -27,8 +27,6 @@
                 vm.multipleChoiceAnswers.push({text: '', compliant: false});
             };
 
-            return vm;
-
     });
 
 }());
