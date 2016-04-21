@@ -78,7 +78,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h2 class="text-center">Compliance Overview</h2>
-                        <button print-btn><i class="fa fa-print" ></i></button>
+                        <i class="fa fa-print" print-btn></i>
                     </div>
                     <div print-section>
                         {{-- Overall Questionnaire Complaince Headers --}}
@@ -270,8 +270,7 @@
 
                                 </div>
                             </div>
-
-                            <div class="row">
+                            <div class="row modal-interior">
                                 <label>Help URL:
                                     <input data-ng-model="questionnaire.newQuestionHelpUrl"
                                            type="url"
@@ -279,32 +278,36 @@
                                 </label>
                             </div>
 
-                            <button data-ng-click="questionnaire.addQuestion()"
-                                    type="button"
-                                    class="btn btn-success"
-                                    data-ng-disabled="questionnaire.newForm.$invalid">
-                                Save and Add Another
-                            </button>
+                            <div class="buttons">
+                                <button data-ng-click="questionnaire.addQuestion()"
+                                        type="button"
+                                        class="btn btn-success"
+                                        data-ng-disabled="questionnaire.newForm.$invalid">
+                                    Save and Add Another
+                                </button>
 
-                            <button data-ng-click="questionnaire.addQuestion()"
-                                    data-dismiss="modal"
-                                    type="button"
-                                    class="btn btn-success">
-                                Save and Exit
-                            </button>
+                                <button data-ng-click="questionnaire.addQuestion()"
+                                        data-dismiss="modal"
+                                        type="button"
+                                        class="btn btn-success"
+                                        data-ng-disabled="questionnaire.newForm.$invalid">
+                                    Save and Exit
+                                </button>
 
-                            <button data-ng-click="questionnaire.resetForm()"
-                                    type="button"
-                                    class="btn btn-danger">
-                                Clear
-                            </button>
+                                <button data-ng-click="questionnaire.resetForm()"
+                                        type="button"
+                                        class="btn btn-danger">
+                                    Clear
+                                </button>
 
-                            <button data-ng-click="questionnaire.resetForm()"
-                                    data-dismiss="modal"
-                                    type="button"
-                                    class="btn btn-default">
-                                Exit
-                            </button>
+                                <button data-ng-click="questionnaire.resetForm()"
+                                        data-dismiss="modal"
+                                        type="button"
+                                        class="btn btn-default">
+                                    Exit
+                                </button>
+                            </div>
+
 
                         </form>
                     </div>
