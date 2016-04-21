@@ -8,6 +8,8 @@
 
             var vm = this;
 
+            vm.test = 'something';
+
             vm.newQuestionDataType = '';
 
             // Hard-code empty answer so that at least one input element displays in ng-repeat.
@@ -25,7 +27,7 @@
                 vm.multipleChoiceAnswers.push({text: '', compliant: false});
             };
 
-
+            return vm;
 
     });
 

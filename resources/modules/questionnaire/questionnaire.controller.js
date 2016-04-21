@@ -6,6 +6,8 @@
 
          var vm = this;
 
+         vm.newQuestion = NewQuestion;
+
          // Get questions from database, and then bind vm.questions to the underlying questions collection from the
          // Questions Service.
          displayQuestions();
@@ -46,6 +48,7 @@
          // New Question Values
          vm.newQuestionText = '';
          vm.newQuestionAnswerType =  NewQuestion.answerType;
+         vm.newQuestionHelpUrl = '';
 
          // Properties for storing answers for new questions.
          vm.trueFalseAnswers = {};
@@ -60,7 +63,8 @@
 
                  // Hard-coding all new questions as default questions for now.
                  default_question: true,
-                 help_url: ''
+
+                 help_url: vm.newQuestionHelpUrl
              };
 
              switch (question.data_type) {
@@ -115,6 +119,16 @@
              NewQuestion.addMultipleChoiceInput();
          };
 
+         vm.resetForm = function () {
+             vm.newQuestionText = '';
+             vm.trueFalseAnswers = '';
+             vm.newQuestionMultipleChoiceAnswers = [];
+             vm.rangeMeasurement = '';
+             vm.newQuestionHelpUrl = '';
+             vm.rangeAnswer = [];
+             vm.newQuestionMultipleChoiceAnswers = [{text: '', compliant: false}];
+         };
+
          /**
           * Pagination
           */
@@ -134,21 +148,10 @@
              }
          };
 
-         vm.resetForm = function () {
-             vm.newQuestionText = '';
-             vm.trueFalseAnswers = '';
-             vm.newQuestionMultipleChoiceAnswers = [];
-             vm.rangeMeasurement = '';
-             vm.resetUrl = '';
-             vm.rangeAnswer = [];
-             vm.newQuestionMultipleChoiceAnswers = [{text: '', compliant: false}];
-
-         };
 
          vm.deleteQuestion = function (question) {
              Questions.deleteQuestion(question, displayQuestions);
          };
-
 
      });
 
