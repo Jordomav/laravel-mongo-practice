@@ -133,7 +133,7 @@
 
                     <div class="modal-interior">
                         <h1>Add a question</h1>
-                        <form name="questionnaire.newForm" action="">
+                        <form name="questionnaire.newForm" action="" class="">
 
                             {{-- New Question text input --}}
                             <h3>Question</h3>
@@ -144,7 +144,7 @@
                                           placeholder="Question text"
                                           rows="3"
                                           class="form-control question-input"
-                                          data-ng-required="true"></textarea>
+                                          required></textarea>
                             </div>
 
                             <div class="row">
@@ -198,7 +198,8 @@
                                     <span class="col-xs-2 multi-input2">Compliant?
                                         <input data-ng-model="answer.compliant"
                                                type="checkbox"
-                                               title="multiple-choice-answer-compliance">
+                                               title="multiple-choice-answer-compliance"
+                                               required>
                                     </span>
 
                                 </div>
@@ -241,17 +242,18 @@
                                 </div>
                             </div>
 
-
-                            <label>Help URL:
-                                <input data-ng-model="questionnaire.newQuestionHelpUrl"
-                                       type="url"
-                                       class="form-control" title="help-url">
-                            </label>
-
+                            <div class="row">
+                                <label>Help URL:
+                                    <input data-ng-model="questionnaire.newQuestionHelpUrl"
+                                           type="url"
+                                           class="form-control" title="help-url">
+                                </label>
+                            </div>
 
                             <button data-ng-click="questionnaire.addQuestion()"
                                     type="button"
-                                    class="btn btn-success">
+                                    class="btn btn-success"
+                                    data-ng-disabled="questionnaire.newForm.$invalid">
                                 Save and Add Another
                             </button>
 
