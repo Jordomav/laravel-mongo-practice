@@ -252,6 +252,3 @@
     <script src="/build/js/deps.js"></script>
     <script src="/build/js/app.js"></script>
 </html>
-
-
-

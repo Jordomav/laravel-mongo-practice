@@ -100,6 +100,7 @@
                  .then(function () {
                      displayQuestions();
                      swal("Success!", "You're question has been submitted", "success");
+                     vm.resetForm();
                  });
          };
 
@@ -138,6 +139,9 @@
              vm.trueFalseAnswers = '';
              vm.newQuestionMultipleChoiceAnswers = [];
              vm.rangeMeasurement = '';
+             vm.resetUrl = '';
+             vm.rangeAnswer = [];
+             vm.newQuestionMultipleChoiceAnswers = [{text: '', compliant: false}]
 
          };
 
