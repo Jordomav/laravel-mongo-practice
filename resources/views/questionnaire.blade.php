@@ -12,7 +12,7 @@
     <div class="container">
 
         <div class="row">
-            <h1 class="col-lg-6">ADA Compliance Survey</h1>
+            <h1 class="col-xs-6 text-left app-title">ADA Compliance Survey</h1>
             <i class="fa fa-plus col-lg-offset-5 add" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
         </div>
 
@@ -36,7 +36,7 @@
 
             </div>
 
-            <div data-ng-if="questionnaire.getWasAnswered(question)" class="col-xs-4">
+            <div data-ng-if="questionnaire.getWasAnswered(question)" class="col-xs-4 text-right">
                 {{-- Display when question answer is compliant --}}
                 <div data-ng-show="question.compliant === true"
                      class="compliant">
@@ -49,7 +49,14 @@
                     <h4><i class="fa fa-times-circle icon-size"></i> non-compliant</h4>
                 </div>
             </div>
-            <span><i class="fa fa-times-circle-o" data-ng-click="questionnaire.deleteQuestion(question)"></i></span>
+
+            {{-- Delete Question Button --}}
+            {{-- TODO: Delete Question functionality will only be present in admin view --}}
+            <div class="text-muted col-xs-12 text-right">
+                delete question
+                <i class="fa fa-times-circle-o" data-ng-click="questionnaire.deleteQuestion(question)"></i>
+            </div>
+
             <div class="col-xs-12">
                 <hr />
             </div>
@@ -78,9 +85,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h2 class="text-center">Compliance Overview</h2>
-                        <i class="fa fa-print" print-btn></i>
-                    </div>
-                    <div print-section>
                         {{-- Overall Questionnaire Complaince Headers --}}
                         <h3 data-ng-if="questionnaire.getOverallCompliance()" class="compliant text-center">
                             You're compliant in all areas.
@@ -89,6 +93,9 @@
                         <h3 data-ng-if="!questionnaire.getOverallCompliance()" class="non-compliant text-center">
                             You are out of compliance.
                         </h3>
+                        <button print-btn class="print-btn"><i class="fa fa-print" ></i></button>
+                    </div>
+                    <div print-section>
 
                         {{-- Individual Question Compliance --}}
                         <div data-ng-repeat="question in questionnaire.questions" class="question report">
@@ -224,11 +231,11 @@
                                               title="multiple-choice-answer"
                                               required></textarea>
 
-                                    <span class="col-xs-2 multi-input2">Compliant?
+                                    <span class="col-xs-2 multi-input2">
+                                        Compliant?
                                         <input data-ng-model="answer.compliant"
                                                type="checkbox"
-                                               title="multiple-choice-answer-compliance"
-                                               required>
+                                               title="multiple-choice-answer-compliance">
                                     </span>
 
                                 </div>
