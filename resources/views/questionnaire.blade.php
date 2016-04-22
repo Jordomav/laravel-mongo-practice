@@ -55,7 +55,8 @@
                 {{-- TODO: Delete Question functionality will only be present in admin view --}}
                 <div class="text-muted col-xs-12 text-right">
                     delete question
-                    <i class="fa fa-times-circle-o" data-ng-click="questionnaire.deleteQuestion(question)"></i>
+                    <i class="fa fa-times-circle-o non-compliant"
+                       data-ng-click="questionnaire.deleteQuestion(question)"></i>
                 </div>
 
                 <div class="col-xs-12">
@@ -85,7 +86,7 @@
         {{-- Compliance Report Modal --}}
         <div class="modal fade compliance-report" tabindex="-1" role="dialog" id="complianceModal">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content container-fluid">
                     <section class="modal-header">
                         <h2 class="text-center">Compliance Overview</h2>
                         {{-- Overall Questionnaire Complaince Headers --}}
@@ -104,49 +105,51 @@
 
 
                     {{-- Individual Question Compliance --}}
-                    <section data-ng-repeat="question in questionnaire.questions" class="question report page-break">
+                    <section data-ng-repeat="question in questionnaire.questions" class="question report">
 
                         {{-- Display when question answer in noncompliant --}}
-                        <div data-ng-show="question.compliant">
+                        <div data-ng-show="question.compliant" class="question-text-report">
                             <i class="compliant fa fa-check icon-size"></i>
-                            You are in compliance with regards to "@{{ question.text }}"
+                            @{{ ($index + 1) + '. You are in compliance with regards to: "' + question.text }}"
                         </div>
 
                         {{-- Display when question answer is compliant --}}
                         <div data-ng-hide="question.compliant">
-                            <div class="report">
+                            <div class="question-text-report">
                                 <i class="non-compliant fa fa-times-circle icon-size"></i>
-                                You are not in compliance with regards to "@{{ question.text }}"
+                                @{{ ($index + 1) + '. You are not in compliance with regards to: "' + question.text }}"
                             </div>
 
-                            <span data-ng-if="!questionnaire.getWasAnswered(question)" class="info small">
+                            <div>
+                                <span data-ng-if="!questionnaire.getWasAnswered(question)" class="info small">
                                 You have not selected an answer for this question.
-                            </span>
+                                </span>
 
-                            <span data-ng-if="questionnaire.getWasAnswered(question)"
-                                  class="info">
-                                Your current answer is:
-                            </span>
-                            <p class="small">
-                                <span>@{{ questionnaire.getSelectedAnswerText(question) }}</span>
-                            </p>
+                                <span data-ng-if="questionnaire.getWasAnswered(question)"
+                                      class="info">
+                                    Your current answer is:
+                                </span>
+                                <p class="small">
+                                    <span>@{{ questionnaire.getSelectedAnswerText(question) }}</span>
+                                </p>
 
-                            {{-- Display compliant answer Choices when a question is out of compliance --}}
-                            <span class="info">@{{ questionnaire.getCompliantAnswers(question).label }}</span>
-                            <p data-ng-repeat="answer in questionnaire.getCompliantAnswers(question).compliantAnswers"
-                               data-ng-if="!(question.data_type === 'range')">
-                                <span class="highlight-text small">@{{ ($index + 1) + '. ' + answer.text }}</span>
-                            </p>
+                                {{-- Display compliant answer Choices when a question is out of compliance --}}
+                                <span class="info">@{{ questionnaire.getCompliantAnswers(question).label }}</span>
+                                <p data-ng-repeat="answer in questionnaire.getCompliantAnswers(question).compliantAnswers"
+                                   data-ng-if="!(question.data_type === 'range')">
+                                    <span class="highlight-text small">@{{ ($index + 1) + '. ' + answer.text }}</span>
+                                </p>
 
-                            <p data-ng-if="question.data_type === 'range'">
-                            <span class="highlight-text small">
-                                @{{ questionnaire.getCompliantAnswers(question).compliantAnswers[0] + ' to ' +
-                                questionnaire.getCompliantAnswers(question).compliantAnswers[1] }}
-                            </span>
-                            </p>
+                                <p data-ng-if="question.data_type === 'range'">
+                                <span class="highlight-text small">
+                                    @{{ questionnaire.getCompliantAnswers(question).compliantAnswers[0] + ' to ' +
+                                    questionnaire.getCompliantAnswers(question).compliantAnswers[1] }}
+                                </span>
+                                </p>
 
-                            <span class="info">For more information on how to become compliant with this area go to:</span>
-                            <a href="">@{{ question.help_url }}</a>
+                                <span class="info">For more information on how to become compliant with this area go to:</span>
+                                <a href="">@{{ question.help_url }}</a>
+                            </div>
 
                         </div>
 
@@ -173,7 +176,7 @@
                     </button>
 
                     <div class="modal-interior">
-                        <h1>Add a question</h1>
+                        <h1>Create Questions</h1>
                         <form name="questionnaire.newForm" action="" class="">
 
                             {{-- New Question text input --}}
@@ -231,12 +234,12 @@
                                 <div data-ng-repeat="answer in questionnaire.newQuestionMultipleChoiceAnswers">
 
                                     <textarea data-ng-model="answer.text"
-                                              class="col-xs-8 form-control question-input multi-input"
+                                              class="col-xs-8 form-control question-input multiple-choice-input"
                                               rows="1"
                                               title="multiple-choice-answer"
                                               required></textarea>
 
-                                    <span class="col-xs-2 multi-input2">
+                                    <span class="col-xs-2 multiple-choice-compliance-input">
                                         Compliant?
                                         <input data-ng-model="answer.compliant"
                                                type="checkbox"
@@ -245,7 +248,7 @@
 
                                 </div>
                                 <i data-ng-click="questionnaire.addMultipleChoiceAnswer()"
-                                   class="fa fa-plus-circle col-xs-1 multi-input2"></i>
+                                   class="fa fa-plus-circle col-xs-1 multiple-choice-add-btn"></i>
                             </div>
 
                             <div data-ng-if="questionnaire.newQuestionAnswerType === 'range'" class="row tab-inner tab-wrap">
