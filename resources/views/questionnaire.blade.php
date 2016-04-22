@@ -11,79 +11,82 @@
     <body data-ng-app="adaApp" data-ng-controller="QuestionnaireController as questionnaire">
     <div class="container">
 
-        <div class="row">
-            <h1 class="col-xs-6 text-left app-title">ADA Compliance Survey</h1>
-            <i class="col-xs-6 fa fa-plus add text-right" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-        </div>
+        <div id="questionnaire">
+            <div class="row">
+                <h1 class="col-xs-11 text-left app-title">ADA Compliance Survey</h1>
+                <i class="fa fa-plus add text-right" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+            </div>
 
-        <div data-ng-repeat="question in questionnaire.questionsPaginated" class="question row">
+            <div data-ng-repeat="question in questionnaire.questionsPaginated" class="question row">
 
-            <div class="col-xs-8">
-                {{-- Display the question --}}
-                <p>@{{ question.text }}</p>
+                <div class="col-xs-8">
+                    {{-- Display the question --}}
+                    <p class="question-text">@{{ ($index + 1) + '. ' + question.text }}</p>
 
-                {{-- Display appropriate input type to allow user to answer question --}}
-                <div class="answer-input col-xs-10">
-                    <multiple-choice-input data-ng-if="question.data_type === 'multiple_choice'"></multiple-choice-input>
-                    <true-false-input data-ng-if="question.data_type === 'true_false'"></true-false-input>
-                    <range-input data-ng-if="question.data_type === 'range'"></range-input>
-                </div>
+                    {{-- Display appropriate input type to allow user to answer question --}}
+                    <div class="answer-input col-xs-10">
+                        <multiple-choice-input data-ng-if="question.data_type === 'multiple_choice'"></multiple-choice-input>
+                        <true-false-input data-ng-if="question.data_type === 'true_false'"></true-false-input>
+                        <range-input data-ng-if="question.data_type === 'range'"></range-input>
+                    </div>
 
-                {{-- Save message --}}
-                <span data-ng-show="question.active" class="save-message col-xs-2 text-right">
+                    {{-- Save message --}}
+                    <span data-ng-show="question.active" class="save-message col-xs-2 text-right">
                     saving
                 </span>
 
-            </div>
-
-            <div data-ng-if="questionnaire.getWasAnswered(question)" class="col-xs-4 text-right">
-                {{-- Display when question answer is compliant --}}
-                <div data-ng-show="question.compliant === true"
-                     class="compliant">
-                    <h4><i class="fa fa-check icon-size"></i> compliant</h4>
                 </div>
 
-                {{-- Display when question answer is noncompliant --}}
-                <div data-ng-hide="question.compliant === true"
-                     class="non-compliant">
-                    <h4><i class="fa fa-times-circle icon-size"></i> non-compliant</h4>
+                <div data-ng-if="questionnaire.getWasAnswered(question)" class="col-xs-4 text-right">
+                    {{-- Display when question answer is compliant --}}
+                    <div data-ng-show="question.compliant === true"
+                         class="compliant">
+                        <h4><i class="fa fa-check icon-size"></i> compliant</h4>
+                    </div>
+
+                    {{-- Display when question answer is noncompliant --}}
+                    <div data-ng-hide="question.compliant === true"
+                         class="non-compliant">
+                        <h4><i class="fa fa-times-circle icon-size"></i> non-compliant</h4>
+                    </div>
                 </div>
+
+                {{-- Delete Question Button --}}
+                {{-- TODO: Delete Question functionality will only be present in admin view --}}
+                <div class="text-muted col-xs-12 text-right">
+                    delete question
+                    <i class="fa fa-times-circle-o" data-ng-click="questionnaire.deleteQuestion(question)"></i>
+                </div>
+
+                <div class="col-xs-12">
+                    <hr />
+                </div>
+
             </div>
 
-            {{-- Delete Question Button --}}
-            {{-- TODO: Delete Question functionality will only be present in admin view --}}
-            <div class="text-muted col-xs-12 text-right">
-                delete question
-                <i class="fa fa-times-circle-o" data-ng-click="questionnaire.deleteQuestion(question)"></i>
-            </div>
+            {{-- Page Navigation --}}
+            <uib-pagination total-items="questionnaire.questions.length"
+                            items-per-page="questionnaire.pageSize"
+                            data-ng-model="questionnaire.currentPage"
+                            data-ng-change="questionnaire.updatePage()"
+                            class="pagination-sm"></uib-pagination>
 
-            <div class="col-xs-12">
-                <hr />
-            </div>
-
+            {{-- Button to open Compliance Report --}}
+            <button type="button"
+                    class="compliance-report-btn btn btn-primary row"
+                    data-toggle="modal"
+                    data-target=".compliance-report">
+                View Compliance Results
+            </button>
         </div>
 
-        {{-- Page Navigation --}}
-        <uib-pagination total-items="questionnaire.questions.length"
-                        items-per-page="questionnaire.pageSize"
-                        data-ng-model="questionnaire.currentPage"
-                        data-ng-change="questionnaire.updatePage()"
-                        class="pagination-sm"></uib-pagination>
-
-        {{-- Button to open Compliance Report --}}
-        <button type="button"
-                class="compliance-report-btn btn btn-primary row"
-                data-toggle="modal"
-                data-target=".compliance-report">
-            View Compliance Results
-        </button>
 
         {{-- TODO: move the Compliance Report Modal to a separate template file. --}}
         {{-- Compliance Report Modal --}}
-        <div class="modal fade compliance-report" tabindex="-1" role="dialog" id="complianceModal printSection">
+        <div class="modal fade compliance-report" tabindex="-1" role="dialog" id="complianceModal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <section class="modal-header">
                         <h2 class="text-center">Compliance Overview</h2>
                         {{-- Overall Questionnaire Complaince Headers --}}
                         <h3 data-ng-if="questionnaire.getOverallCompliance()" class="compliant text-center">
@@ -93,18 +96,21 @@
                         <h3 data-ng-if="!questionnaire.getOverallCompliance()" class="non-compliant text-center">
                             You are out of compliance.
                         </h3>
-                        <button print-btn class="print-btn"><i class="fa fa-print" ></i></button>
-                    </div>
-                    <div print-section>
 
-                        {{-- Individual Question Compliance --}}
-                        <div data-ng-repeat="question in questionnaire.questions" class="question report">
+                        <button data-ng-click="questionnaire.print()"
+                                btn-print class="print-btn" id="printBtn"><i class="fa fa-print" ></i></button>
 
-                            {{-- Display when question answer in noncompliant --}}
-                            <div data-ng-show="question.compliant">
-                                <i class="compliant fa fa-check icon-size"></i>
-                                You are in compliance with regards to "@{{ question.text }}"
-                            </div>
+                    </section>
+
+
+                    {{-- Individual Question Compliance --}}
+                    <section data-ng-repeat="question in questionnaire.questions" class="question report page-break">
+
+                        {{-- Display when question answer in noncompliant --}}
+                        <div data-ng-show="question.compliant">
+                            <i class="compliant fa fa-check icon-size"></i>
+                            You are in compliance with regards to "@{{ question.text }}"
+                        </div>
 
                         {{-- Display when question answer is compliant --}}
                         <div data-ng-hide="question.compliant">
@@ -129,34 +135,33 @@
                             <span class="info">@{{ questionnaire.getCompliantAnswers(question).label }}</span>
                             <p data-ng-repeat="answer in questionnaire.getCompliantAnswers(question).compliantAnswers"
                                data-ng-if="!(question.data_type === 'range')">
-                                    <span class="highlight-text small">@{{ ($index + 1) + '. ' + answer.text }}</span>
+                                <span class="highlight-text small">@{{ ($index + 1) + '. ' + answer.text }}</span>
                             </p>
 
                             <p data-ng-if="question.data_type === 'range'">
-                                    <span class="highlight-text small">
-                                        @{{ questionnaire.getCompliantAnswers(question).compliantAnswers[0] + ' to ' +
-                                        questionnaire.getCompliantAnswers(question).compliantAnswers[1] }}
-                                    </span>
+                            <span class="highlight-text small">
+                                @{{ questionnaire.getCompliantAnswers(question).compliantAnswers[0] + ' to ' +
+                                questionnaire.getCompliantAnswers(question).compliantAnswers[1] }}
+                            </span>
                             </p>
 
                             <span class="info">For more information on how to become compliant with this area go to:</span>
                             <a href="">@{{ question.help_url }}</a>
 
-                            </div>
-
-                            <hr>
                         </div>
-                    </div>
 
+                        <hr />
 
+                    </section>
 
                 </div>
             </div>
         </div>
 
+
         {{-- TODO: Move the Add Question Model to separate file --}}
         <!-- Add Question modal -->
-        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="addQuestionModal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
 

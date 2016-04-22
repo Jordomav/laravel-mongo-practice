@@ -4,7 +4,7 @@
  'use strict';
 
  angular.module('adaApp')
-     .controller('QuestionnaireController', function($http, Questions, NewQuestion) {
+     .controller('QuestionnaireController', function($http, Questions, NewQuestion, $window) {
 
          var vm = this;
 
@@ -16,8 +16,6 @@
              Questions.init()
                  .then( function () {
                      vm.questions = Questions.questions;
-                     console.log(vm.questions);
-
                      vm.updatePage();
                  });
          }
@@ -51,7 +49,7 @@
 
 
          /**
-          *  New Question Methods
+          *  Question Methods
           */
 
          // TODO: Move more of this logic to the Service.
@@ -118,6 +116,10 @@
                  });
          };
 
+         vm.deleteQuestion = function (question) {
+             Questions.deleteQuestion(question, displayQuestions);
+         };
+
 
          vm.displayAnswerForm = function (event) {
              NewQuestion.setAnswerType(event);
@@ -158,8 +160,11 @@
              }
          };
 
-         vm.deleteQuestion = function (question) {
-             Questions.deleteQuestion(question, displayQuestions);
+         /**
+          *  Printing
+          */
+         vm.print = function () {
+             $window.print();
          };
      });
 

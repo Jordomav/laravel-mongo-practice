@@ -2,10 +2,45 @@
 @main-font-color: #42a5f5;
 
 body {
+
   font-family: @main-font;
 
   h1 {
     color: @main-font-color;
+  }
+
+  .question {
+
+    padding-top: 28px;
+
+    .question-text {
+      font-size: 18px;
+    }
+
+    .highlight-text {
+      background-color: yellow;
+    }
+
+    .info {
+      font-weight: bold;
+    }
+
+    .small {
+      font-size: 14px;
+    }
+
+    .answer-input {
+      margin-top: 8px;
+    }
+
+    .save-message {
+      font-size: 14px;
+    }
+
+    hr {
+      background-color: #bbdefb;
+      height: 1px;
+    }
   }
 
   .compliance-report-btn {
@@ -21,48 +56,9 @@ body {
   padding-left: 0;
 }
 
-.question {
-
-  padding-top: 40px;
-
-  div,
-  form {
-    padding: 0;
-  }
-
-  p {
-    font-size: 18px;
-  }
-
-  .highlight-text {
-    background-color: yellow;
-  }
-
-  .info {
-    font-weight: bold;
-  }
-
-  .small {
-    font-size: 14px;
-  }
-
-  .answer-input {
-    margin-top: 8px;
-  }
-
-  .save-message {
-    font-size: 14px;
-  }
-
-  hr {
-    background-color: #bbdefb;
-    height: 1px;
-  }
-}
-
 .report {
   font-size: 16px;
-  padding: 10px 24px 0;
+  padding: 10px 24px 0 10px;
   margin: 0 0 24px;
 }
 
@@ -149,3 +145,25 @@ body {
   padding-bottom: 30px;
   padding-top: 30px;
 }
+
+@media print {
+  #complianceModal {
+    visibility: visible;
+    display: block;
+    overflow: visible;
+    position:absolute;
+    left:0;
+    top:0;
+
+    * {
+      border: none;
+    }
+  }
+
+  #questionnaire,
+  #addQuestionModal,
+  #printBtn {
+    display: none;
+  }
+}
+

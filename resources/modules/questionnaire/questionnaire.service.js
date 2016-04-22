@@ -180,10 +180,11 @@
                         label = 'The compliant answers are: ';
                     }
                 }
+
                 return {
                     label: label,
                     compliantAnswers: compliantAnswers
-                }
+                };
 
             };
 
