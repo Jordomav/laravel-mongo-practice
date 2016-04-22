@@ -182,6 +182,9 @@ body {
     display: none;
   }
 
-
+  // Removes the "()" which appears after links in print preview.
+  a[href]:after {
+    content: none !important;
+  }
 }
 

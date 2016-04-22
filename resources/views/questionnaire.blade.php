@@ -286,6 +286,9 @@
                                 </div>
                             </div>
                             <div class="row modal-interior">
+
+                                {{-- TODO: Probably do not disable save button if invalid URL, but notify the user to
+                                    (todo cont...) fix URL after they attempt to add question--}}
                                 <label>Help URL:
                                     <input data-ng-model="questionnaire.newQuestionHelpUrl"
                                            type="url"
