@@ -71,10 +71,9 @@ return [
             'driver'   => 'mongodb',
             'host'     => $host,
             'port'     => $port,
-            'database' => $database,
+            'database' => $path,
             'username' => $username,
             'password' => $password,
-            'path' => $path,
             'options' => [
                 'db' => 'admin'
             ]
