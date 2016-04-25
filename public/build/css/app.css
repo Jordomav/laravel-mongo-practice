@@ -1,0 +1,147 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+body h1 {
+  color: #42a5f5;
+}
+body .question {
+  padding-top: 28px;
+}
+body .question .question-text {
+  font-size: 18px;
+}
+body .question .question-text-report {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+body .question .highlight-text {
+  background-color: yellow;
+}
+body .question .answer-input {
+  margin-top: 8px;
+}
+body .question .save-message {
+  font-size: 14px;
+}
+body .question hr {
+  background-color: #bbdefb;
+  height: 1px;
+}
+body .question .info {
+  font-weight: bold;
+}
+body .question .small {
+  font-size: 14px;
+}
+body .compliance-report-btn {
+  float: right;
+}
+body .pagination {
+  margin: 0;
+}
+body .app-title {
+  padding-left: 16px;
+}
+body .report {
+  font-size: 16px;
+  padding: 10px 24px 0 10px;
+  margin: 0 0 24px;
+}
+body .print-btn {
+  position: absolute;
+  top: 8px;
+  right: 24px;
+}
+body .compliant {
+  color: #2dae44;
+}
+body .non-compliant {
+  color: #d50000;
+}
+body .add {
+  color: #00AA00;
+  font-size: 25px;
+  padding: 10px;
+  position: relative;
+  top: 28px;
+}
+body .add:hover {
+  background-color: rgba(0, 170, 0, 0.35);
+  padding: 10px;
+  border-radius: 30px;
+}
+body .modal-interior {
+  margin-left: 20px;
+}
+body .tab-inner {
+  margin-left: -10px;
+  padding-left: 20px;
+  min-height: 155px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+body .question-input {
+  width: 500px;
+}
+body .multiple-choice-input {
+  margin-top: 10px;
+}
+body .multiple-choice-compliance-input,
+body .multiple-choice-add-btn {
+  margin-top: 15px;
+}
+body .tab-wrap {
+  border: solid grey 1px;
+}
+body .row {
+  margin-right: 10px;
+}
+body .answer-type-btn {
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+}
+body .fa-times-circle-o {
+  font-size: 16px;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+body .fa-print {
+  font-size: 25px;
+  padding: 5px;
+}
+body .fa-print:hover {
+  background-color: rgba(128, 128, 128, 0.3);
+  padding: 5px;
+  border-radius: 3px;
+}
+body .buttons {
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+@media print {
+  #complianceModal {
+    visibility: visible;
+    display: block;
+    overflow: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  #complianceModal * {
+    border: none;
+  }
+  .compliant {
+    -webkit-text-fill-color: #2dae44 !important;
+  }
+  .non-compliant {
+    -webkit-text-fill-color: #d50000 !important;
+  }
+  #questionnaire,
+  #addQuestionModal,
+  #printBtn {
+    display: none;
+  }
+  a[href]:after {
+    content: none !important;
+  }
+}

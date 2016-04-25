@@ -1,6 +1,8 @@
 vendor
 node_modules
-public/build
+resources
+tests
 .env
 bower_components
 .idea
+gulpfile.js
