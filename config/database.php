@@ -8,8 +8,10 @@
  */
 
 $uri = parse_url(getenv('MONGODB_URI'));
-$client = new MongoClient($uri);
-$db = $client->selectDB('db');
+$host = $uri['host'];
+$username = $uri['user'];
+$password = $uri['pass'];
+$database = substr($uri['path'], 1);
 
 return [
 
@@ -65,11 +67,11 @@ return [
 
         'mongodb' => [
             'driver'   => 'mongodb',
-            'host'     => env('DB_HOST', 'localhost'),
+            'host'     => $host,
             'port'     => env('DB_PORT', 27017),
-            'database' => env('DB_DATABASE'),
-            'username' => env('DB_USERNAME'),
-            'password' => env('DB_PASSWORD'),
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
             'options' => [
                 'db' => 'admin'
             ]
