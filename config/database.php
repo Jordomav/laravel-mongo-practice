@@ -13,7 +13,6 @@ $port = $uri['port'];
 $username = $uri['user'];
 $password = $uri['pass'];
 $database = substr($uri['path'], 1);
-$path = $uri['path'];
 
 return [
 
@@ -71,7 +70,7 @@ return [
             'driver'   => 'mongodb',
             'host'     => $host,
             'port'     => $port,
-            'database' => $path,
+            'database' => $database,
             'username' => $username,
             'password' => $password,
             'options' => [
