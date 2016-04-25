@@ -17,11 +17,6 @@ use Illuminate\Http\Request;
 class QuestionnaireController extends Controller
 {
 
-    public function pdf(Question $question) {
-        $pdf = PDF::loadView('pdf', compact('questions'));
-        return $pdf->stream('invoice.pdf');
-    }
-
     public function index()
     {
         // This will work differently when we have users set up. For now we check if we've already copied master list of
