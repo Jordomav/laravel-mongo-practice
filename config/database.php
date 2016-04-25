@@ -1,5 +1,16 @@
 <?php
 
+
+/*
+|--------------------------------------------------------------------------
+| MongoDB setup for Heroku app
+|--------------------------------------------------------------------------
+ */
+
+$uri = parse_url(getenv('MONGODB_URI'));
+$client = new MongoClient($uri);
+$db = $client->selectDB('db');
+
 return [
 
     /*
