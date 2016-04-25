@@ -9,9 +9,11 @@
 
 $uri = parse_url(getenv('MONGODB_URI'));
 $host = $uri['host'];
+$port = $uri['port'];
 $username = $uri['user'];
 $password = $uri['pass'];
 $database = substr($uri['path'], 1);
+$path = $uri['path'];
 
 return [
 
@@ -68,10 +70,11 @@ return [
         'mongodb' => [
             'driver'   => 'mongodb',
             'host'     => $host,
-            'port'     => env('DB_PORT', 27017),
+            'port'     => $port,
             'database' => $database,
             'username' => $username,
             'password' => $password,
+            'path' => $path,
             'options' => [
                 'db' => 'admin'
             ]
