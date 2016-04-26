@@ -7,13 +7,8 @@
 |--------------------------------------------------------------------------
  */
 
-$mongodb_uri = parse_url(getenv('MONGODB_URI'));
-$host = $mongodb_uri['host'];
-$port = $mongodb_uri['port'];
-$username = $mongodb_uri['user'];
-$password = $mongodb_uri['pass'];
-$database = substr($mongodb_uri['path'], 1);
-
+$mongoDbUri = parse_url(getenv('MONGODB_URI'));
+$dbName = substr($mongoDbUri['path'], 1);
 
 return [
 
@@ -69,14 +64,14 @@ return [
 
         'mongodb' => [
             'driver'   => 'mongodb',
-            'host'     => $host,
-            'port'     => $port,
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
-            'options' => [
-                'db' => 'admin'
-            ]
+            'host'     => $mongoDbUri['host'],
+            'port'     => $mongoDbUri['port'],
+            'database' => $dbName,
+            'username' => $mongoDbUri['user'],
+            'password' => $mongoDbUri['pass']
+//            'options' => [
+//                'db' => 'admin'
+//            ]
         ],
 
         'mysql' => [
