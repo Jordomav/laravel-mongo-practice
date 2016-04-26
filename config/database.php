@@ -14,10 +14,6 @@ $username = $mongodb_uri['user'];
 $password = $mongodb_uri['pass'];
 $database = substr($mongodb_uri['path'], 1);
 
-$uri = 'mongodb://'.$username.':'.$password.'@'.$host.':'.$port.'/'.$database;
-$client = new MongoClient($uri);
-$db = $client->selectDB($database);
-
 
 
 return [

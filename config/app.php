@@ -1,5 +1,9 @@
 <?php
 
+$uri = 'mongodb://'.$username.':'.$password.'@'.$host.':'.$port.'/'.$database;
+$client = new MongoClient($uri);
+$db = $client->selectDB($database);
+
 return [
 
     /*
