@@ -3,7 +3,6 @@ node_modules
 resources/modules
 resources/styles
 tests
-.env
 bower_components
 .idea
 gulpfile.js
