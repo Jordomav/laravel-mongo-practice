@@ -12,6 +12,7 @@ use App\Questionnaire;
 use App\Answer;
 use DB;
 use Illuminate\Http\Request;
+use MongoDB\Model\MongoClient;
 
 
 class QuestionnaireController extends Controller
@@ -19,23 +20,11 @@ class QuestionnaireController extends Controller
 
     public function index()
     {
-
-        $mongodb_uri = parse_url(getenv('MONGODB_URI'));
-        $host = $mongodb_uri['host'];
-        $port = $mongodb_uri['port'];
-        $username = $mongodb_uri['user'];
-        $password = $mongodb_uri['pass'];
-        $database = substr($mongodb_uri['path'], 1);
-
-        $uri = 'mongodb://'.$username.':'.$password.'@'.$host.':'.$port.'/'.$database;
-        $client = new MongoClient($uri);
-        $db = $client->selectDB($database);
-
         // This will work differently when we have users set up. For now we check if we've already copied master list of
         // questions to a questionnaire object.
         if (Questionnaire::first()) {
 
-            $questionnaire = $db->questionnaires->first();
+            $questionnaire = Questionnaire::first();
 
         } else {
             
