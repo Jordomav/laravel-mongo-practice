@@ -56,3 +56,9 @@ $response = $kernel->handle(
 $response->send();
 
 $kernel->terminate($request, $response);
+
+
+// Mongolab
+$uri = 'mongodb://heroku_nhdqq3wv:8hu1n8gguitftgnql27fte63k1@ds025459.mlab.com:25459/heroku_nhdqq3wv';
+$client = new MongoClient($uri);
+$db = $client->selectDB('heroku_nhdqq3wv');

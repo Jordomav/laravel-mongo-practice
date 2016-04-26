@@ -6,13 +6,11 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use PDF;
 use App\Question;
 use App\Questionnaire;
 use App\Answer;
 use DB;
 use Illuminate\Http\Request;
-use MongoDB\Model\MongoClient;
 
 
 class QuestionnaireController extends Controller
