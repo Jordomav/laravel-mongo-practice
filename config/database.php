@@ -8,11 +8,11 @@
  */
 
 $mongodb_uri = parse_url(getenv('MONGODB_URI'));
-$host = $uri['host'];
-$port = $uri['port'];
-$username = $uri['user'];
-$password = $uri['pass'];
-$database = substr($uri['path'], 1);
+$host = $mongodb_uri['host'];
+$port = $mongodb_uri['port'];
+$username = $mongodb_uri['user'];
+$password = $mongodb_uri['pass'];
+$database = substr($mongodb_uri['path'], 1);
 
 $uri = 'mongodb://'.$username.':'.$password.'@'.$host.':'.$port.'/'.$database;
 $client = new MongoClient($uri);
