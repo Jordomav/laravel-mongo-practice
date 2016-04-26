@@ -63,7 +63,7 @@ return [
         ],
 
         'mongodb' => [
-            'driver'   => 'mongodb',
+            'driver'   => $mongoDbUri['scheme'],
             'host'     => $mongoDbUri['host'],
             'port'     => $mongoDbUri['port'],
             'database' => $dbName,
