@@ -1,6 +1,7 @@
 vendor
 node_modules
-resources
+resources/modules
+resources/styles
 tests
 .env
 bower_components
