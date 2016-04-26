@@ -68,10 +68,10 @@ return [
             'port'     => $mongoDbUri['port'],
             'database' => $dbName,
             'username' => $mongoDbUri['user'],
-            'password' => $mongoDbUri['pass']
-//            'options' => [
-//                'db' => 'admin'
-//            ]
+            'password' => $mongoDbUri['pass'],
+            'options' => [
+                'db' => 'admin'
+            ]
         ],
 
         'mysql' => [
