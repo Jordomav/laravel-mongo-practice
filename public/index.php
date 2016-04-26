@@ -67,4 +67,4 @@ $kernel->terminate($request, $response);
 $uri = parse_url(getenv('MONGODB_URI'));
 $dbName = substr($uri['path'], 1);
 
-$client = new MongoClient($uri);
+$client = new MongoClient(getenv('MONGODB_URI'));
