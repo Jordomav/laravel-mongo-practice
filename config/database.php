@@ -7,12 +7,18 @@
 |--------------------------------------------------------------------------
  */
 
-$uri = parse_url(getenv('MONGODB_URI'));
+$mongodb_uri = parse_url(getenv('MONGODB_URI'));
 $host = $uri['host'];
 $port = $uri['port'];
 $username = $uri['user'];
 $password = $uri['pass'];
 $database = substr($uri['path'], 1);
+
+$uri = 'mongodb://'.$username.':'.$password.'@'.$host.':'.$port.'/'.$database;
+$client = new MongoClient($uri);
+$db = $client->selectDB($database);
+
+
 
 return [
 
