@@ -15,7 +15,6 @@ $password = $mongodb_uri['pass'];
 $database = substr($mongodb_uri['path'], 1);
 
 
-
 return [
 
     /*
