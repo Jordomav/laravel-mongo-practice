@@ -129,6 +129,7 @@
 
          vm.addMultipleChoiceAnswer = function () {
              NewQuestion.addMultipleChoiceInput();
+             vm.newQuestionMultipleChoiceAnswers = NewQuestion.multipleChoiceAnswers;
          };
 
          vm.resetForm = function () {
@@ -138,7 +139,8 @@
              vm.rangeMeasurement = '';
              vm.newQuestionHelpUrl = '';
              vm.rangeAnswer = [];
-             vm.newQuestionMultipleChoiceAnswers = [{text: '', compliant: false}];
+             NewQuestion.resetMultipleChoiceAnswers();
+             vm.newQuestionMultipleChoiceAnswers = NewQuestion.multipleChoiceAnswers;
          };
 
          /**

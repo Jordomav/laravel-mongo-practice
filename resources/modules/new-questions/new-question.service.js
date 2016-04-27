@@ -25,6 +25,10 @@
 
             vm.addMultipleChoiceInput = function () {
                 vm.multipleChoiceAnswers.push({text: '', compliant: false});
+           };
+
+            vm.resetMultipleChoiceAnswers = function () {
+                vm.multipleChoiceAnswers = [{text: '', compliant: false}];
             };
 
     });
