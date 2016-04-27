@@ -14,7 +14,9 @@
             <div id="questionnaire">
                 <div class="row">
                     <h1 class="col-xs-11 text-left app-title">ADA Compliance Survey</h1>
-                    <i class="fa fa-plus add text-right" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+                    <button class="add" data-toggle="modal" data-target=".bs-example-modal-lg">
+                        <i class="fa fa-plus text-right"></i>
+                    </button>
                 </div>
 
                 <section id="questions" class="ng-cloak">
