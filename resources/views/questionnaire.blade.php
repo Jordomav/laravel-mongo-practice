@@ -17,53 +17,56 @@
                     <i class="fa fa-plus add text-right" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
                 </div>
 
-                <div data-ng-repeat="question in questionnaire.questionsPaginated" class="question row">
+                <section id="questions" class="ng-cloak">
+                    <div data-ng-repeat="question in questionnaire.questionsPaginated" class="question row">
 
-                    <div class="col-xs-8">
-                        {{-- Display the question --}}
-                        <p class="question-text">@{{ ($index + 1) + '. ' + question.text }}</p>
+                        <div class="col-xs-8">
+                            {{-- Display the question --}}
+                            <p class="question-text">@{{ ($index + 1) + '. ' + question.text }}</p>
 
-                        {{-- Display appropriate input type to allow user to answer question --}}
-                        <div class="answer-input col-xs-10">
-                            <multiple-choice-input data-ng-show="question.data_type === 'multiple_choice'"></multiple-choice-input>
-                            <true-false-input data-ng-show="question.data_type === 'true_false'"></true-false-input>
-                            <range-input data-ng-show="question.data_type === 'range'"></range-input>
-                        </div>
+                            {{-- Display appropriate input type to allow user to answer question --}}
+                            <div class="answer-input col-xs-10">
+                                <multiple-choice-input data-ng-show="question.data_type === 'multiple_choice'"></multiple-choice-input>
+                                <true-false-input data-ng-show="question.data_type === 'true_false'"></true-false-input>
+                                <range-input data-ng-show="question.data_type === 'range'"></range-input>
+                            </div>
 
-                        {{-- Save message --}}
-                        <span data-ng-show="question.active" class="save-message col-xs-2 text-right">
+                            {{-- Save message --}}
+                            <span data-ng-show="question.active" class="save-message col-xs-2 text-right">
                         saving
                     </span>
 
-                    </div>
-
-                    <div data-ng-if="questionnaire.getWasAnswered(question)" class="col-xs-4 text-right">
-                        {{-- Display when question answer is compliant --}}
-                        <div data-ng-show="question.compliant === true"
-                             class="compliant">
-                            <h4><i class="fa fa-check icon-size"></i> compliant</h4>
                         </div>
 
-                        {{-- Display when question answer is noncompliant --}}
-                        <div data-ng-hide="question.compliant === true"
-                             class="non-compliant">
-                            <h4><i class="fa fa-times-circle icon-size"></i> non-compliant</h4>
+                        <div data-ng-if="questionnaire.getWasAnswered(question)" class="col-xs-4 text-right">
+                            {{-- Display when question answer is compliant --}}
+                            <div data-ng-show="question.compliant === true"
+                                 class="compliant">
+                                <h4><i class="fa fa-check icon-size"></i> compliant</h4>
+                            </div>
+
+                            {{-- Display when question answer is noncompliant --}}
+                            <div data-ng-hide="question.compliant === true"
+                                 class="non-compliant">
+                                <h4><i class="fa fa-times-circle icon-size"></i> non-compliant</h4>
+                            </div>
                         </div>
-                    </div>
 
-                    {{-- Delete Question Button --}}
-                    {{-- TODO: Delete Question functionality will only be present in admin view --}}
-                    <div class="text-muted col-xs-12 text-right">
-                        delete question
-                        <i class="fa fa-times-circle-o non-compliant"
-                           data-ng-click="questionnaire.deleteQuestion(question)"></i>
-                    </div>
+                        {{-- Delete Question Button --}}
+                        {{-- TODO: Delete Question functionality will only be present in admin view --}}
+                        <div class="text-muted col-xs-12 text-right">
+                            delete question
+                            <i class="fa fa-times-circle-o non-compliant"
+                               data-ng-click="questionnaire.deleteQuestion(question)"></i>
+                        </div>
 
-                    <div class="col-xs-12">
-                        <hr />
-                    </div>
+                        <div class="col-xs-12">
+                            <hr />
+                        </div>
 
-                </div>
+                    </div>
+                </section>
+
 
                 {{-- Page Navigation --}}
                 <uib-pagination total-items="questionnaire.questions.length"

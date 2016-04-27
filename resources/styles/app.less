@@ -1,6 +1,12 @@
 @main-font: 'Noto Sans', sans-serif;
 @main-font-color: #42a5f5;
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak,
+.ng-hide {
+  display: none !important;
+}
+
 body {
 
   font-family: @main-font;
