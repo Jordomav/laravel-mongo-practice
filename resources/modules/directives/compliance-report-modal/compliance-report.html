@@ -1,0 +1,75 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content container-fluid">
+        <section class="modal-header">
+            <h2 class="text-center">Compliance Overview</h2>
+
+            <!-- Overall Questionnaire Complaince Headers -->
+            <h3 data-ng-if="questionnaire.getOverallCompliance()" class="compliant text-center">
+                You're compliant in all areas.
+            </h3>
+
+            <h3 data-ng-if="!questionnaire.getOverallCompliance()" class="non-compliant text-center">
+                You are out of compliance.
+            </h3>
+
+            <button data-ng-click="questionnaire.print()"
+                    btn-print class="print-btn" id="printBtn"><i class="fa fa-print" ></i></button>
+
+        </section>
+
+
+        <!-- Individual Question Compliance -->
+        <section data-ng-repeat="question in questionnaire.questions" class="question report">
+
+            <!-- Display when question answer in noncompliant -->
+            <div data-ng-show="question.compliant" class="question-text-report">
+                <i class="compliant fa fa-check icon-size"></i>
+                {{ ($index + 1) + '. You are in compliance with regards to: "' + question.text }}"
+            </div>
+
+            <!-- Display when question answer is compliant -->
+            <div data-ng-hide="question.compliant">
+                <div class="question-text-report">
+                    <i class="non-compliant fa fa-times-circle icon-size"></i>
+                    {{ ($index + 1) + '. You are not in compliance with regards to: "' + question.text }}"
+                </div>
+
+                <div>
+                            <span data-ng-if="!questionnaire.getWasAnswered(question)" class="info small">
+                            You have not selected an answer for this question.
+                            </span>
+
+                            <span data-ng-if="questionnaire.getWasAnswered(question)"
+                                  class="info">
+                                Your current answer is:
+                            </span>
+                    <p class="small">
+                        <span>{{ questionnaire.getSelectedAnswerText(question) }}</span>
+                    </p>
+
+                    <!-- Display compliant answer Choices when a question is out of compliance -->
+                    <span class="info">{{ questionnaire.getCompliantAnswers(question).label }}</span>
+                    <p data-ng-repeat="answer in questionnaire.getCompliantAnswers(question).compliantAnswers"
+                       data-ng-if="!(question.data_type === 'range')">
+                        <span class="highlight-text small">{{ ($index + 1) + '. ' + answer.text }}</span>
+                    </p>
+
+                    <p data-ng-if="question.data_type === 'range'">
+                            <span class="highlight-text small">
+                                {{ questionnaire.getCompliantAnswers(question).compliantAnswers[0] + ' to ' +
+                                questionnaire.getCompliantAnswers(question).compliantAnswers[1] }}
+                            </span>
+                    </p>
+
+                    <span class="info">For more information on how to become compliant with this area go to:</span>
+                    <a href="">{{ question.help_url }}</a>
+                </div>
+
+            </div>
+
+            <hr />
+
+        </section>
+
+    </div>
+</div>
